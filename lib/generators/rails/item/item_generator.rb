@@ -122,6 +122,7 @@ class Rails::ItemGenerator < Rails::Generators::Base
     @one_attachment = options[:one_attachment]
     @upload = flag_boolean(options[:flags][9])
     @download = flag_boolean(options[:flags][10])
+    @scss = flag_boolean(options[:flags][8])
 
     flower = "resources :flower"
     route_attachment = "config/routes.rb"
@@ -146,7 +147,18 @@ class Rails::ItemGenerator < Rails::Generators::Base
 
     route_str += "    get :query_all, :on => :collection\n"
 
-    route_str += "  end\n" + "  " + flower
+
+    if @scss
+      route_str += "  end\n"
+      route_str += "  resources :grp_" + @mpu + " do\n"
+      route_str += "    get :query_device, :on => :collection\n"
+      route_str += "    get :query_list, :on => :collection\n"
+      route_str += "    get :query_info, :on => :member\n"
+      route_str += "  end\n" + "  " + flower
+    else
+      route_str += "  end\n" + "  " + flower
+    end
+
 
     route_file = File.read(route_attachment)
     route_replace = route_file.sub(flower, route_str)
@@ -174,6 +186,7 @@ class Rails::ItemGenerator < Rails::Generators::Base
     @download = flag_boolean(options[:flags][10])
     @current_user = flag_boolean(options[:flags][11])
     @admin = flag_boolean(options[:flags][12])
+    @selector = flag_boolean(options[:flags][13])
     @nests = options[:nests]
 
     unless @nests.blank?
@@ -214,7 +227,10 @@ class Rails::ItemGenerator < Rails::Generators::Base
     end
 
     if @scss
-      template 'scss.template', "app/assets/stylesheets/#{controller_name}.scss"
+      template 'grp_controller.template', "app/controllers/grp_#{controller_name}_controller.rb", @attrs, @mu, @mc, @mpc, @mpu, @enclosure, @attachment, @one_enclosure, @one_attachment, @index, @new, @edit, @show, @fields, @upload, @download, @selector
+      template 'grp_index.template', "app/views/grp_#{controller_name}/index.html.haml", @attrs, @mu, @mc, @mpc, @mpu, @enclosure, @attachment, @one_enclosure, @one_attachment, @upload, @download, @selector
+      template 'grp_js.template', "app/assets/javascripts/grp_#{controller_name}.js", @attrs, @mu, @mc, @mpc, @mpu, @selector
+      template 'grp_model.template', "app/models/grp_#{@mu}.rb"
     end
 
     if @admin

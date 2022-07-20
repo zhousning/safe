@@ -128,6 +128,16 @@
             .form-check.form-check-inline
               = f.radio_button :scss, Setting.systems.status_en_no, :class => "form-check-input"
               = f.label Setting.systems.status_no, :class => "form-check-label"
+
+        .form-group.row
+          = f.label Setting.templates.grp_selector, :class => "col-sm-3 col-form-label text-right"
+          .col-sm-3
+            .form-check.form-check-inline
+              = f.radio_button :selector, Setting.systems.status_en_yes, :class => "form-check-input", :checked => "checked"
+              = f.label '下拉选择器', :class => "form-check-label"
+            .form-check.form-check-inline
+              = f.radio_button :selector, Setting.systems.status_en_no, :class => "form-check-input"
+              = f.label '多选选择器', Setting.systems.status_no, :class => "form-check-label"
             
           
         .form-group.row

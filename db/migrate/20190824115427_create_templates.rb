@@ -4,6 +4,7 @@ class CreateTemplates < ActiveRecord::Migration
       t.string :name
       t.string :cn_name
       t.string :nest
+      t.boolean :grp
       t.boolean :image
       t.boolean :attachment
       t.string :one_image
@@ -19,6 +20,7 @@ class CreateTemplates < ActiveRecord::Migration
       t.boolean :scss
       t.boolean :admin
       t.boolean :current_user
+      t.boolean :selector
 
       t.timestamps null: false
     end

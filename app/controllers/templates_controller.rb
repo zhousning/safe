@@ -90,7 +90,8 @@ class TemplatesController < ApplicationController
            @template.upload.to_s + " " +
            @template.download.to_s + " " +
            @template.current_user.to_s + " " +
-           @template.admin.to_s + " "
+           @template.admin.to_s + " " +
+           @template.selector.to_s + " "
     
     unless @template.one_image.blank?
       cond += "-b " + @template.one_image.to_s + " "
@@ -145,7 +146,7 @@ class TemplatesController < ApplicationController
 
   private
     def template_params
-      params.require(:template).permit( :name, :cn_name, :nest, :image, :one_image, :one_attachment, :attachment, :index, :new, :edit, :show, :form, :js, :scss, :upload, :download, :admin, :current_user, nests_attributes: nest_params, natures_attributes: nature_params, relates_attributes: relate_params)
+      params.require(:template).permit(:selector, :name, :cn_name, :nest, :image, :one_image, :one_attachment, :attachment, :index, :new, :edit, :show, :form, :js, :scss, :upload, :download, :admin, :current_user, nests_attributes: nest_params, natures_attributes: nature_params, relates_attributes: relate_params)
     end
   
     def nature_params
