@@ -1,0 +1,63 @@
+---
+- 
+  role_name: 厂区用户
+  level: 1
+- 
+  role_name: 集团用户
+  level: 1
+- 
+  role_name: 厂区-施工站点
+  level: 1
+  permissions: 
+    -
+      controller: devices_controller
+      actions: [index, new, create, edit, update, show, uphold, destroy, xls_download, parse_excel, query_all]
+- 
+  role_name: 厂区-签到负责人
+  level: 1
+  permissions: 
+    -
+      controller: inspectors_controller
+      actions: [index, receive, reject]
+- 
+  role_name: 厂区-工人管理
+  level: 1
+  permissions: 
+    -
+      controller: workers_controller
+      actions: [index, destroy, receive, reject, query_info, signlogs]
+- 
+  role_name: 厂区-签到记录
+  level: 1
+  permissions: 
+    -
+      controller: sign_logs_controller
+      actions: [index, query_list, query_device]
+- 
+  role_name: 集团-施工站点
+  level: 1
+  permissions: 
+    -
+      controller: grp_devices_controller
+      actions: [index, edit, update, destroy, query_all, xls_download, parse_excel]
+- 
+  role_name: 集团-签到负责人
+  level: 1
+  permissions: 
+    -
+      controller: grp_inspectors_controller
+      actions: [index]
+- 
+  role_name: 集团-工人管理
+  level: 1
+  permissions: 
+    -
+      controller: grp_workers_controller
+      actions: [index, query_all, query_info, signlogs]
+- 
+  role_name: 集团-签到记录
+  level: 1
+  permissions: 
+    -
+      controller: grp_sign_logs_controller
+      actions: [index, query_list, query_device]
