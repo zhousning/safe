@@ -1,0 +1,84 @@
+- provide(:title, t('.title'))
+
+.container-fluid
+  .row
+    = render "layouts/control_sidebar"
+    %main.col-md-11.ml-sm-auto.col-lg-11.p-3{:role => "main"}
+      - content_for :card_header do
+        %h5
+          = fa_icon "newspaper-o", text: t(controller_name + "." + action_name + '.title')
+          = link_to "/factories/#{idencode(@factory.id)}/#{controller_name}", :class => "button button-small  pull-right button-primary" do
+            = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
+      - content_for :card_body do
+        .container-fluid
+          .row
+            .col-sm-12
+              %h2.text-center
+                = image_tag "gykg.jpg"
+                = @train.title
+            .col-md-8.offset-2.p-5.border
+              .card.border-0.mb-3.rounded-0
+                -#
+                  .card-header.bg-transparent.border-dark
+                  %h5
+                .card-body
+                  %table.table-bordered.day-pdt-table.w-100.mb-3
+                    %tbody
+                    
+                      %tr
+                    
+                        %td.p-2.text-center
+                          = Setting.trains.train_time
+                        %td.p-2.text-center
+                          = @train.train_time.strftime('%Y-%m-%d %H:%M:%S')
+                    
+                      
+                        %td.p-2.text-center
+                          = Setting.trains.address
+                        %td.p-2.text-center
+                          = @train.address
+                      
+                    
+                      
+                      -#
+                        %td.p-2.text-center
+                          = Setting.trains.place
+                        %td.p-2.text-center
+                          = @train.place
+                    
+                      %tr
+                        %td.p-2.text-center
+                          = Setting.trains.content
+                        %td.p-2.text-center{:colspan => 3}
+                          = @train.content
+                    
+              .row
+              
+                .col-md-6
+                  = image_tag @train.sign_url, :class => "w-100"
+              
+                .col-md-6
+                  = image_tag @train.scene_url, :class => "w-100"
+              
+                .col-md-6
+                  = image_tag @train.estimate_url, :class => "w-100"
+              
+                .col-md-6
+                  = image_tag @train.paper_url, :class => "w-100"
+              
+              .row
+              
+              .row
+              
+                .col-md-6
+                  - unless @train.wpaper.blank?
+                    = link_to URI.decode(File.basename(@train.wpaper_url)), download_append_factory_train_path(idencode(@factory.id), idencode(@train.id))
+              
+              
+              .row
+                - @train.attachments.each_with_index do |e, i|
+                  .col-md-12
+                    = link_to File.basename(URI.decode(e.file_url)), download_attachment_factory_train_path(idencode(@factory.id), idencode(@train.id), :number => i, :ft => '')
+              
+              
+      = render "layouts/bootstrap/card"

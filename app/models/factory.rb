@@ -10,6 +10,10 @@ class Factory < ActiveRecord::Base
   has_many :upholds
   has_many :tasks
 
+  has_many :trains
+  has_many :drills
+  has_many :summaries
+
   has_many :user_fcts, :dependent => :destroy
   has_many :users, :through => :user_fcts
 

@@ -1,0 +1,73 @@
+- provide(:title, t('.title'))
+
+
+.container-fluid
+  .row
+    = render "layouts/control_sidebar"
+    %main.col-md-11.ml-sm-auto.col-lg-11.p-3{:role => "main"}
+       
+      = render 'layouts/components/fct_lists_checkboxes'
+       
+      - content_for :card_body do
+        .container-fluid
+          .row
+            .col-md-12
+              %table#day-pdt-rpt-table.text-center.table-sm{:'data-toggle' => "table", :"data-pagination"=>"true", :'data-id-table'=>"advancedTable", :"data-search" => "true",:'data-advanced-search'=>"true", :'data-height' => "800", :'data-virtual-scroll' => "true", :'data-show-columns' => "true", :'data-page-size' => "50"}
+                %thead
+                  %tr
+                    %th{:scope => "col", :'data-field' => "id"} #
+                  
+                    %th{:scope => "col", :'data-field' => "title"}
+                      = Setting.drills.title
+                  
+                    %th{:scope => "col", :'data-field' => "content"}
+                      = Setting.drills.content
+                  
+                    %th{:scope => "col", :'data-field' => "place"}
+                      = Setting.drills.place
+                  
+                    %th{:scope => "col", :'data-field' => "train_time"}
+                      = Setting.drills.train_time
+                  
+                    %th{:scope => "col", :'data-field' => "address"}
+                      = Setting.drills.address
+                  
+                    %th{:scope => "col", :'data-field' => "button"}
+      = render "layouts/bootstrap/card"
+
+-#
+  .col-md-12
+  = hidden_field_tag "fct", idencode(@factory.id), :class => "fct-val"
+  - content_for :card_header do
+    %h5
+      = fa_icon "list", text: t(controller_name + "." + action_name + '.title')
+
+      
+
+      
+
+
+
+-#
+  #newModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "newModalLabel", :tabindex => "-1"}
+  .modal-dialog.modal-xl.modal-dialog-centered
+    .modal-content
+      .modal-header
+        -#
+          = image_tag "gykg.jpg"
+          %h5.text-success
+            = Setting.drills.label
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} x 
+      .modal-body
+        = render 'form'
+
+#logModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "newModalLabel", :tabindex => "-1"}
+  .modal-dialog.modal-xl.modal-dialog-centered.modal-dialog-scrollable
+    .modal-content
+      .modal-header
+        %h3#log-day-pdt-rpt-header.modal-title.text-center
+      .modal-body
+        .row
+          .col-12
+            %table#log-day-emq-ctn.table.text-center.table-bordered

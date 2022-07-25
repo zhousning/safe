@@ -75,6 +75,21 @@ Rails.application.routes.draw do
       get :query_list, :on => :collection
       get :query_device, :on => :collection
     end
+    resources :trains do
+      get :download_attachment, :on => :member
+      get :download_append, :on => :member
+      get :query_all, :on => :collection
+    end
+    resources :drills do
+      get :download_attachment, :on => :member
+      get :download_append, :on => :member
+      get :query_all, :on => :collection
+    end
+    resources :summaries do
+      get :download_attachment, :on => :member
+      get :download_append, :on => :member
+      get :query_all, :on => :collection
+    end
   end
 
   resources :grp_sign_logs, :only => [:index] do
@@ -130,6 +145,21 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :grp_trains do
+    get :query_device, :on => :collection
+    get :query_list, :on => :collection
+    get :query_info, :on => :member
+  end
+  resources :grp_drills do
+    get :query_device, :on => :collection
+    get :query_list, :on => :collection
+    get :query_info, :on => :member
+  end
+  resources :grp_summaries do
+    get :query_device, :on => :collection
+    get :query_list, :on => :collection
+    get :query_info, :on => :member
+  end
   resources :flower
 
 end

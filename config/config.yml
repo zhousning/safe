@@ -457,5 +457,34 @@ development:
   gdtraces: *40
   workers: *41
   sign_logs: *42
+  trains:
+    label: 培训管理
+    title: 培训标题
+    content: 培训内容
+    place: 预留字段
+    train_time: 培训时间
+    address: 培训地点
+    sign: 签到表
+    scene: 现场照片
+    estimate: 效果评估
+    paper: 考试试卷照片
+    wpaper: 试卷原件
+  drills:
+    label: 应急演练管理
+    title: 演练标题
+    content: 演练内容
+    place: 预留字段
+    train_time: 演练时间
+    address: 演练地点
+    sign: 签到表
+    scene: 现场照片
+    estimate: 效果评估
+    summary: 总结
+  summaries:
+    label: 安全工作总结
+    title: 标题
+    content: 内容
+    place: 预留字段
+    attach: 总结报告
 test: 
 production: 
