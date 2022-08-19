@@ -8,22 +8,25 @@ class ExaminesController < ApplicationController
   #load_and_authorize_resource
    
   def index
-    @examines = current_user.examines
+    @factory = my_factory
+    @examines = @factory.examines
   end
    
   def show
-    @examine = current_user.examines.find(params[:id])
+    @factory = my_factory
+    @examine = @factory.examines.find(params[:id])
   end
 
   def new
     @examine = Examine.new
     
-    @examine.exm_items.build
+    #@examine.exm_items.build
   end
    
   def create
+    @factory = my_factory
     @examine = Examine.new(examine_params)
-    @examine.user = current_user
+    @examine.factory = @factory
     if @examine.save
       redirect_to examines_path
     else
@@ -32,11 +35,13 @@ class ExaminesController < ApplicationController
   end
    
   def edit
-    @examine = current_user.examines.find(params[:id])
+    @factory = my_factory
+    @examine = @factory.examines.find(params[:id])
   end
    
   def update
-    @examine = current_user.examines.find(params[:id])
+    @factory = my_factory
+    @examine = @factory.examines.find(params[:id])
     if @examine.update(examine_params)
       redirect_to examines_path
     else
@@ -45,14 +50,17 @@ class ExaminesController < ApplicationController
   end
    
   def destroy
-    @examine = current_user.examines.find(params[:id])
+    @factory = my_factory
+    @examine = @factory.examines.find(params[:id])
     @examine.destroy
     redirect_to :action => :index
   end
 
   def drct_org
+    @factory = my_factory
+    gon.fct = idencode(@factory.id)
     gon.leftnodes = []
-    archives = current_user.archives
+    archives = @factory.archives
     archives.each do |archive|
       arc_h = Hash.new
       arc_h['name'] = archive.name
@@ -79,14 +87,15 @@ class ExaminesController < ApplicationController
       gon.leftnodes << arc_h
     end
 
-    @examine = current_user.examines.find(params[:id])
+    @examine = @factory.examines.find(params[:id])
     hercy = @examine.hierarchy
     gon.rightnodes = hercy.blank? ? '{"name": "' + @examine.name + '", "isParent": true, "nodeid": null}' : hercy
     gon.examine = params[:id]
   end
 
   def create_drct
-    @examine = current_user.examines.find(params[:id])
+    @factory = my_factory
+    @examine = @factory.examines.find(params[:id])
     drct_data = params[:drct_data]
     if @examine.update_attributes(:hierarchy => drct_data)
       respond_to do |f|
@@ -100,7 +109,8 @@ class ExaminesController < ApplicationController
   end
    
   def export
-    @examine = current_user.examines.find(params[:id])
+    @factory = my_factory
+    @examine = @factory.examines.find(params[:id])
     number = Time.now.to_i.to_s + "%04d" % [rand(10000)]
     @document = Document.new(:examine => @examine, :title => number, :status => Setting.documents.status_none)
     if @document.save
@@ -109,6 +119,13 @@ class ExaminesController < ApplicationController
     else
       redirect_to :back
     end
+  end
+
+  def report 
+    @factory = my_factory
+    @examine = @factory.examines.find(params[:id])
+    @examine.report
+    redirect_to :action => :index
   end
 
   private

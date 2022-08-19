@@ -10,6 +10,11 @@ class Factory < ActiveRecord::Base
   has_many :upholds
   has_many :tasks
 
+  has_many :archives
+  has_many :examines
+
+
+  has_many :examines
   has_many :trains
   has_many :drills
   has_many :summaries

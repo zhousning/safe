@@ -1,17 +1,11 @@
-class CreateExamines < ActiveRecord::Migration
+class CreateGrpExamines < ActiveRecord::Migration
   def change
-    create_table :examines do |t|
+    create_table :grp_examines do |t|
     
       t.string :name,  null: false, default: Setting.systems.default_str
-    
-      t.text :hierarchy
-    
       t.string :state,  null: false, default: Setting.states.opening
     
-    
-      t.references :factory
-
-      t.references :grp_examine
+      t.text :hierarchy
     
 
       t.timestamps null: false

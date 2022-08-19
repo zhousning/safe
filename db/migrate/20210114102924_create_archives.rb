@@ -12,7 +12,7 @@ class CreateArchives < ActiveRecord::Migration
     
 
     
-      t.references :user
+      t.references :factory
     
 
       t.timestamps null: false

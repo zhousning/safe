@@ -6,32 +6,36 @@ class PortfoliosController < ApplicationController
 
    
   def index
-    @archive = current_user.archives.find(params[:archive_id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:archive_id])
     @portfolios = @archive.portfolios
   end
    
 
    
   def show
-    @archive = current_user.archives.find(params[:archive_id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:archive_id])
     @portfolio = @archive.portfolios.find(params[:id])
   end
    
 
    
   def new
-    @archive = current_user.archives.find(params[:archive_id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:archive_id])
     @portfolio = Portfolio.new
   end
    
 
    
   def create
-    @archive = current_user.archives.find(params[:archive_id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:archive_id])
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.archive = @archive 
     if @portfolio.save
-      redirect_to archive_portfolios_url(@archive)
+      redirect_to factory_archive_portfolios_url(idencode(@factory.id), @archive)
     else
       render :new
     end
@@ -40,17 +44,19 @@ class PortfoliosController < ApplicationController
 
    
   def edit
-    @archive = current_user.archives.find(params[:archive_id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:archive_id])
     @portfolio = @archive.portfolios.find(params[:id])
   end
    
 
    
   def update
-    @archive = current_user.archives.find(params[:archive_id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:archive_id])
     @portfolio = @archive.portfolios.find(params[:id])
     if @portfolio.update(portfolio_params)
-      redirect_to archive_portfolios_url(@archive)
+      redirect_to factory_archive_portfolios_url(idencode(@factory.id), @archive)
     else
       render :edit
     end
@@ -59,7 +65,8 @@ class PortfoliosController < ApplicationController
 
    
   def destroy
-    @archive = current_user.archives.find(params[:archive_id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:archive_id])
     @portfolio = @archive.portfolios.find(params[:id])
     @portfolio.destroy
     redirect_to :action => :index
@@ -86,7 +93,8 @@ class PortfoliosController < ApplicationController
   end
 
   def upload
-    @archive = current_user.archives.find(params[:archive_id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:archive_id])
     @portfolio = @archive.portfolios.find(params[:id])
 
     uploaded_file = params[:file]

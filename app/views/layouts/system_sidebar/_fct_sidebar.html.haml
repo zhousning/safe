@@ -19,10 +19,10 @@
               = fa_icon "edit", text: Setting.inventories.label, class: "ml-4 mr-2"  
             = link_to agendas_path, :class => "list-group-item list-group-item-action border-0 text-left pl-4 py-2 #{(/agenda/ =~ request.path).nil? ? '' : 'text-danger'} " do
               = fa_icon "calendar", text: "日程计划", class: " ml-4 mr-2"
-            = link_to archives_path, :class => "list-group-item list-group-item-action border-0 text-left pl-4 py-2  #{(/archive|portf/ =~ request.path).nil? ? '' : 'text-danger'} " do
+            = link_to factory_archives_path(idencode(fct.id)), :class => "list-group-item list-group-item-action border-0 text-left pl-4 py-2  #{(/archive|portf/ =~ request.path).nil? ? '' : 'text-danger'} " do
               = fa_icon "file-archive-o", text: "档案库", class: " ml-4 mr-2"
-            = link_to examines_path, :class => "list-group-item list-group-item-action border-0 text-left pl-4 py-2  #{(/examine/ =~ request.path).nil? ? '' : 'text-danger'}" do
-              = fa_icon "file-text", text: "档案自选库", class: " ml-4 mr-2"
+            = link_to factory_examines_path(idencode(fct.id)), :class => "list-group-item list-group-item-action border-0 text-left pl-4 py-2  #{(/examine/ =~ request.path).nil? ? '' : 'text-danger'}" do
+              = fa_icon "file-text", text: "集团检查", class: " ml-4 mr-2"
             -#
               = link_to controls_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/control/ =~ request.path).nil? ? '' : 'text-primary'} " do
               = fa_icon "map-marker", text: '实时定位', class: "ml-4 mr-2"  

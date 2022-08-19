@@ -5,18 +5,21 @@ class ArchivesController < ApplicationController
 
    
   def index
-    @archives = current_user.archives
+    @factory = my_factory
+    @archives = @factory.archives
   end
    
 
    
   def show
-    @archive = current_user.archives.find(params[:id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:id])
   end
    
 
    
   def new
+    @factory = my_factory
     @archive = Archive.new
     
   end
@@ -24,10 +27,11 @@ class ArchivesController < ApplicationController
 
    
   def create
+    @factory = my_factory
     @archive = Archive.new(archive_params)
-    @archive.user = current_user
+    @archive.factory = @factory
     if @archive.save
-      redirect_to archives_url
+      redirect_to factory_archives_url(idencode(@factory.id))
     else
       render :new
     end
@@ -36,16 +40,18 @@ class ArchivesController < ApplicationController
 
    
   def edit
-    @archive = current_user.archives.find(params[:id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:id])
   end
    
 
    
   def update
-    @archive = current_user.archives.find(params[:id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:id])
     if @archive.update(archive_params)
       #redirect_to archive_path(@archive) 
-      redirect_to archives_url
+      redirect_to factory_archives_url(idencode(@factory.id))
     else
       render :edit
     end
@@ -54,7 +60,8 @@ class ArchivesController < ApplicationController
 
    
   def destroy
-    @archive = current_user.archives.find(params[:id])
+    @factory = my_factory
+    @archive = @factory.archives.find(params[:id])
     @archive.destroy
     redirect_to :action => :index
   end

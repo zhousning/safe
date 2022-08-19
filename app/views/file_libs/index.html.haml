@@ -6,11 +6,11 @@
     %main.col-md-9.ml-sm-auto.col-lg-10.p-3{:role => "main"}
       - content_for :card_header do
         %h5
-          = link_to Setting.archives.label, archives_path(@archive)
+          = link_to Setting.archives.label, factory_archives_path(idencode(@factory.id), @archive)
           = " >> "  
-          = link_to @archive.name, archive_portfolios_path(@portfolio.archive)
+          = link_to @archive.name, factory_archive_portfolios_path(idencode(@factory.id), @portfolio.archive)
           = " >> #{@portfolio.name}"  
-          = link_to archive_portfolios_path(@portfolio.archive), :class => "button pull-right button-highlight" do
+          = link_to factory_archive_portfolios_path(idencode(@factory.id), @portfolio.archive), :class => "button pull-right button-highlight" do
             = fa_icon "chevron-left", text: Setting.systems.btn_back
           %button{:class => "button pull-right button-primary mr-1", "data-target" => "#uploadModal", "data-toggle" => "modal", type: "button", right: false }
             = fa_icon "plus", text: Setting.systems.btn_upload 
@@ -50,8 +50,8 @@
                             -#
                               = link_to "编辑", edit_portfolio_file_lib_path(@portfolio, file_lib), :class => "button button-highlight button-small mr-1" 
                               = link_to "详细",  portfolio_file_lib_path(@portfolio, file_lib), :class => "button button-primary button-small mr-1" 
-                            = link_to "下载",  download_portfolio_file_lib_path(@portfolio, file_lib), :class => "button button-primary button-small mr-1" 
-                            = link_to "删除",  portfolio_file_lib_path(@portfolio, file_lib), :method => :delete, :data => {:confirm => "确定删除吗?"}, :class => "button button-caution button-small" 
+                            = link_to "下载",  download_factory_portfolio_file_lib_path(idencode(@factory.id), @portfolio, file_lib), :class => "button button-primary button-small mr-1" 
+                            = link_to "删除",  factory_portfolio_file_lib_path(idencode(@factory.id), @portfolio, file_lib), :method => :delete, :data => {:confirm => "确定删除吗?"}, :class => "button button-caution button-small" 
         = yield :main_body 
 
 
@@ -67,5 +67,5 @@
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
           %span{"aria-hidden" => "true"} x 
       .modal-body
-        %form#my-awesome-dropzone.dropzone{:action => "/archives/#{@portfolio.archive.id}/portfolios/" + @portfolio.id.to_s + "/upload"}
+        %form#my-awesome-dropzone.dropzone{:action => "/factories/#{idencode(@factory.id)}/archives/#{@portfolio.archive.id}/portfolios/" + @portfolio.id.to_s + "/upload"}
           %input{:type => "file", :name => "file", :hidden => "true"}

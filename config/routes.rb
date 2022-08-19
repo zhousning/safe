@@ -95,6 +95,25 @@ Rails.application.routes.draw do
       get :xls_download, :on => :collection
       get :query_all, :on => :collection
     end
+    resources :archives, :except => [:show] do
+      resources :portfolios do
+        post :upload, :on => :member
+      end
+    end
+    resources :portfolios, :only => [] do
+      resources :file_libs do
+        get :download, :on => :member
+      end
+    end
+    resources :examines do
+      get :export, :on => :member 
+      get :report, :on => :member 
+      get :drct_org, :on => :member 
+      post :create_drct, :on => :member
+      resources :documents do
+        get :download, :on => :member
+      end
+    end
   end
 
   resources :grp_sign_logs, :only => [:index] do
@@ -170,28 +189,16 @@ Rails.application.routes.draw do
     get :query_list, :on => :collection
     get :query_info, :on => :member
   end
-
-  resources :archives, :except => [:show] do
-    resources :portfolios do
-      post :upload, :on => :member
-    end
-  end
-  resources :portfolios, :only => [] do
-    resources :file_libs do
-      get :download, :on => :member
-    end
-  end
-
-  resources :examines do
+  resources :grp_examines do
     get :export, :on => :member 
+    get :publish, :on => :member 
     get :drct_org, :on => :member 
     post :create_drct, :on => :member
     resources :documents do
       get :download, :on => :member
     end
-    resources :exm_items do
-    end
   end
+
   resources :agendas do
     get :download_append, :on => :member
   end

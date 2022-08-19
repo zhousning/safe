@@ -202,6 +202,8 @@ defaults:
     passed: passed
     working: working
     processing: processing
+    published: published
+    report: report
   trade_orders: &17
     number: 订单编号
     price: 价格

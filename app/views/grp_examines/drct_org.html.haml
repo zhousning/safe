@@ -7,8 +7,10 @@
     %main.col-md-9.ml-sm-auto.col-lg-10.p-3{:role => "main"}
       - content_for :card_header do
         %h5
-          = link_to factory_examines_path(idencode(@factory.id)), :class => "button pull-right button-highlight mr-1" do
+          = link_to grp_examines_path, :class => "button pull-right button-highlight mr-1" do
             = fa_icon "chevron-left", text: Setting.systems.btn_back
+          = link_to publish_grp_examine_path(@grp_examine), :data => {:confirm => "发布后不可修改,确定吗?"}, :class => "button pull-right button-highlight mr-1" do
+            = fa_icon "chevron-left", text: '发布' 
           %button#test{:type => "button", :class => "button pull-right button-primary mr-1"}
             保存
           -#
@@ -18,14 +20,6 @@
       - content_for :card_body do
         .container-fluid
           .row
-            .offset-1.col-sm-10
-              %p.text-danger
-                拖动左侧待选文件至右侧，右侧只允许有一个根节点，保存后返回点击生成即可按右侧目录生成文件夹
-            .offset-1.col-md-4.ctg-tree-ctn
-              %ul#treeLeft.ztree
-            .col-md-1.ctg-tree-md
-              %h3.h-100.d-flex.justify-content-center.align-items-center
-                >>
             .col-md-4.ctg-tree-ctn
               %ul#treeRight.ztree
 

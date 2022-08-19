@@ -1,28 +1,7 @@
-$(".examines").ready(function() {
+$(".grp_examines").ready(function() {
 
-  if ($(".examines.drct_org").length > 0 ) {
-    var leftNodes = gon.leftnodes; 
+  if ($(".grp_examines.drct_org").length > 0 ) {
     var rightNodes = JSON.parse(gon.rightnodes); 
-    var settingLeft = {
-			edit: {
-				enable: true,
-				showRemoveBtn: false,
-				showRenameBtn: false
-			},
-			data: {
-        keep: {
-          leaf: true,
-          parent: true
-        },
-				simpleData: {
-					enable: true
-				}
-			},
-			callback: {
-				beforeDrag: beforeDrag,
-				beforeDrop: beforeDrop
-			}
-		};
     var settingRight = {
       view: {
         addHoverDom: addHoverDom,
@@ -53,7 +32,6 @@ $(".examines").ready(function() {
         onRename: onRename
 	  	}
 	  };
-    $.fn.zTree.init($("#treeLeft"), settingLeft, leftNodes);
     $.fn.zTree.init($("#treeRight"), settingRight, rightNodes);
 
     zTree = $.fn.zTree.getZTreeObj("treeRight");
@@ -63,7 +41,7 @@ $(".examines").ready(function() {
       var json = getNodesJson(nodes);
       console.log(json);
       var json_str = JSON.stringify(json);
-      var url = "/factories/" + gon.fct + "/examines/" + gon.examine +"/create_drct";
+      var url = "/grp_examines/" + gon.examine +"/create_drct";
       $.post(url, {'drct_data': json_str}, function(data){
         alert(data['status']);
       });

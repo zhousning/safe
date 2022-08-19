@@ -5,6 +5,7 @@ class FileLibsController < ApplicationController
 
    
   def index
+    @factory = my_factory
     @portfolio = Portfolio.find(params[:portfolio_id])
     @archive = @portfolio.archive
     @file_libs = @portfolio.file_libs
