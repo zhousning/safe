@@ -1,23 +1,18 @@
 class ControlsController < ApplicationController
-  layout "application_control_map"
+  layout "application_control"
   before_filter :authenticate_user!
   #authorize_resource
 
-  def index
-    gon.center = [116.605763, 35.444226] 
-    #@factorie = current_user.factories.first
-    #arr = [@factorie.lnt, @factorie.lat]
-    #gon.center = arr
-    #wx_users = @factorie.wx_users
-    #@works = []
-    #@pends = []
-    #wx_users.each do |user|
-    #  if user.task_state == Setting.states.working
-    #    @works << user 
-    #  else
-    #    @pends << user
-    #  end
-    #end
+def index
+    @agendas = current_user.agendas
+    gon.events = []
+    @agendas.each do |agenda|
+      obj = Hash.new
+      obj['title'] = agenda.title
+      obj['start'] = agenda.worktime
+      obj['url'] = agenda_path(agenda.id)
+      gon.events << obj 
+    end
   end
 
   def search

@@ -1,0 +1,55 @@
+.nested-fields.mt-2
+  .form-group
+    .field.d-inline
+      .card.border-0.mb-3.rounded-0
+        .card-header.bg-transparent.border-0
+          %span.text-danger
+          = link_to_remove_association "删除", f, :class => "btn btn-danger btn-sm d-inline pull-right"
+          -#
+            %h5
+            = Setting.inventory_items.label
+        .card-body.p-0
+          %table.w-100.table-bordered.day-pdt-table.ml-2
+            %tbody
+            
+              %tr
+                %td.p-2.text-center
+                  = f.label Setting.inventory_items.name, :class => "text-center"
+                %td.p-2.text-center
+                  = f.text_field :name, :class => "form-control", :required => true 
+                %td.p-2.text-center{:rowspan => 2}
+                  = f.text_area :content, :class => "form-control", :rows => "5", :required => true 
+              %tr
+                %td.p-2.text-center
+                  = f.label Setting.inventory_items.method, :class => "text-center"
+                %td.p-2.text-center
+                  = f.text_field :method, :class => "form-control"
+                
+              
+            -#
+              %tr
+                %td.p-2.text-center
+                  = f.label Setting.inventory_items.content, :class => "text-center"
+                
+              
+
+
+            -#    
+              %tr
+                %td.p-2.text-center
+                  = f.label Setting.inventory_items.ctg, :class => "text-center"
+                %td.p-2.text-center
+                  = f.text_field :ctg, :class => "form-control"
+                
+              
+                %td.p-2.text-center
+                  = f.label Setting.inventory_items.state, :class => "text-center"
+                %td.p-2.text-center
+                  = f.text_field :state, :class => "form-control"
+                
+              
+                %td.p-2.text-center
+                  = f.label Setting.inventory_items.place, :class => "text-center"
+                %td.p-2.text-center
+                  = f.text_field :place, :class => "form-control"
+                

@@ -1,6 +1,6 @@
 $(".trains").ready(function() {
   if ($(".trains.index").length > 0) {
-    get_trains('trains');
+    //get_trains('trains');
   }
 });
 

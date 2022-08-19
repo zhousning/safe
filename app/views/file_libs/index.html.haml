@@ -1,0 +1,71 @@
+- provide(:title, t('.title'))
+
+.container-fluid
+  .row
+    = render "layouts/control_sidebar"
+    %main.col-md-9.ml-sm-auto.col-lg-10.p-3{:role => "main"}
+      - content_for :card_header do
+        %h5
+          = link_to Setting.archives.label, archives_path(@archive)
+          = " >> "  
+          = link_to @archive.name, archive_portfolios_path(@portfolio.archive)
+          = " >> #{@portfolio.name}"  
+          = link_to archive_portfolios_path(@portfolio.archive), :class => "button pull-right button-highlight" do
+            = fa_icon "chevron-left", text: Setting.systems.btn_back
+          %button{:class => "button pull-right button-primary mr-1", "data-target" => "#uploadModal", "data-toggle" => "modal", type: "button", right: false }
+            = fa_icon "plus", text: Setting.systems.btn_upload 
+
+      - content_for :card_body do
+        .container-fluid.p-0
+          .row
+            .col-md-12
+              %table.text-center.table-sm.border-left-0.border-right-0{:'data-toggle' => "table", :"data-pagination"=>"true", :'data-id-table'=>"advancedTable", :"data-search" => "true",:'data-advanced-search'=>"true" }
+                %thead
+                  %tr
+                    %th.border-0{:scope => "col"}              
+                    %th.border-0.w-75{:scope => "col"}
+                      = Setting.file_libs.name
+                    -#
+                      %th{:scope => "col"}
+                        = Setting.file_libs.path
+                      %th{:scope => "col"}
+                        = Setting.file_libs.file_type
+                    %th.border-0.w-25{:scope => "col"}
+                %tbody
+                  - @file_libs.each_with_index do |file_lib, index|
+                    %tr.border-left-0.border-right-0
+                      %td.border-left-0.border-right-0{:scope => "row"}
+                        = image_tag file_icon(file_lib.file_type) 
+                    
+                      %td.text-left.border-left-0.border-right-0
+                        = file_lib.name
+                      -#
+                        %td
+                          = file_lib.path
+                        %td
+                          = file_lib.file_type
+                      %td.border-left-0.border-right-0
+                        .container-fluid
+                          .row.justify-content-center
+                            -#
+                              = link_to "编辑", edit_portfolio_file_lib_path(@portfolio, file_lib), :class => "button button-highlight button-small mr-1" 
+                              = link_to "详细",  portfolio_file_lib_path(@portfolio, file_lib), :class => "button button-primary button-small mr-1" 
+                            = link_to "下载",  download_portfolio_file_lib_path(@portfolio, file_lib), :class => "button button-primary button-small mr-1" 
+                            = link_to "删除",  portfolio_file_lib_path(@portfolio, file_lib), :method => :delete, :data => {:confirm => "确定删除吗?"}, :class => "button button-caution button-small" 
+        = yield :main_body 
+
+
+
+      = render "layouts/bootstrap/card"
+
+#uploadModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "uploadModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog.modal-dialog-centered.modal-xl
+    .modal-content
+      .modal-header
+        %h5#uploadModalLabel.modal-title
+          文件上传(一次10个,文件不超过5M, 文件类型:[txt,pdf,doc,docx,ppt,pptx,xls,xlsx,mp4,jpg,png])
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} x 
+      .modal-body
+        %form#my-awesome-dropzone.dropzone{:action => "/archives/#{@portfolio.archive.id}/portfolios/" + @portfolio.id.to_s + "/upload"}
+          %input{:type => "file", :name => "file", :hidden => "true"}

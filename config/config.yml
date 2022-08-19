@@ -486,5 +486,18 @@ development:
     content: 内容
     place: 预留字段
     attach: 总结报告
+  inventories:
+    label: 检查表
+    name: 名称
+    desc: 备注
+    palce: 备用
+  inventory_items:
+    label: 检查项目
+    name: 检查项目
+    content: 检查内容
+    method: 检查方式
+    ctg: 分类
+    state: 状态
+    place: 备用
 test: 
 production: 

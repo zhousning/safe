@@ -1,6 +1,6 @@
 $(".summaries").ready(function() {
   if ($(".summaries.index").length > 0) {
-    get_summaries('summaries');
+    //get_summaries('summaries');
   }
 });
 

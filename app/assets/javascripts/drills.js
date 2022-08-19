@@ -1,6 +1,6 @@
 $(".drills").ready(function() {
   if ($(".drills.index").length > 0) {
-    get_drills('drills');
+    //get_drills('drills');
   }
 });
 

@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :statistics
 
+  has_many :archives
+  has_many :examines
+  has_many :agendas
+
   has_many :user_fcts, :dependent => :destroy
   has_many :factories, :through => :user_fcts
 

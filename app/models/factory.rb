@@ -13,6 +13,7 @@ class Factory < ActiveRecord::Base
   has_many :trains
   has_many :drills
   has_many :summaries
+  has_many :inventories
 
   has_many :user_fcts, :dependent => :destroy
   has_many :users, :through => :user_fcts

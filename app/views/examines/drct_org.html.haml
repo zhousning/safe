@@ -1,0 +1,34 @@
+- provide(:title, t('.title'))
+
+
+.container-fluid
+  .row
+    = render "layouts/control_sidebar"
+    %main.col-md-9.ml-sm-auto.col-lg-10.p-3{:role => "main"}
+      - content_for :card_header do
+        %h5
+          = link_to examines_path, :class => "button pull-right button-highlight mr-1" do
+            = fa_icon "chevron-left", text: Setting.systems.btn_back
+          %button#test{:type => "button", :class => "button pull-right button-primary mr-1"}
+            保存
+          -#
+            = link_to "/archives/#{@archive.id}/#{controller_name}/new", :class => "button pull-right button-primary mr-1" do
+              = fa_icon "plus", text: Setting.systems.btn_new, right: false 
+
+      - content_for :card_body do
+        .container-fluid
+          .row
+            .offset-1.col-sm-10
+              %p.text-danger
+                拖动左侧待选文件至右侧，右侧只允许有一个根节点，保存后返回点击生成即可按右侧目录生成文件夹
+            .offset-1.col-md-4.ctg-tree-ctn
+              %ul#treeLeft.ztree
+            .col-md-1.ctg-tree-md
+              %h3.h-100.d-flex.justify-content-center.align-items-center
+                >>
+            .col-md-4.ctg-tree-ctn
+              %ul#treeRight.ztree
+
+      = render "layouts/bootstrap/card"
+
+= render "ztreeconfig"
