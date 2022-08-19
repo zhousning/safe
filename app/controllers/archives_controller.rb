@@ -7,6 +7,7 @@ class ArchivesController < ApplicationController
   def index
     @factory = my_factory
     @archives = @factory.archives
+    @archive = Archive.new
   end
    
 

@@ -433,6 +433,59 @@ zh-CN:
       title: 签到记录ajax查询签到记录
     query_device:
       title: 签到记录ajax查询所有站点
+  agendas:
+    index:
+      title: 日程计划 
+    new:
+      title: 新建日程计划
+    edit:
+      title: 编辑日程计划
+    show:
+      title: 日程计划
+  archives:
+    index:
+      title: 档案库 
+    new:
+      title: 新建档案库
+    edit:
+      title: 编辑档案库
+    show:
+      title: 档案库
+  meter_standards:
+    edit:
+      title: 编辑计件标准
+    show:
+      title: 计件标准
+  meter_reads:
+    index:
+      title: 计件 
+    new:
+      title: 新建计件
+    edit:
+      title: 编辑计件
+    show:
+      title: 计件详情
+  examines:
+    index:
+      title: 档案自选库 
+    new:
+      title: 新建自选方案
+    edit:
+      title: 编辑方案
+    show:
+      title: 方案详情
+    drct_org:
+      title: 组织目录 
+  portfolios:
+    index:
+      title: 子文件夹 
+    new:
+      title: 新建子文件夹
+    edit:
+      title: 编辑子文件夹
+  file_libs:
+    index:
+      title: 文件列表
   grp_sign_logs:
     index:
       title: 集团-签到记录列表  

@@ -1,9 +1,16 @@
 - provide(:title, t('.title'))
 
-- content_for :main_body do
-  .container-fluid
-    .row
-      .col-md-12.p-3.bg-white
-        #control-calendar
+.container-fluid
+  .row
+    = render "layouts/control_sidebar"
+    %main.col-md-11.ml-sm-auto.col-lg-11.p-3{:role => "main"}
+      - content_for :card_header do
+        %h5
+          = fa_icon "list", text: '工作日历' 
+      - content_for :card_body do
+        .container-fluid
+          .row
+            .col-md-12.p-3.bg-white
+              #control-calendar
 
-= render "layouts/control_index"
+      = render "layouts/bootstrap/card"
