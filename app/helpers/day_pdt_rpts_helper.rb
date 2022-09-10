@@ -29,6 +29,15 @@ module DayPdtRptsHelper
     raw(str)
   end
 
+  def examine_state(examine)
+    str = ''
+    if examine.state == Setting.states.report
+      str = '已上报水务集团'
+    else
+      str = '待上报'
+    end
+  end
+
   def options_for_device_state
     [
       [Setting.devices.state_normal, Setting.devices.state_normal],

@@ -4,13 +4,14 @@
 .container-fluid
   .row
     = render "layouts/control_sidebar"
-    %main.col-md-9.ml-sm-auto.col-lg-10.p-3{:role => "main"}
+    %main.col-md-11.ml-sm-auto.col-lg-11.p-3{:role => "main"}
       - content_for :card_header do
         %h5
-          = link_to factory_examines_path(idencode(@factory.id)), :class => "button pull-right button-highlight mr-1" do
-            = fa_icon "chevron-left", text: Setting.systems.btn_back
-          %button#test{:type => "button", :class => "button pull-right button-primary mr-1"}
-            保存
+          - if @examine.state != Setting.states.report
+            = link_to factory_examines_path(idencode(@factory.id)), :class => "button pull-right button-highlight mr-1" do
+              = fa_icon "chevron-left", text: Setting.systems.btn_back
+            %button#test{:type => "button", :class => "button pull-right button-primary mr-1"}
+              保存
           -#
             = link_to "/archives/#{@archive.id}/#{controller_name}/new", :class => "button pull-right button-primary mr-1" do
               = fa_icon "plus", text: Setting.systems.btn_new, right: false 

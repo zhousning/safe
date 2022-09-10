@@ -23,3 +23,24 @@ class Drill < ActiveRecord::Base
   belongs_to :user
 
 end
+
+# == Schema Information
+#
+# Table name: drills
+#
+#  id         :integer         not null, primary key
+#  title      :string          default(""), not null
+#  content    :text
+#  place      :string          default(""), not null
+#  train_time :datetime
+#  address    :string          default(""), not null
+#  people     :string          default("0"), not null
+#  sign       :string          default(""), not null
+#  scene      :string          default(""), not null
+#  estimate   :string          default(""), not null
+#  summary    :string          default(""), not null
+#  factory_id :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

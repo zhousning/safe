@@ -8,6 +8,7 @@ class Archive < ActiveRecord::Base
 
 end
 
+
 # == Schema Information
 #
 # Table name: archives
@@ -15,7 +16,7 @@ end
 #  id         :integer         not null, primary key
 #  name       :string          default(""), not null
 #  desc       :string          default(""), not null
-#  user_id    :integer
+#  factory_id :integer
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #

@@ -12,7 +12,7 @@ class GrpExaminesController < ApplicationController
   end
    
   def show
-    @grp_examine = GrpExamine.find(params[:id])
+    @examines = Examine.where(:grp_examine_id => params[:id])
   end
 
   def new
@@ -54,6 +54,15 @@ class GrpExaminesController < ApplicationController
     hercy = @grp_examine.hierarchy
     gon.rightnodes = hercy.blank? ? '{"name": "' + @grp_examine.name + '", "isParent": true, "nodeid": null}' : hercy
     gon.examine = params[:id]
+  end
+
+  def drct_info
+    @examine = Examine.find(iddecode(params[:id]))
+    hercy = @examine.hierarchy
+    nodes = hercy.blank? ? '{"name": "' + @examine.name + '", "isParent": true, "nodeid": null}' : hercy
+    respond_to do |f|
+      f.json { render :json => {:nodes => nodes}.to_json }
+    end
   end
 
   def create_drct

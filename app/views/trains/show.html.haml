@@ -26,18 +26,26 @@
                     %tbody
                     
                       %tr
-                    
                         %td.p-2.text-center
                           = Setting.trains.train_time
                         %td.p-2.text-center
                           = @train.train_time.strftime('%Y-%m-%d %H:%M:%S')
                     
                       
+                      %tr
                         %td.p-2.text-center
                           = Setting.trains.address
                         %td.p-2.text-center
                           = @train.address
                       
+                      %tr
+                        %td.p-2.text-center
+                          = Setting.trains.people
+                        %td.p-2.text-center
+                          = @train.people
+                      %tr
+                        %td.p-2.text-left{:colspan => 2}
+                          = @train.content
                     
                       
                       -#
@@ -45,31 +53,22 @@
                           = Setting.trains.place
                         %td.p-2.text-center
                           = @train.place
-                    
-                      %tr
-                        %td.p-2.text-center
-                          = Setting.trains.content
-                        %td.p-2.text-center{:colspan => 3}
-                          = @train.content
+
                     
               .row
-              
-                .col-md-6
+                .col-md-12
                   = image_tag @train.sign_url, :class => "w-100"
               
-                .col-md-6
+                .col-md-12
                   = image_tag @train.scene_url, :class => "w-100"
               
-                .col-md-6
+                .col-md-12
                   = image_tag @train.estimate_url, :class => "w-100"
               
-                .col-md-6
+                .col-md-12
                   = image_tag @train.paper_url, :class => "w-100"
               
               .row
-              
-              .row
-              
                 .col-md-6
                   - unless @train.wpaper.blank?
                     = link_to URI.decode(File.basename(@train.wpaper_url)), download_append_factory_train_path(idencode(@factory.id), idencode(@train.id))

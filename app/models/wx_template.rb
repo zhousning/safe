@@ -7,9 +7,10 @@ class WxTemplate < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
-# Table name: templates
+# Table name: wx_templates
 #
 #  id             :integer         not null, primary key
 #  name           :string

@@ -24,3 +24,16 @@ class GrpExamine < ActiveRecord::Base
   end
 end
 
+
+# == Schema Information
+#
+# Table name: grp_examines
+#
+#  id         :integer         not null, primary key
+#  name       :string          default(""), not null
+#  state      :string          default("opening"), not null
+#  hierarchy  :text
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

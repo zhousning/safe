@@ -9,6 +9,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: attachments
@@ -17,5 +18,8 @@ end
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #  file       :string          default(""), not null
+#  train_id   :integer
+#  drill_id   :integer
+#  summary_id :integer
 #
 

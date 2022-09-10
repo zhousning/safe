@@ -33,15 +33,18 @@ class Examine < ActiveRecord::Base
   end
 end
 
+
 # == Schema Information
 #
 # Table name: examines
 #
-#  id         :integer         not null, primary key
-#  name       :string          default(""), not null
-#  hierarchy  :text
-#  user_id    :integer
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  id             :integer         not null, primary key
+#  name           :string          default(""), not null
+#  hierarchy      :text
+#  state          :string          default("opening"), not null
+#  factory_id     :integer
+#  grp_examine_id :integer
+#  created_at     :datetime        not null
+#  updated_at     :datetime        not null
 #
 

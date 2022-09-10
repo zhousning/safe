@@ -35,10 +35,10 @@
                     %th{:scope => "col", :'data-field' => "title"}
                       = Setting.drills.title
                   
-                    %th{:scope => "col", :'data-field' => "content"}
+                    -#
+                      %th{:scope => "col", :'data-field' => "content"}
                       = Setting.drills.content
                   
-                    -#
                       %th{:scope => "col", :'data-field' => "place"}
                       = Setting.drills.place
                   
@@ -55,12 +55,12 @@
                       %td{:scope => "row"}
                         = index+1
                       %td
-                        = drill.train_time
+                        = drill.train_time.strftime('%Y-%m-%d %H:%M:%S')
                       %td
                         = drill.title
-                      %td
-                        = drill.content
                       -#
+                        %td
+                        = drill.content
                         %td
                         = drill.place
                       %td

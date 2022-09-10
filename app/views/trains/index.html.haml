@@ -34,10 +34,10 @@
                     %th{:scope => "col", :'data-field' => "title"}
                       = Setting.trains.title
 
-                    %th{:scope => "col", :'data-field' => "content"}
+                    -#
+                      %th{:scope => "col", :'data-field' => "content"}
                       = Setting.trains.content
                   
-                    -#
                       %th{:scope => "col", :'data-field' => "place"}
                       = Setting.trains.place
                   
@@ -58,9 +58,9 @@
                         = train.train_time.strftime('%Y-%m-%d %H:%M:%S')
                       %td
                         = train.title
-                      %td
-                        = train.content
                       -#
+                        %td
+                        = train.content
                         %td
                         = train.place
                       %td

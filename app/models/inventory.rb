@@ -16,3 +16,18 @@ class Inventory < ActiveRecord::Base
   belongs_to :user
 
 end
+
+# == Schema Information
+#
+# Table name: inventories
+#
+#  id         :integer         not null, primary key
+#  name       :string          default(""), not null
+#  desc       :text
+#  palce      :string          default(""), not null
+#  factory_id :integer
+#  user_id    :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

@@ -4,28 +4,37 @@
   .container-fluid.p-0
     .row
       .col-md-12
-        .card-body
-          .container-fluid
-            .row
-            
-              .col-md-12
+        %table.text-center.table-sm{:'data-toggle' => "table", :"data-pagination"=>"true", :'data-id-table'=>"advancedTable"}
+          %thead
+            %tr
+              %th{:scope => "col"} #
+              %th.w-50{:scope => "col"}
                 = Setting.examines.name
-                = @examine.name
-            
-            .row
-            
-            .row
-            
-            .row
-            
-            
-            .row
-            
-              - @examine.exm_items.each do |exm_item|
-                 
-                .col-md-2
-                  = exm_item.name
-                
+              %th{:scope => "col"}
+                状态
+              %th.w-50{:scope => "col"}
+                设置
+          %tbody
+            - @examines.each_with_index do |examine, index|
+              %tr
+                %td{:scope => "row"}
+                  = index+1
+              
+                %td
+                  = examine.name
+                %td
+                  - if examine.state == Setting.states.report
+                    已上报水务集团
+                  - else
+                    待上报
+                %td
+                  .container-fluid
+                    .row.justify-content-center.align-items-center
+                      = link_to "组织目录",  drct_org_factory_examine_path(idencode(@factory.id), examine), :class => "button button-primary button-small mr-1" 
+                      - if examine.state != Setting.states.report
+                        = link_to "上报水务集团",  report_factory_examine_path(idencode(@factory.id), examine), :class => "button button-primary button-small mr-1" 
+                      -unless examine.hierarchy.blank?
+                        = link_to "下载",  export_factory_examine_path(idencode(@factory.id), examine), :class => "button button-action button-small mr-1" 
             
 
 = render "layouts/control_panel"

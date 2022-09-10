@@ -30,11 +30,19 @@
                   
                     %th{:scope => "col", :'data-field' => "title"}
                       = Setting.summaries.title
+
+                    %th{:scope => "col", :'data-field' => "start_date"}
+                      = Setting.summaries.start_date
                   
-                    %th{:scope => "col", :'data-field' => "content"}
+                    %th{:scope => "col", :'data-field' => "end_date"}
+                      = Setting.summaries.end_date
+
+                    %th{:scope => "col", :'data-field' => "attach"}
+                      = Setting.summaries.attach
+                    -#
+                      %th{:scope => "col", :'data-field' => "content"}
                       = Setting.summaries.content
                   
-                    -#
                       %th{:scope => "col", :'data-field' => "place"}
                       = Setting.summaries.place
                   
@@ -48,8 +56,15 @@
                       %td
                         = summary.title
                       %td
-                        = summary.content
+                        = summary.start_date
+                      %td
+                        = summary.end_date
+                      %td
+                        - unless summary.attach.blank?
+                          = link_to URI.decode(File.basename(summary.attach_url)), download_append_factory_summary_path(idencode(@factory.id), idencode(summary.id))
                       -#
+                        %td
+                        = summary.content
                         %td
                         = summary.place
                       %td

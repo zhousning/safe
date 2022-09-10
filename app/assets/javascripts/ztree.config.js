@@ -57,6 +57,7 @@ $(".examines").ready(function() {
     $.fn.zTree.init($("#treeRight"), settingRight, rightNodes);
 
     zTree = $.fn.zTree.getZTreeObj("treeRight");
+    zTree.expandAll(true);
 
     $("#test").click(function(){
       var nodes = zTree.transformToArray(zTree.getNodes());

@@ -5,16 +5,20 @@
     .row
       .col-md-8.offset-2
         .card-body
-          .container-fluid
-            .row
-              .col-md-12
-                = @agenda.title
-              .col-md-12
-                = @agenda.worktime.strftime("%Y-%m-%d %H:%M:%S")
-            
-              .col-md-12
-                = Setting.agendas.content
-                %p
+          %table.table-bordered.day-pdt-table.w-100.mb-3
+            %tbody
+              %tr
+                %td.p-2.text-center
+                  = Setting.agendas.title
+                %td.p-2.text-center
+                  = @agenda.title
+              %tr
+                %td.p-2.text-center
+                  = Setting.agendas.worktime
+                %td.p-2.text-center
+                  = @agenda.worktime.strftime("%Y-%m-%d %H:%M:%S")
+              %tr
+                %td.p-2.text-left{:colspan => 2}
                   = @agenda.content
             
             

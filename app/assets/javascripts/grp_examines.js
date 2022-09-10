@@ -14,6 +14,14 @@ $(".grp_examines").ready(function() {
 	  		showRemoveBtn: showRemoveBtn,
 	  		showRenameBtn: showRenameBtn
 	  	},
+	  	callback: {
+        beforeDrag: beforeDrag,
+        beforeEditName: beforeEditName,
+        beforeRemove: beforeRemove,
+        beforeRename: beforeRename,
+        onRemove: onRemove,
+        onRename: onRename
+	  	},
 	  	data: {
         keep: {
           leaf: true,
@@ -22,14 +30,6 @@ $(".grp_examines").ready(function() {
 	  		simpleData: {
 	  			enable: true 
 	  		}
-	  	},
-	  	callback: {
-        beforeDrag: beforeDrag,
-        beforeEditName: beforeEditName,
-        beforeRemove: beforeRemove,
-        beforeRename: beforeRename,
-        onRemove: onRemove,
-        onRename: onRename
 	  	}
 	  };
     $.fn.zTree.init($("#treeRight"), settingRight, rightNodes);
@@ -39,7 +39,6 @@ $(".grp_examines").ready(function() {
     $("#test").click(function(){
       var nodes = zTree.transformToArray(zTree.getNodes());
       var json = getNodesJson(nodes);
-      console.log(json);
       var json_str = JSON.stringify(json);
       var url = "/grp_examines/" + gon.examine +"/create_drct";
       $.post(url, {'drct_data': json_str}, function(data){
@@ -47,6 +46,38 @@ $(".grp_examines").ready(function() {
       });
     });
   }
+
+
+  if ($(".grp_examines.show").length > 0 ) {
+    $("#day-pdt-rpt-table").on('click', 'button', function(e) {
+      var that = e.target
+      var data_emid = that.dataset['emid'];
+      var url = "/grp_examines/" + data_emid + "/drct_info";
+      $.get(url).done(function (data) {
+        var nodes = data.nodes;
+        var rightNodes = JSON.parse(nodes); 
+        var settingRight = {
+	      	data: {
+            keep: {
+              leaf: true,
+              parent: true
+            },
+	      		simpleData: {
+	      			enable: true 
+	      		}
+	      	},
+	      };
+        ztree = $.fn.zTree.init($("#examine-nodes-ctn"), settingRight, rightNodes);
+        ztree.expandAll(true);
+
+      })
+    })
+
+  }
+
+
+
+
 
 });
 

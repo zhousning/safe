@@ -15,9 +15,11 @@
             .col-sm-12
               %h2.text-center
                 = image_tag "gykg.jpg"
+                = @drill.title
             .col-md-8.offset-2.p-5.border
               .card.border-0.mb-3.rounded-0
-                .card-header.bg-transparent.border-dark
+                -#
+                  .card-header.bg-transparent.border-dark
                   %h5
                     = Setting.drills.label
                 .card-body
@@ -26,46 +28,37 @@
                     
                       %tr
                         %td.p-2.text-center
-                          = Setting.drills.title
-                        %td.p-2.text-center
-                          = @drill.title
-                    
-                      
-                        %td.p-2.text-center
-                          = Setting.drills.content
-                        %td.p-2.text-center
-                          = @drill.content
-                    
-                      
-                        %td.p-2.text-center
-                          = Setting.drills.place
-                        %td.p-2.text-center
-                          = @drill.place
-                    
-                      %tr
-                        %td.p-2.text-center
                           = Setting.drills.train_time
                         %td.p-2.text-center
-                          = @drill.train_time
+                          = @drill.train_time.strftime('%Y-%m-%d %H:%M:%S')
                     
                       
+                      %tr
                         %td.p-2.text-center
                           = Setting.drills.address
                         %td.p-2.text-center
                           = @drill.address
                     
-              .row
+                      %tr
+                        %td.p-2.text-center
+                          = Setting.drills.people
+                        %td.p-2.text-center
+                          = @drill.people
+                      %tr
+                        %td.p-2.text-left{:colspan => 2}
+                          = @drill.content
+                    
               
-                .col-md-6
+              .row
+                .col-md-12
                   = image_tag @drill.sign_url, :class => "w-100"
               
-                .col-md-6
+                .col-md-12
                   = image_tag @drill.scene_url, :class => "w-100"
               
-                .col-md-6
+                .col-md-12
                   = image_tag @drill.estimate_url, :class => "w-100"
               
-              .row
               
               .row
               

@@ -36,3 +36,28 @@ class Worker < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: workers
+#
+#  id          :integer         not null, primary key
+#  name        :string          default(""), not null
+#  idno        :string          default(""), not null
+#  phone       :string          default(""), not null
+#  gender      :string          default(""), not null
+#  state       :string          default("ongoing"), not null
+#  adress      :string          default(""), not null
+#  desc        :string          default(""), not null
+#  number      :string          default(""), not null
+#  avatar      :string          default(""), not null
+#  idfront     :string          default(""), not null
+#  idback      :string          default(""), not null
+#  avatar_base :text
+#  img         :text
+#  wx_inviter  :integer
+#  factory     :integer
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#
+

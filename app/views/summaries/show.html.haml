@@ -26,10 +26,18 @@
                     %tbody
                     
                       %tr
-                      
                         %td.p-2.text-center
-                          = Setting.summaries.content
+                          = Setting.summaries.start_date
                         %td.p-2.text-center
+                          = @summary.start_date
+                      %tr
+                        %td.p-2.text-center
+                          = Setting.summaries.end_date
+                        %td.p-2.text-center
+                          = @summary.end_date
+
+                      %tr
+                        %td.p-2.text-left{:colspan => 2}
                           = @summary.content
                     
                       
@@ -39,10 +47,6 @@
                         %td.p-2.text-center
                           = @summary.place
                     
-              .row
-              
-              .row
-              
               .row
               
                 .col-md-6

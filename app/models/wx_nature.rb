@@ -5,18 +5,19 @@ class WxNature < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
-# Table name: natures
+# Table name: wx_natures
 #
-#  id          :integer         not null, primary key
-#  name        :string
-#  data_type   :string
-#  title       :string
-#  tag         :string
-#  required    :boolean
-#  template_id :integer
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
+#  id             :integer         not null, primary key
+#  name           :string
+#  data_type      :string
+#  title          :string
+#  tag            :string
+#  required       :boolean
+#  wx_template_id :integer
+#  created_at     :datetime        not null
+#  updated_at     :datetime        not null
 #
 

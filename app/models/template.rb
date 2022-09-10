@@ -12,6 +12,7 @@ class Template < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: templates
@@ -20,6 +21,7 @@ end
 #  name           :string
 #  cn_name        :string
 #  nest           :string
+#  grp            :boolean
 #  image          :boolean
 #  attachment     :boolean
 #  one_image      :string
@@ -35,6 +37,7 @@ end
 #  scss           :boolean
 #  admin          :boolean
 #  current_user   :boolean
+#  selector       :boolean
 #  created_at     :datetime        not null
 #  updated_at     :datetime        not null
 #

@@ -24,3 +24,29 @@ class Device < ActiveRecord::Base
   #end
 
 end
+
+# == Schema Information
+#
+# Table name: devices
+#
+#  id         :integer         not null, primary key
+#  idno       :string          default(""), not null
+#  name       :string          default(""), not null
+#  mdno       :string          default(""), not null
+#  unit       :string          default(""), not null
+#  out_date   :date
+#  mount_date :date
+#  supplier   :string          default(""), not null
+#  mfcture    :string          default(""), not null
+#  pos        :string          default(""), not null
+#  pos_no     :string          default(""), not null
+#  life       :float           default("0.0"), not null
+#  qrcode_uid :string
+#  state      :string          default(""), not null
+#  desc       :text
+#  avatar     :string          default(""), not null
+#  factory_id :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

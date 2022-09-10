@@ -193,6 +193,7 @@ Rails.application.routes.draw do
     get :export, :on => :member 
     get :publish, :on => :member 
     get :drct_org, :on => :member 
+    get :drct_info, :on => :member 
     post :create_drct, :on => :member
     resources :documents do
       get :download, :on => :member
