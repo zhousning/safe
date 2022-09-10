@@ -17,7 +17,7 @@ class GrpDrillsController < ApplicationController
 
     obj = []
     @factories.each do |fct|
-      items = fct.drills.where(:search_date => [_start.._end]) 
+      items = fct.drills.where(:train_time => [_start.._end]) 
       items.each_with_index do |item, index|
         obj << {
           :id => index + 1,

@@ -3,7 +3,7 @@
 .container-fluid
   .row
     = render "layouts/control_sidebar"
-    %main.col-md-9.ml-sm-auto.col-lg-10.p-3{:role => "main"}
+    %main.col-md-11.ml-sm-auto.col-lg-11.p-3{:role => "main"}
       - content_for :card_header do
         %h5
           = link_to Setting.archives.label, factory_archives_path(idencode(@factory.id), @archive)

@@ -28,9 +28,12 @@
                   %tr
                     %th{:scope => "col", :'data-field' => "id"} #
                   
+                    %th{:scope => "col", :'data-field' => "train_time"}
+                      = Setting.trains.train_time
+                  
                     %th{:scope => "col", :'data-field' => "title"}
                       = Setting.trains.title
-                  
+
                     %th{:scope => "col", :'data-field' => "content"}
                       = Setting.trains.content
                   
@@ -38,11 +41,11 @@
                       %th{:scope => "col", :'data-field' => "place"}
                       = Setting.trains.place
                   
-                    %th{:scope => "col", :'data-field' => "train_time"}
-                      = Setting.trains.train_time
-                  
                     %th{:scope => "col", :'data-field' => "address"}
                       = Setting.trains.address
+                  
+                    %th{:scope => "col", :'data-field' => "people"}
+                      = Setting.trains.people
                   
                     %th{:scope => "col", :'data-field' => "button"}
                 %tbody
@@ -52,6 +55,8 @@
                         = index+1
                     
                       %td
+                        = train.train_time.strftime('%Y-%m-%d %H:%M:%S')
+                      %td
                         = train.title
                       %td
                         = train.content
@@ -59,9 +64,9 @@
                         %td
                         = train.place
                       %td
-                        = train.train_time.strftime('%Y-%m-%d %H:%M:%S')
-                      %td
                         = train.address
+                      %td
+                        = train.people
                       %td
                         .container-fluid
                           .row.justify-content-center

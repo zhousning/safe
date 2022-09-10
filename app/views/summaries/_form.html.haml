@@ -27,8 +27,18 @@
                     
                     %tr
                       %td.p-2.text-center
-                        = f.label Setting.summaries.title, :class => "text-center"
+                        = f.label Setting.summaries.start_date, :class => "text-center"
                       %td.p-2.text-center
+                        = f.date_field :start_date, :class => "form-control" , :required => true
+                      %td.p-2.text-center
+                        = f.label Setting.summaries.end_date, :class => "text-center"
+                      %td.p-2.text-center
+                        = f.date_field :end_date, :class => "form-control" , :required => true
+
+                    %tr
+                      %td.p-2.text-center
+                        = f.label Setting.summaries.title, :class => "text-center"
+                      %td.p-2.text-center{:colspan => "3"}
                         = f.text_field :title, :class => "form-control" , :required => true
                       
                     
@@ -36,7 +46,7 @@
                     %tr
                       %td.p-2.text-center
                         = f.label Setting.summaries.content, :class => "text-center"
-                      %td.p-2.text-center
+                      %td.p-2.text-center{:colspan => "3"}
                         = f.text_area :content, :class => "form-control", :rows => "10" , :required => true
                       
                     

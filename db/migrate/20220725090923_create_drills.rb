@@ -13,6 +13,7 @@ class CreateDrills < ActiveRecord::Migration
       t.string :address,  null: false, default: Setting.systems.default_str
     
 
+      t.string :people,  null: false, default: Setting.systems.default_num
     
       t.string :sign,  null: false, default: Setting.systems.default_str
     

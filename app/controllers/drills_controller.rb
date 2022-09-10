@@ -141,7 +141,7 @@ class DrillsController < ApplicationController
 
   private
     def drill_params
-      params.require(:drill).permit( :title, :content, :place, :train_time, :address , :sign , :scene , :estimate , :summary , attachments_attributes: attachment_params)
+      params.require(:drill).permit(:people, :title, :content, :place, :train_time, :address , :sign , :scene , :estimate , :summary , attachments_attributes: attachment_params)
     end
   
   

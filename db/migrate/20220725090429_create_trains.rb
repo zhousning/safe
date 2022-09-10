@@ -5,6 +5,8 @@ class CreateTrains < ActiveRecord::Migration
       t.string :title,  null: false, default: Setting.systems.default_str
     
       t.text :content
+
+      t.string :people,  null: false, default: Setting.systems.default_num
     
       t.string :place,  null: false, default: Setting.systems.default_str
     

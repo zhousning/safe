@@ -137,7 +137,7 @@ class SummariesController < ApplicationController
 
   private
     def summary_params
-      params.require(:summary).permit( :title, :content, :place , :attach , attachments_attributes: attachment_params)
+      params.require(:summary).permit(:start_date, :end_date, :title, :content, :place , :attach , attachments_attributes: attachment_params)
     end
   
   

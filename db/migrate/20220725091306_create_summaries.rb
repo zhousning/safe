@@ -9,6 +9,10 @@ class CreateSummaries < ActiveRecord::Migration
       t.string :place,  null: false, default: Setting.systems.default_str
     
 
+      t.date :start_date
+
+      t.date :end_date
+
     
 
     

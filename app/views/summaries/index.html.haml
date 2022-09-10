@@ -34,7 +34,8 @@
                     %th{:scope => "col", :'data-field' => "content"}
                       = Setting.summaries.content
                   
-                    %th{:scope => "col", :'data-field' => "place"}
+                    -#
+                      %th{:scope => "col", :'data-field' => "place"}
                       = Setting.summaries.place
                   
                     %th{:scope => "col", :'data-field' => "button"}
@@ -48,7 +49,8 @@
                         = summary.title
                       %td
                         = summary.content
-                      %td
+                      -#
+                        %td
                         = summary.place
                       %td
                         .container-fluid

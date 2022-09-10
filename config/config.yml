@@ -175,7 +175,7 @@ defaults:
     btn_show: 详情
     btn_delete: 删除
     btn_save: 保存
-    company_name: 山东公用水务集团农污工程签到系统
+    company_name: 山东公用水务集团安全生产管理系统
     opening: 新用户
     pending: 待审核
     rejected: 不通过
@@ -525,6 +525,7 @@ development:
     label: 培训管理
     title: 培训标题
     content: 培训内容
+    people: 培训人数
     place: 预留字段
     train_time: 培训时间
     address: 培训地点
@@ -537,6 +538,7 @@ development:
     label: 应急演练管理
     title: 演练标题
     content: 演练内容
+    people: 参演人数
     place: 预留字段
     train_time: 演练时间
     address: 演练地点
@@ -550,6 +552,8 @@ development:
     content: 内容
     place: 预留字段
     attach: 总结报告
+    start_date: 开始日期
+    end_date: 结束日期
   inventories:
     label: 检查表
     name: 名称

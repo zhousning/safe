@@ -28,7 +28,7 @@
                     %tr
                       %td.p-2.text-center
                         = f.label Setting.drills.title, :class => "text-center"
-                      %td.p-2.text-center{:colspan => 3}
+                      %td.p-2.text-center{:colspan => 5}
                         = f.text_field :title, :class => "form-control" , :required => true
                       
                     %tr
@@ -41,12 +41,17 @@
                         = f.label Setting.drills.address, :class => "text-center"
                       %td.p-2.text-center
                         = f.text_field :address, :class => "form-control" , :required => true
+
+                      %td.p-2.text-center
+                        = f.label Setting.drills.people, :class => "text-center"
+                      %td.p-2.text-center
+                        = f.text_field :people, :class => "form-control" , :required => true
                     
                     
                     %tr
                       %td.p-2.text-center
                         = f.label Setting.drills.content, :class => "text-center"
-                      %td.p-2.text-center{:colspan => 3}
+                      %td.p-2.text-center{:colspan => 5}
                         = f.text_area :content, :class => "form-control", :rows => "10" , :required => true
                       
                     

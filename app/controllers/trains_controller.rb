@@ -140,7 +140,7 @@ class TrainsController < ApplicationController
 
   private
     def train_params
-      params.require(:train).permit( :title, :content, :place, :train_time, :address , :sign , :scene , :estimate , :paper , :wpaper , attachments_attributes: attachment_params)
+      params.require(:train).permit(:people,  :title, :content, :place, :train_time, :address , :sign , :scene , :estimate , :paper , :wpaper , attachments_attributes: attachment_params)
     end
   
   

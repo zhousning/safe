@@ -19,17 +19,17 @@ zh-CN:
 
   layouts:
     application:
-      site_title: "山东公用水务集团农污工程签到系统"
+      site_title: "山东公用水务集团安全生产管理系统"
     application_control:
-      site_title: "山东公用水务集团农污工程签到系统"
+      site_title: "山东公用水务集团安全生产管理系统"
     application_control_map:
-      site_title: "山东公用水务集团农污工程签到系统"
+      site_title: "山东公用水务集团安全生产管理系统"
     application_mobile:
-      site_title: "山东公用水务集团农污工程签到系统"
+      site_title: "山东公用水务集团安全生产管理系统"
     application_home:
-      site_title: "山东公用水务集团农污工程签到系统"
+      site_title: "山东公用水务集团安全生产管理系统"
     application_no_header:
-      site_title: "山东公用水务集团农污工程签到系统"
+      site_title: "山东公用水务集团安全生产管理系统"
   views:
       pagination:
         first: "首页"
@@ -137,7 +137,7 @@ zh-CN:
   trees:
     index:
       title:
-        山东公用水务集团农污工程签到系统
+        山东公用水务集团安全生产管理系统
   authorities:
     roles:
       manage:

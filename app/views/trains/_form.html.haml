@@ -28,7 +28,7 @@
                     %tr
                       %td.p-2.text-center
                         = f.label Setting.trains.title, :class => "text-center"
-                      %td.p-2.text-center{:colspan => 3}
+                      %td.p-2.text-center{:colspan => 5}
                         = f.text_field :title, :class => "form-control" , :required => true
                       
                     
@@ -39,16 +39,21 @@
                         = f.datetime_select :train_time, :start_year => 2021, :order => [:year, :month, :day ], use_month_numbers: true, :class => "form-control"
                       
                     
-                    
                       %td.p-2.text-center
                         = f.label Setting.trains.address, :class => "text-center"
                       %td.p-2.text-center
                         = f.text_field :address, :class => "form-control" , :required => true
+
+                      %td.p-2.text-center
+                        = f.label Setting.trains.people, :class => "text-center"
+                      %td.p-2.text-center
+                        = f.text_field :people, :class => "form-control" , :required => true
+                    
                     
                     %tr
                       %td.p-2.text-center
                         = f.label Setting.trains.content, :class => "text-center"
-                      %td.p-2.text-center{:colspan => 3}
+                      %td.p-2.text-center{:colspan => 5}
                         = f.text_area :content, :class => "form-control", :rows => "10" , :required => true
                       
                     
