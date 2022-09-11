@@ -12,8 +12,6 @@
           = link_to "/#{controller_name}", :class => "button button-small  pull-right button-primary" do
             = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
 
-          = link_to publish_grp_review_path(@grp_review), :data => {:confirm => "发布后不可修改,确定吗?"}, :class => "button button-small button-royal pull-right  mr-1" do
-            = '发布' 
 
       - content_for :card_body do
         .container-fluid.p-0

@@ -3,74 +3,12 @@ class ReviewResultsController < ApplicationController
   before_filter :authenticate_user!
   #authorize_resource
 
-   
-  def index
-    @review_result = ReviewResult.new
-   
-    #@review_results = ReviewResult.all.page( params[:page]).per( Setting.systems.per_page )
-   
-  end
-   
-
-  def query_all 
-    items = ReviewResult.all
-   
-    obj = []
-    items.each do |item|
-      obj << {
-        #:factory => idencode(factory.id),
-        :id => idencode(item.id),
-       
-        :worker => item.worker,
-       
-        :signer => item.signer,
-       
-        :search_date => item.search_date,
-       
-        :number => item.number,
-       
-        :content => item.content
-      
-      }
-    end
-    respond_to do |f|
-      f.json{ render :json => obj.to_json}
-    end
-  end
-
-
-
-   
-  def show
-   
-    @review_result = ReviewResult.find(iddecode(params[:id]))
-   
-  end
-   
-
-   
-  def new
-    @review_result = ReviewResult.new
-    
-  end
-   
-
-   
-  def create
-    @review_result = ReviewResult.new(review_result_params)
-     
-    if @review_result.save
-      redirect_to :action => :index
-    else
-      render :new
-    end
-  end
-   
-
-   
   def edit
    
-    @review_result = ReviewResult.find(iddecode(params[:id]))
+    @factory = grp_factory
+    @review = @factory.reviews.find(iddecode(params[:review_id]))
+    @grp_review = @review.grp_review
+    @review_result = @review.review_result
    
   end
    
@@ -78,64 +16,148 @@ class ReviewResultsController < ApplicationController
    
   def update
    
-    @review_result = ReviewResult.find(iddecode(params[:id]))
+    @factory =Factory.find(params[:factory_id])
+    @review = @factory.reviews.find(params[:review_id])
+    @review_result = @review.review_result
    
     if @review_result.update(review_result_params)
-      redirect_to review_result_path(idencode(@review_result.id)) 
+      redirect_to edit_factory_review_review_result_path(idencode(@factory.id), idencode(@review.id), idencode(@review_result.id))
+    else
+      render :edit
+    end
+  end
+   
+  def publish 
+    @factory = grp_factory
+    @review = @factory.reviews.find(iddecode(params[:review_id]))
+    @review_result = @review.review_result
+    @grp_review = @review.grp_review
+   
+    if @review.modifying
+      redirect_to grp_review_path(idencode(@grp_review.id))
     else
       render :edit
     end
   end
    
 
+  
+  def download_attachment 
    
-  def destroy
+    @factory =Factory.find(params[:factory_id])
+    @review = @factory.reviews.find(params[:review_id])
+    @review_result = @review.review_result
    
-    @review_result = ReviewResult.find(iddecode(params[:id]))
-   
-    @review_result.destroy
-    redirect_to :action => :index
+    @attachment_id = params[:number].to_i
+    @attachment = @review_result.attachments[@attachment_id]
+
+    if @attachment
+      send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
+    end
   end
+  
+
+  
+  def download_append
+   
+    @factory =Factory.find(params[:factory_id])
+    @review = @factory.reviews.find(params[:review_id])
+    @review_result = @review.review_result
+   
+    @attach = @review_result.attach_url
+
+    if @attach
+      send_file File.join(Rails.root, "public", URI.decode(@attach)), :type => "application/force-download", :x_sendfile=>true
+    end
+  end
+  
+  def download_append
+    @factory =Factory.find(params[:factory_id])
+    @review = @factory.reviews.find(params[:review_id])
+    @review_result = @review.review_result
+   
+    @idattach = @review_result.idattach_url
+
+    if @idattach
+      send_file File.join(Rails.root, "public", URI.decode(@idattach)), :type => "application/force-download", :x_sendfile=>true
+    end
+  end
+  
+
+   
+  #def index
+  #  @review_result = ReviewResult.new
+  # 
+  #  #@review_results = ReviewResult.all.page( params[:page]).per( Setting.systems.per_page )
+  # 
+  #end
+  # 
+
+  #def query_all 
+  #  items = ReviewResult.all
+  # 
+  #  obj = []
+  #  items.each do |item|
+  #    obj << {
+  #      #:factory => idencode(factory.id),
+  #      :id => idencode(item.id),
+  #     
+  #      :worker => item.worker,
+  #     
+  #      :signer => item.signer,
+  #     
+  #      :search_date => item.search_date,
+  #     
+  #      :number => item.number,
+  #     
+  #      :content => item.content
+  #    
+  #    }
+  #  end
+  #  respond_to do |f|
+  #    f.json{ render :json => obj.to_json}
+  #  end
+  #end
+
+
+
+  # 
+  #def show
+  # 
+  #  @review_result = ReviewResult.find(iddecode(params[:id]))
+  # 
+  #end
+  # 
+
+  # 
+  #def new
+  #  @review_result = ReviewResult.new
+  #  
+  #end
+  # 
+
+  # 
+  #def create
+  #  @review_result = ReviewResult.new(review_result_params)
+  #   
+  #  if @review_result.save
+  #    redirect_to :action => :index
+  #  else
+  #    render :new
+  #  end
+  #end
+   
+   
+  #def destroy
+  # 
+  #  @review_result = ReviewResult.find(iddecode(params[:id]))
+  # 
+  #  @review_result.destroy
+  #  redirect_to :action => :index
+  #end
    
 
-  
-    def download_attachment 
-     
-      @review_result = ReviewResult.find(iddecode(params[:id]))
-     
-      @attachment_id = params[:number].to_i
-      @attachment = @review_result.attachments[@attachment_id]
-
-      if @attachment
-        send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
-
-  
-    def download_append
-     
-      @review_result = ReviewResult.find(iddecode(params[:id]))
-     
-      @attach = @review_result.attach_url
-
-      if @attach
-        send_file File.join(Rails.root, "public", URI.decode(@attach)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
-    def download_append
-     
-      @review_result = ReviewResult.find(iddecode(params[:id]))
-     
-      @idattach = @review_result.idattach_url
-
-      if @idattach
-        send_file File.join(Rails.root, "public", URI.decode(@idattach)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
-
+   
   
   
   

@@ -10,6 +10,7 @@ class GrpReviewsController < ApplicationController
    
   def show
     @grp_review = GrpReview.find(iddecode(params[:id]))
+    @reviews = @grp_review.reviews
   end
 
   def new
@@ -77,14 +78,18 @@ class GrpReviewsController < ApplicationController
   
   def publish 
     @grp_review = GrpReview.find(params[:id])
-    begin
-      Review.transaction do
-        Factory.all.each do |factory|
-          Review.create!(:factory => factory, :grp_review => @grp_review, :name => @grp_review.name, :search_date => @grp_review.search_date, :content => @grp_review.content)
+    puts @grp_review.state
+    if @grp_review.state != Setting.states.published
+      begin
+        Review.transaction do
+          Factory.all.each do |factory|
+            Review.create!(:factory => factory, :grp_review => @grp_review, :name => @grp_review.name, :search_date => @grp_review.search_date, :content => @grp_review.content)
+          end
         end
+        @grp_review.published
+      rescue Exception => e
+        puts e.message
       end
-      @grp_review.published
-    rescue
     end
     redirect_to grp_reviews_path
   end

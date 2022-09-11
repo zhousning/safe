@@ -117,6 +117,10 @@ class ApplicationController < ActionController::Base
       @factory = current_user.factories.find(iddecode(params[:factory_id]))
     end
 
+    def grp_factory
+      @factory =Factory.find(iddecode(params[:factory_id]))
+    end
+
     def user_gender(gender)
       flag = ''
       if gender == Setting.systems.man_no

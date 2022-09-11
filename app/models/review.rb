@@ -15,17 +15,20 @@ class Review < ActiveRecord::Base
 
   belongs_to :factory
 
+  has_one :review_result, :dependent => :destroy
+  has_one :modify_result, :dependent => :destroy
+  has_one :recheck_result, :dependent => :destroy
 
-  has_many :review_results, :dependent => :destroy
-  accepts_nested_attributes_for :review_results, reject_if: :all_blank, allow_destroy: true
+  #has_many :review_results, :dependent => :destroy
+  #accepts_nested_attributes_for :review_results, reject_if: :all_blank, allow_destroy: true
 
 
-  has_many :modify_results, :dependent => :destroy
-  accepts_nested_attributes_for :modify_results, reject_if: :all_blank, allow_destroy: true
+  #has_many :modify_results, :dependent => :destroy
+  #accepts_nested_attributes_for :modify_results, reject_if: :all_blank, allow_destroy: true
 
 
-  has_many :recheck_results, :dependent => :destroy
-  accepts_nested_attributes_for :recheck_results, reject_if: :all_blank, allow_destroy: true
+  #has_many :recheck_results, :dependent => :destroy
+  #accepts_nested_attributes_for :recheck_results, reject_if: :all_blank, allow_destroy: true
 
 
   STATESTR = %w(created modifying modified review reject completed good)
@@ -87,5 +90,11 @@ class Review < ActiveRecord::Base
     end
   end
 
+  before_create :build_default_data
+  def build_default_data
+    build_review_result
+    build_modify_result
+    build_recheck_result
+  end
 
 end

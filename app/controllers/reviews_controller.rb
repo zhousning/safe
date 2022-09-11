@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
    
   def show
     @factory = my_factory
-    @review = @factory.reviews.find(params[:id])
+    @review = @factory.reviews.find(iddecode(params[:id]))
   end
 
   def new
@@ -33,12 +33,12 @@ class ReviewsController < ApplicationController
    
   def edit
     @factory = my_factory
-    @review = @factory.reviews.find(params[:id])
+    @review = @factory.reviews.find(iddecode(params[:id]))
   end
    
   def update
     @factory = my_factory
-    @review = @factory.reviews.find(params[:id])
+    @review = @factory.reviews.find(iddecode(params[:id]))
     if @review.update(review_params)
       redirect_to reviews_path
     else
@@ -48,14 +48,14 @@ class ReviewsController < ApplicationController
    
   def destroy
     @factory = my_factory
-    @review = @factory.reviews.find(params[:id])
+    @review = @factory.reviews.find(iddecode(params[:id]))
     @review.destroy
     redirect_to :action => :index
   end
    
   def report 
     @factory = my_factory
-    @review = @factory.reviews.find(params[:id])
+    @review = @factory.reviews.find(iddecode(params[:id]))
     @review.report
     redirect_to :action => :index
   end
@@ -65,7 +65,7 @@ class ReviewsController < ApplicationController
   def download_attachment 
    
     @factory = my_factory
-    @review = @factory.reviews.find(params[:id])
+    @review = @factory.reviews.find(iddecode(params[:id]))
    
     @attachment_id = params[:number].to_i
     @attachment = @review.attachments[@attachment_id]
@@ -80,7 +80,7 @@ class ReviewsController < ApplicationController
   def download_append
    
     @factory = my_factory
-    @review = @factory.reviews.find(params[:id])
+    @review = @factory.reviews.find(iddecode(params[:id]))
    
     @attch = @review.attch_url
 

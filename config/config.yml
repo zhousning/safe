@@ -238,37 +238,6 @@ defaults:
     agree_title: 同意
     disagree: disagree
     disagree_title: 不同意
-  file_libs:
-    label: 文件库
-    name: 文件名
-    path: 路径
-    file_type: 文件类型
-    doc: '0'
-    xls: '1'
-    pdf: '2'
-    img: '3'
-    ppt: '4'
-    mp4: '5'
-    txt: '6'
-  archives:
-    label: 档案库
-    name: 名称
-    desc: 备注
-  portfolios:
-    label: 文件夹
-    name: 文件夹名
-  examines:
-    label: 考核资料自选库
-    name: 名称
-  exm_items:
-    label: 一级目录
-    name: 一级目录名
-    hierarchy: 目录树
-  agendas:
-    label: 日程
-    title: 标题
-    content: 事务内容
-    worktime: 时间
   statistics: &19
     label: 统计
     title: 标题
@@ -440,37 +409,6 @@ development:
   states: *16
   trade_orders: *17
   extract_cashes: *18
-  file_libs:
-    label: 文件库
-    name: 文件名
-    path: 路径
-    file_type: 文件类型
-    doc: '0'
-    xls: '1'
-    pdf: '2'
-    img: '3'
-    ppt: '4'
-    mp4: '5'
-    txt: '6'
-  archives:
-    label: 档案库
-    name: 名称
-    desc: 备注
-  portfolios:
-    label: 文件夹
-    name: 文件夹名
-  examines:
-    label: 考核资料自选库
-    name: 名称
-  exm_items:
-    label: 一级目录
-    name: 一级目录名
-    hierarchy: 目录树
-  agendas:
-    label: 日程
-    title: 标题
-    content: 事务内容
-    worktime: 时间
   statistics: *19
   companies: *20
   factories: *21
@@ -572,5 +510,38 @@ development:
     search_date: 复检日期
     number: 复检隐患数量
     content: 复检结果
+  file_libs:
+    label: 文件库
+    name: 文件名
+    path: 路径
+    file_type: 文件类型
+    doc: '0'
+    xls: '1'
+    pdf: '2'
+    img: '3'
+    ppt: '4'
+    mp4: '5'
+    txt: '6'
+  archives:
+    label: 档案库
+    name: 名称
+    desc: 备注
+  portfolios:
+    label: 文件夹
+    name: 文件夹名
+  examines:
+    label: 考核资料自选库
+    name: 名称
+    search_date: 截止日期
+    content: 要求
+  exm_items:
+    label: 一级目录
+    name: 一级目录名
+    hierarchy: 目录树
+  agendas:
+    label: 日程
+    title: 标题
+    content: 事务内容
+    worktime: 时间
 test: 
 production: 

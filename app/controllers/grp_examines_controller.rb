@@ -93,20 +93,22 @@ class GrpExaminesController < ApplicationController
 
   def publish 
     @grp_examine = GrpExamine.find(params[:id])
-    begin
-      Examine.transaction do
-        Factory.all.each do |factory|
-          Examine.create!(:factory => factory, :grp_examine => @grp_examine, :name => @grp_examine.name, :hierarchy => @grp_examine.hierarchy)
+    if @grp_examine.state != Setting.states.published
+      begin
+        Examine.transaction do
+          Factory.all.each do |factory|
+            Examine.create!(:factory => factory, :grp_examine => @grp_examine, :name => @grp_examine.name, :hierarchy => @grp_examine.hierarchy)
+          end
         end
+        @grp_examine.published
+      rescue
       end
-      @grp_examine.published
-    rescue
     end
     redirect_to grp_examines_path
   end
   private
     def examine_params
-      params.require(:grp_examine).permit( :name, exm_items_attributes: exm_item_params)
+      params.require(:grp_examine).permit( :name, :search_date, :content, exm_items_attributes: exm_item_params)
     end
   
   

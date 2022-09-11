@@ -4,7 +4,7 @@
 .container-fluid
   .row
     = render "layouts/control_sidebar"
-    %main.col-md-9.ml-sm-auto.col-lg-10.p-3{:role => "main"}
+    %main.col-md-11.ml-sm-auto.col-lg-11.p-3{:role => "main"}
       - content_for :card_header do
         %h5
           = link_to grp_examines_path, :class => "button button-small pull-right button-primary mr-1" do
@@ -20,7 +20,7 @@
       - content_for :card_body do
         .container-fluid
           .row
-            .col-md-4.ctg-tree-ctn
+            .col-md-4.offset-4.ctg-tree-ctn
               %ul#treeRight.ztree
 
       = render "layouts/bootstrap/card"

@@ -44,7 +44,7 @@ module DayPdtRptsHelper
     if review.state == Setting.states.published
       str = '已发布'
     else
-      str = '待上报'
+      str = '待发布'
     end
     str
   end
