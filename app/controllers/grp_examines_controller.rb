@@ -8,7 +8,7 @@ class GrpExaminesController < ApplicationController
   #load_and_authorize_resource
    
   def index
-    @grp_examines = GrpExamine.all
+    @grp_examines = GrpExamine.order('search_date DESC').all.page( params[:page]).per( Setting.systems.per_page )
   end
    
   def show

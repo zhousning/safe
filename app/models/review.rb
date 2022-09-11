@@ -1,0 +1,91 @@
+class Review < ActiveRecord::Base
+
+
+
+  mount_uploader :attch, AttachmentUploader
+
+
+
+  has_many :attachments, :dependent => :destroy
+  accepts_nested_attributes_for :attachments, reject_if: :all_blank, allow_destroy: true
+
+
+  belongs_to :grp_review
+
+
+  belongs_to :factory
+
+
+  has_many :review_results, :dependent => :destroy
+  accepts_nested_attributes_for :review_results, reject_if: :all_blank, allow_destroy: true
+
+
+  has_many :modify_results, :dependent => :destroy
+  accepts_nested_attributes_for :modify_results, reject_if: :all_blank, allow_destroy: true
+
+
+  has_many :recheck_results, :dependent => :destroy
+  accepts_nested_attributes_for :recheck_results, reject_if: :all_blank, allow_destroy: true
+
+
+  STATESTR = %w(created modifying modified review reject completed good)
+  STATE = [Setting.states.created, Setting.states.modifying, Setting.states.modified, Setting.states.review, Setting.states.reject, Setting.states.completed, Setting.states.good ]
+  validates_inclusion_of :state, :in => STATE
+  state_hash = {
+    STATESTR[0] => Setting.states.created, 
+    STATESTR[1] => Setting.states.modifying,
+    STATESTR[2] => Setting.states.modified, 
+    STATESTR[3] => Setting.states.review, 
+    STATESTR[4] => Setting.states.reject, 
+    STATESTR[5] => Setting.states.completed, 
+    STATESTR[6] => Setting.states.good 
+  }
+
+  STATESTR.each do |state|
+    define_method "#{state}?" do
+      self.state == state_hash[state]
+    end
+  end
+
+  def created 
+    update_attribute :state, Setting.states.created
+  end
+
+  def modifying 
+    if created? || reject?
+      update_attribute :state, Setting.states.modifying
+    end
+  end
+
+  def modified
+    if modifying? || review?
+      update_attribute :state, Setting.states.modified
+    end
+  end
+
+  def review
+    if modifying? || review?
+      update_attribute :state, Setting.states.review
+    end
+  end
+
+  def reject
+    if review?
+      update_attribute :state, Setting.states.reject
+    end
+  end
+
+  def completed
+    if review?
+      update_attribute :state, Setting.states.completed
+    end
+  end
+
+  def good
+    if created?
+      update_attribute :state, Setting.states.good
+    end
+  end
+
+
+end

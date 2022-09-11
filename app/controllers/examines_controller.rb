@@ -9,7 +9,7 @@ class ExaminesController < ApplicationController
    
   def index
     @factory = my_factory
-    @examines = @factory.examines
+    @examines = @factory.examines.page( params[:page]).per( Setting.systems.per_page )
   end
    
   def show

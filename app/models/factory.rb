@@ -12,9 +12,8 @@ class Factory < ActiveRecord::Base
 
   has_many :archives
   has_many :examines
+  has_many :reviews
 
-
-  has_many :examines
   has_many :trains
   has_many :drills
   has_many :summaries

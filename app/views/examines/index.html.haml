@@ -43,6 +43,8 @@
                           = link_to "删除",  examine, :method => :delete, :data => {:confirm => "确定删除吗?"}, :class => "button button-caution button-small" 
                       -#
                         = link_to "详细",  examine_path(examine), :class => "button button-primary button-small mr-1" 
+      .col-md-12.site-theme-paginate-wrapper.d-flex.justify-content-center.mt-3
+        = paginate @examines, window: 2, left: 1, right: 1 
 
 = render "layouts/control_panel"
 

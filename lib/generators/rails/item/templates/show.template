@@ -15,11 +15,12 @@
             .col-sm-12
               %h2.text-center
                 = image_tag "gykg.jpg"
+                = Setting.<%= @mpu %>.label
             .col-md-8.offset-2.p-5.border
               .card.border-0.mb-3.rounded-0
-                .card-header.bg-transparent.border-dark
+                -#
+                  .card-header.bg-transparent.border-dark
                   %h5
-                    = Setting.<%= @mpu %>.label
                 .card-body
                   %table.table-bordered.day-pdt-table.w-100.mb-3
                     %tbody

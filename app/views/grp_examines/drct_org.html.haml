@@ -7,11 +7,11 @@
     %main.col-md-9.ml-sm-auto.col-lg-10.p-3{:role => "main"}
       - content_for :card_header do
         %h5
-          = link_to grp_examines_path, :class => "button pull-right button-highlight mr-1" do
-            = fa_icon "chevron-left", text: Setting.systems.btn_back
-          = link_to publish_grp_examine_path(@grp_examine), :data => {:confirm => "发布后不可修改,确定吗?"}, :class => "button pull-right button-highlight mr-1" do
-            = fa_icon "chevron-left", text: '发布' 
-          %button#test{:type => "button", :class => "button pull-right button-primary mr-1"}
+          = link_to grp_examines_path, :class => "button button-small pull-right button-primary mr-1" do
+            = Setting.systems.btn_back
+          = link_to publish_grp_examine_path(@grp_examine), :data => {:confirm => "发布后不可修改,确定吗?"}, :class => "button button-small button-royal pull-right  mr-1" do
+            = '发布' 
+          %button#test{:type => "button", :class => "button pull-right button-small button-action mr-1"}
             保存
           -#
             = link_to "/archives/#{@archive.id}/#{controller_name}/new", :class => "button pull-right button-primary mr-1" do

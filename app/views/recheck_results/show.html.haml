@@ -1,0 +1,79 @@
+- provide(:title, t('.title'))
+
+.container-fluid
+  .row
+    = render "layouts/control_sidebar"
+    %main.col-md-11.ml-sm-auto.col-lg-11.p-3{:role => "main"}
+      - content_for :card_header do
+        %h5
+          = fa_icon "newspaper-o", text: t(controller_name + "." + action_name + '.title')
+          = link_to "/#{controller_name}", :class => "button button-small  pull-right button-primary" do
+            = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
+      - content_for :card_body do
+        .container-fluid
+          .row
+            .col-sm-12
+              %h2.text-center
+                = image_tag "gykg.jpg"
+                = Setting.recheck_results.label
+            .col-md-8.offset-2.p-5.border
+              .card.border-0.mb-3.rounded-0
+                -#
+                  .card-header.bg-transparent.border-dark
+                  %h5
+                .card-body
+                  %table.table-bordered.day-pdt-table.w-100.mb-3
+                    %tbody
+                    
+                      %tr
+                        %td.p-2.text-center
+                          = Setting.recheck_results.worker
+                        %td.p-2.text-center
+                          = @recheck_result.worker
+                    
+                      
+                        %td.p-2.text-center
+                          = Setting.recheck_results.signer
+                        %td.p-2.text-center
+                          = @recheck_result.signer
+                    
+                      
+                        %td.p-2.text-center
+                          = Setting.recheck_results.search_date
+                        %td.p-2.text-center
+                          = @recheck_result.search_date
+                    
+                      %tr
+                        %td.p-2.text-center
+                          = Setting.recheck_results.number
+                        %td.p-2.text-center
+                          = @recheck_result.number
+                    
+                      
+                        %td.p-2.text-center
+                          = Setting.recheck_results.content
+                        %td.p-2.text-center
+                          = @recheck_result.content
+                    
+              .row
+              
+              .row
+              
+              .row
+              
+                .col-md-6
+                  - unless @recheck_result.attach.blank?
+                    = link_to URI.decode(File.basename(@recheck_result.attach_url)), download_append_recheck_result_path(idencode(@recheck_result.id))
+              
+                .col-md-6
+                  - unless @recheck_result.idattach.blank?
+                    = link_to URI.decode(File.basename(@recheck_result.idattach_url)), download_append_recheck_result_path(idencode(@recheck_result.id))
+              
+              
+              .row
+                - @recheck_result.attachments.each_with_index do |e, i|
+                  .col-md-12
+                    = link_to File.basename(URI.decode(e.file_url)), download_attachment_recheck_result_path(idencode(@recheck_result.id), :number => i, :ft => '')
+              
+              
+      = render "layouts/bootstrap/card"

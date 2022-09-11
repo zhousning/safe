@@ -3,6 +3,11 @@ class Attachment < ActiveRecord::Base
   belongs_to :train
   belongs_to :drill
   belongs_to :summary
+  belongs_to :grp_review
+  belongs_to :review
+  belongs_to :review_result
+  belongs_to :modify_result
+  belongs_to :recheck_result
 end
 
 

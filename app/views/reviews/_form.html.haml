@@ -1,0 +1,97 @@
+.container-fluid
+  .row.justify-content-sm-center
+    .col-sm-12
+      = form_for @review, :url => "/reviews/#{@review.id ? idencode(@review.id) : ''}", :builder => WebsiteFormBuilder, :html => {:'data-parsley-validate' => true} do |f|
+        - if @review.errors.any?
+          #error_explanation.alert.alert-danger.alert-dismissible.fade.show
+            %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+              %span{"aria-hidden" => "true"} x 
+            %h2= "#{pluralize(@review.errors.count, "错误")}:"
+            %ul
+              - @review.errors.full_messages.each do |msg|
+                %li= msg
+        .row
+          .col-sm-12
+            %h2.text-center
+              = image_tag "gykg.jpg"
+              = Setting.reviews.label
+          .col-md-8.offset-md-2.p-5.border
+            #flash_explanation
+            .card.border-0.mb-3.rounded-0
+              -#
+                .card-header.bg-transparent.border-success
+                %h5
+              .card-body
+                %table.w-100.table-bordered.day-pdt-table
+                  %tbody
+                    
+                    %tr
+                      %td.p-2.text-center
+                        = f.label Setting.reviews.name, :class => "text-center"
+                      %td.p-2.text-center
+                        = f.text_field :name, :class => "form-control" , :required => true
+                      
+                    
+                    
+                      %td.p-2.text-center
+                        = f.label Setting.reviews.search_date, :class => "text-center"
+                      %td.p-2.text-center
+                        = f.date_field :search_date, :class => "form-control" , :required => true
+                      
+                    
+                    
+                      %td.p-2.text-center
+                        = f.label Setting.reviews.content, :class => "text-center"
+                      %td.p-2.text-center
+                        = f.text_area :content, :class => "form-control", :rows => "10" , :required => true
+                      
+                    
+                    %tr
+                      %td.p-2.text-center
+                        = f.label Setting.reviews.state, :class => "text-center"
+                      %td.p-2.text-center
+                        = f.text_field :state, :class => "form-control" , :required => true
+                      
+                    
+                    
+                      %td.p-2.text-center
+                        = f.label Setting.reviews.desc1, :class => "text-center"
+                      %td.p-2.text-center
+                        = f.text_field :desc1, :class => "form-control" 
+                      
+                    
+                    
+                      %td.p-2.text-center
+                        = f.label Setting.reviews.desc2, :class => "text-center"
+                      %td.p-2.text-center
+                        = f.text_field :desc2, :class => "form-control" 
+                      
+                    
+          
+          
+            .form-group.row
+              = f.label "一个附件", :class => "col-2 text-right col-form-label col-form-label text-right text-primary"
+              .col-9
+                %label.newbutton.button.button-primary
+                  %p.append-url
+                    = f.one_attachment("attch")
+                  = f.file_field :attch, :class => "select-file", :onchange => "readFileName(this);", :accept => ".doc,.docx"
+          
+          
+          
+            .form-group.row
+              = f.label "附件", :class => "col-2 text-right col-form-label"
+              .col-10
+                .row
+                  = f.fields_for :attachments do |attachment|
+                    = render 'attachment_fields', f: attachment
+                  .links
+                    = link_to_add_association "添加文件", f, :attachments, :class => "button button-small button-primary"
+          
+          
+            .form-group.row
+              .col-3.offset-3
+                = f.submit '保存', :class => "button  button-small button-action"
+            -#
+              .col-3.offset-1
+                = link_to '返回', reviews_path, :class => "button button-small  button-caution"

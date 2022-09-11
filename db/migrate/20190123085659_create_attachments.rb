@@ -7,6 +7,11 @@ class CreateAttachments < ActiveRecord::Migration
       t.references :train
       t.references :drill
       t.references :summary
+      t.references :grp_review
+      t.references :review
+      t.references :review_result
+      t.references :modify_result
+      t.references :recheck_result
     end
   end
 end

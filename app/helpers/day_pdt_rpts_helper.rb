@@ -36,6 +36,37 @@ module DayPdtRptsHelper
     else
       str = '待上报'
     end
+    str
+  end
+
+  def grp_review_state(review)
+    str = ''
+    if review.state == Setting.states.published
+      str = '已发布'
+    else
+      str = '待上报'
+    end
+    str
+  end
+
+  def review_state(review)
+    str = ''
+    if review.state == Setting.states.created
+      str = '待检查'
+    elsif review.state == Setting.states.modifying
+      str = '已下整改'
+    elsif review.state == Setting.states.modified
+      str = '已整改，待复检'
+    elsif review.state == Setting.states.review
+      str = '已复检，待上报水务集团'
+    elsif review.state == Setting.states.reject
+      str = '集团驳回'
+    elsif review.state == Setting.states.completed
+      str = '检查完毕'
+    elsif review.state == Setting.states.good
+      str = '检查完毕，无需整改'
+    end
+    str
   end
 
   def options_for_device_state

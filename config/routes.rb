@@ -114,6 +114,26 @@ Rails.application.routes.draw do
         get :download, :on => :member
       end
     end
+    resources :reviews do
+      get :download_attachment, :on => :member
+      get :download_append, :on => :member
+      get :query_all, :on => :collection
+      resources :review_results do
+        get :download_attachment, :on => :member
+        get :download_append, :on => :member
+        get :query_all, :on => :collection
+      end
+      resources :modify_results do
+        get :download_attachment, :on => :member
+        get :download_append, :on => :member
+        get :query_all, :on => :collection
+      end
+      resources :recheck_results do
+        get :download_attachment, :on => :member
+        get :download_append, :on => :member
+        get :query_all, :on => :collection
+      end
+    end
   end
 
   resources :grp_sign_logs, :only => [:index] do
@@ -204,6 +224,12 @@ Rails.application.routes.draw do
     get :download_append, :on => :member
   end
 
+  resources :grp_reviews do
+    get :download_attachment, :on => :member
+    get :download_append, :on => :member
+    get :query_all, :on => :collection
+    get :publish, :on => :member 
+  end
   resources :flower
 
 end

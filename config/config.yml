@@ -204,6 +204,11 @@ defaults:
     processing: processing
     published: published
     report: report
+    created: created
+    modifying: modifying 
+    modified: modified
+    review: review 
+    good: good
   trade_orders: &17
     number: 订单编号
     price: 价格
@@ -233,7 +238,7 @@ defaults:
     agree_title: 同意
     disagree: disagree
     disagree_title: 不同意
-  file_libs: &19
+  file_libs:
     label: 文件库
     name: 文件名
     path: 路径
@@ -245,40 +250,40 @@ defaults:
     ppt: '4'
     mp4: '5'
     txt: '6'
-  archives: &20
+  archives:
     label: 档案库
     name: 名称
     desc: 备注
-  portfolios: &21
+  portfolios:
     label: 文件夹
     name: 文件夹名
-  examines: &22
+  examines:
     label: 考核资料自选库
     name: 名称
-  exm_items: &23
+  exm_items:
     label: 一级目录
     name: 一级目录名
     hierarchy: 目录树
-  agendas: &24
+  agendas:
     label: 日程
     title: 标题
     content: 事务内容
     worktime: 时间
-  statistics: &25
+  statistics: &19
     label: 统计
     title: 标题
     xtitle: x轴标题
     ytitle: y轴标题
     legend: 图例
     data: 数据
-  companies: &26
+  companies: &20
     label: 公司
     area: 地区
     name: 名称
     info: 简介
     lnt: 经度
     lat: 维度
-  factories: &27
+  factories: &21
     label: 工厂
     area: 地区
     name: 名称
@@ -287,11 +292,11 @@ defaults:
     lnt: 经度
     lat: 维度
     plan: 计划
-  departments: &28
+  departments: &22
     label: 部门
     name: 名称
     info: 简介
-  charts: &29
+  charts: &23
     line: '0'
     bar: '1'
     gauge: '2'
@@ -304,7 +309,7 @@ defaults:
     table_t: table
     radar_t: radar
     scatter_3d_t: scatter_3d
-  months: &30
+  months: &24
     one: '1'
     one_t: 一月
     two: '2'
@@ -329,7 +334,7 @@ defaults:
     eleven_t: 十一月
     twelve: '12'
     twelve_t: 十二月
-  accounts: &31
+  accounts: &25
     coin: 金额
     password: 安全密码
     number: 卡号
@@ -340,7 +345,7 @@ defaults:
     award_invite_recharge: 40
     enable: enable
     disable: disable
-  devices: &32
+  devices: &26
     label: 施工站点
     idno: 站点编号
     name: 站点名称
@@ -359,48 +364,48 @@ defaults:
     state_normal: 施工中
     state_repair: 已完工
     state_stop: 停工
-  upholds: &33
+  upholds: &27
     label: 巡检记录
     uphold_date: 日期
     reason: 巡检原因
     content: 巡检内容
     cost: 费用
     state: 状态
-  patrolers: &34
+  patrolers: &28
     label: 签到负责人
     name: 姓名
     phone: 电话
     password: 密码
-  tasks: &35
+  tasks: &29
     label: 巡检任务
     task_date: 巡检日期
     des: 备注
-  task_reports: &36
+  task_reports: &30
     label: 巡检报告
     longitude: 经度
     latitude: 维度
     state: 运行状态
     question: 问题
-  task_logs: &37
+  task_logs: &31
     label: 巡检日志
     start_time: 开始时间
     end_time: 结束时间
     state: 状态
-  gdservices: &38
+  gdservices: &32
     label: 北斗定位终端
     key: key
     name: name
     sid: sid
-  gdteminals: &39
+  gdteminals: &33
     label: 北斗地图终端
     name: name
     tid: tid
     desc: desc
-  gdtraces: &40
+  gdtraces: &34
     label: 北斗地图轨迹管理
     trid: trid
     trname: trname
-  workers: &41
+  workers: &35
     label: 工人管理
     name: 姓名
     idno: 身份证
@@ -411,73 +416,11 @@ defaults:
     idfront: 身份证正面
     idback: 身份证反面
     avatar: 一寸照片
-  sign_logs: &42
+  sign_logs: &36
     label: 签到记录
     sign_date: 签到日期
     wx_user_id: 签到审核人
     device_id: 站点
-  file_libs: &130
-    label: 文件库
-    name: 文件名
-    path: 路径
-    file_type: 文件类型
-    doc: '0'
-    xls: '1'
-    pdf: '2'
-    img: '3'
-    ppt: '4'
-    mp4: '5'
-    txt: '6'
-  archives: &131
-    label: 档案库
-    name: 名称
-    desc: 备注
-  portfolios: &132
-    label: 文件夹
-    name: 文件夹名
-  examines: &133
-    label: 考核资料自选库
-    name: 名称
-  exm_items: &134
-    label: 一级目录
-    name: 一级目录名
-    hierarchy: 目录树
-  agendas: &135
-    label: 日程
-    title: 标题
-    content: 事务内容
-    worktime: 时间
-  file_libs: &130
-    label: 文件库
-    name: 文件名
-    path: 路径
-    file_type: 文件类型
-    doc: '0'
-    xls: '1'
-    pdf: '2'
-    img: '3'
-    ppt: '4'
-    mp4: '5'
-    txt: '6'
-  archives: &131
-    label: 档案库
-    name: 名称
-    desc: 备注
-  portfolios: &132
-    label: 文件夹
-    name: 文件夹名
-  examines: &133
-    label: 考核资料自选库
-    name: 名称
-  exm_items: &134
-    label: 一级目录
-    name: 一级目录名
-    hierarchy: 目录树
-  agendas: &135
-    label: 日程
-    title: 标题
-    content: 事务内容
-    worktime: 时间
 development:
   notices: *1
   reports: *2
@@ -497,30 +440,55 @@ development:
   states: *16
   trade_orders: *17
   extract_cashes: *18
-  file_libs: *19
-  archives: *20
-  portfolios: *21
-  examines: *22
-  exm_items: *23
-  agendas: *24
-  statistics: *25
-  companies: *26
-  factories: *27
-  departments: *28
-  charts: *29
-  months: *30
-  accounts: *31
-  devices: *32
-  upholds: *33
-  patrolers: *34
-  tasks: *35
-  task_reports: *36
-  task_logs: *37
-  gdservices: *38
-  gdteminals: *39
-  gdtraces: *40
-  workers: *41
-  sign_logs: *42
+  file_libs:
+    label: 文件库
+    name: 文件名
+    path: 路径
+    file_type: 文件类型
+    doc: '0'
+    xls: '1'
+    pdf: '2'
+    img: '3'
+    ppt: '4'
+    mp4: '5'
+    txt: '6'
+  archives:
+    label: 档案库
+    name: 名称
+    desc: 备注
+  portfolios:
+    label: 文件夹
+    name: 文件夹名
+  examines:
+    label: 考核资料自选库
+    name: 名称
+  exm_items:
+    label: 一级目录
+    name: 一级目录名
+    hierarchy: 目录树
+  agendas:
+    label: 日程
+    title: 标题
+    content: 事务内容
+    worktime: 时间
+  statistics: *19
+  companies: *20
+  factories: *21
+  departments: *22
+  charts: *23
+  months: *24
+  accounts: *25
+  devices: *26
+  upholds: *27
+  patrolers: *28
+  tasks: *29
+  task_reports: *30
+  task_logs: *31
+  gdservices: *32
+  gdteminals: *33
+  gdtraces: *34
+  workers: *35
+  sign_logs: *36
   trains:
     label: 培训管理
     title: 培训标题
@@ -567,5 +535,42 @@ development:
     ctg: 分类
     state: 状态
     place: 备用
+  grp_reviews:
+    label: 集团检查
+    name: 名称
+    search_date: 检查日期
+    content: 检查内容
+    state: 状态
+    desc1: 备用1
+    desc2: 备用2
+  reviews:
+    label: 集团检查
+    name: 名称
+    search_date: 检查日期
+    content: 检查内容
+    state: 状态
+    desc1: 备用1
+    desc2: 备用2
+  review_results:
+    label: 检查结果
+    worker: 检查人员
+    signer: 签字确认人员
+    search_date: 检查日期
+    number: 隐患数量
+    content: 检查结果
+  modify_results:
+    label: 整改材料
+    worker: 检查人员
+    signer: 整改单位签字人员
+    search_date: 检查日期
+    number: 整改隐患数量
+    content: 整改结果
+  recheck_results:
+    label: 复检材料
+    worker: 检查人员
+    signer: 整改单位签字人员
+    search_date: 复检日期
+    number: 复检隐患数量
+    content: 复检结果
 test: 
 production: 
