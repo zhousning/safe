@@ -67,7 +67,7 @@ class Review < ActiveRecord::Base
   end
 
   def review
-    if modifying? || review?
+    if modified? || review?
       update_attribute :state, Setting.states.review
     end
   end

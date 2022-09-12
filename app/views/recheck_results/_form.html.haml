@@ -1,7 +1,7 @@
 .container-fluid
   .row.justify-content-sm-center
     .col-sm-12
-      = form_for @recheck_result, :url => "/recheck_results/#{@recheck_result.id ? idencode(@recheck_result.id) : ''}", :builder => WebsiteFormBuilder, :html => {:'data-parsley-validate' => true} do |f|
+      = form_for [@factory, @review, @recheck_result], :builder => WebsiteFormBuilder, :html => {:'data-parsley-validate' => true} do |f|
         - if @recheck_result.errors.any?
           #error_explanation.alert.alert-danger.alert-dismissible.fade.show
             %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
@@ -40,13 +40,13 @@
                       
                     
                     
+                    %tr
                       %td.p-2.text-center
                         = f.label Setting.recheck_results.search_date, :class => "text-center"
                       %td.p-2.text-center
                         = f.date_field :search_date, :class => "form-control" , :required => true
                       
                     
-                    %tr
                       %td.p-2.text-center
                         = f.label Setting.recheck_results.number, :class => "text-center"
                       %td.p-2.text-center
@@ -54,23 +54,25 @@
                       
                     
                     
+                    %tr
                       %td.p-2.text-center
                         = f.label Setting.recheck_results.content, :class => "text-center"
-                      %td.p-2.text-center
+                      %td.p-2.text-center{:colspan => 3}
                         = f.text_area :content, :class => "form-control", :rows => "10" , :required => true
                       
                     
           
           
             .form-group.row
-              = f.label "一个附件", :class => "col-2 text-right col-form-label col-form-label text-right text-primary"
+              = f.label "复检结果文件", :class => "col-2 text-right col-form-label col-form-label text-right text-primary"
               .col-9
                 %label.newbutton.button.button-primary
                   %p.append-url
                     = f.one_attachment("attach")
                   = f.file_field :attach, :class => "select-file", :onchange => "readFileName(this);", :accept => ".doc,.docx"
           
-            .form-group.row
+            -#
+              .form-group.row
               = f.label "一个附件", :class => "col-2 text-right col-form-label col-form-label text-right text-primary"
               .col-9
                 %label.newbutton.button.button-primary
@@ -81,7 +83,7 @@
           
           
             .form-group.row
-              = f.label "附件", :class => "col-2 text-right col-form-label"
+              = f.label "其他附件", :class => "col-2 text-right col-form-label"
               .col-10
                 .row
                   = f.fields_for :attachments do |attachment|

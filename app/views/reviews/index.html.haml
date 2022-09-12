@@ -69,6 +69,8 @@
                         .container-fluid
                           .row.justify-content-center
                             = link_to "查看",  factory_review_path(idencode(@factory.id), idencode(review.id)), :class => "button button-primary button-small mr-1" 
+                            = link_to "整改",  edit_factory_review_modify_result_path(idencode(@factory.id), idencode(review.id), idencode(review.modify_result.id)), :class => "button button-caution button-small mr-1" 
+                            = link_to "复检",  edit_factory_review_recheck_result_path(idencode(@factory.id), idencode(review.id), idencode(review.recheck_result.id)), :class => "button button-royal button-small mr-1" 
                             -#
                               = link_to "编辑", edit_review_path(idencode(review.id)), :class => "button button-royal button-small mr-1" 
                               = link_to "删除",  review_path(idencode(review.id)), :method => :delete, :data => {:confirm => "确定删除吗?"}, :class => "button button-caution button-small" 

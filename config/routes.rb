@@ -127,11 +127,13 @@ Rails.application.routes.draw do
       resources :modify_results do
         get :download_attachment, :on => :member
         get :download_append, :on => :member
+        get :modify, :on => :member
         get :query_all, :on => :collection
       end
       resources :recheck_results do
         get :download_attachment, :on => :member
         get :download_append, :on => :member
+        get :recheck, :on => :member
         get :query_all, :on => :collection
       end
     end
