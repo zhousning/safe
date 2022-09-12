@@ -9,7 +9,7 @@
           = fa_icon "wpforms", text: t(controller_name + "." + action_name + '.title')
           -#
             = link_to "#{request.url}".sub("edit", ""), :class => "button button-small pull-right button-primary" do
-          = link_to "/factories/#{idencode(@factory.id)}/reviews/#{idencode(@review.id)}", :class => "button button-small  pull-right button-primary mr-1" do
+          = link_to "/factories/#{idencode(@factory.id)}/reviews/", :class => "button button-small  pull-right button-primary mr-1" do
             = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
 
           = link_to "确认已复检", "/factories/#{idencode(@factory.id)}/reviews/#{idencode(@review.id)}/recheck_results/#{idencode(@recheck_result.id)})/recheck", :class => "button button-small  pull-right button-primary mr-1", :data => {:confirm => "确定已复检?"}

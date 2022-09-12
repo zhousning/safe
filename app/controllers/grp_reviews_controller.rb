@@ -48,6 +48,11 @@ class GrpReviewsController < ApplicationController
   end
 
 
+  def review
+    @grp_review = GrpReview.find(iddecode(params[:id]))
+    @review = Review.find(iddecode(params[:review_id]))
+  end
+
   
     def download_attachment 
      

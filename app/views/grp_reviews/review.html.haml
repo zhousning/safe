@@ -7,7 +7,7 @@
       - content_for :card_header do
         %h5
           = fa_icon "newspaper-o", text: t(controller_name + "." + action_name + '.title')
-          = link_to "/factories/#{idencode(@factory.id)}/#{controller_name}", :class => "button button-small  pull-right button-primary" do
+          = link_to "/grp_reviews/#{idencode(@grp_review.id)}", :class => "button button-small  pull-right button-primary" do
             = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
       - content_for :card_body do
         .container-fluid
@@ -72,9 +72,6 @@
                 - @review.attachments.each_with_index do |e, i|
                   .col-md-12
                     = link_to File.basename(URI.decode(e.file_url)), download_attachment_review_path(idencode(@review.id), :number => i, :ft => '')
-        = render 'review_result'
-        = render 'modify_result'
-        = render 'recheck_result'
               
               
       = render "layouts/bootstrap/card"

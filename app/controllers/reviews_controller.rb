@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   before_filter :authenticate_user!
   #authorize_resource
 
-   
   def index
     @factory = my_factory
     @reviews = @factory.reviews.order('search_date DESC').page( params[:page]).per( Setting.systems.per_page )
@@ -12,55 +11,17 @@ class ReviewsController < ApplicationController
   def show
     @factory = my_factory
     @review = @factory.reviews.find(iddecode(params[:id]))
+    @modify_result = @review.modify_result
+    @recheck_result = @review.recheck_result
+    @review_result = @review.review_result
   end
 
-  def new
-    @review = Review.new
-    
-    #@review.exm_items.build
-  end
-   
-  def create
-    @factory = my_factory
-    @review = Review.new(review_params)
-    @review.factory = @factory
-    if @review.save
-      redirect_to reviews_path
-    else
-      render :new
-    end
-  end
-   
-  def edit
-    @factory = my_factory
-    @review = @factory.reviews.find(iddecode(params[:id]))
-  end
-   
-  def update
-    @factory = my_factory
-    @review = @factory.reviews.find(iddecode(params[:id]))
-    if @review.update(review_params)
-      redirect_to reviews_path
-    else
-      render :edit
-    end
-  end
-   
-  def destroy
-    @factory = my_factory
-    @review = @factory.reviews.find(iddecode(params[:id]))
-    @review.destroy
-    redirect_to :action => :index
-  end
-   
   def report 
     @factory = my_factory
     @review = @factory.reviews.find(iddecode(params[:id]))
     @review.report
     redirect_to :action => :index
   end
-
-
   
   def download_attachment 
    
@@ -75,8 +36,6 @@ class ReviewsController < ApplicationController
     end
   end
   
-
-  
   def download_append
    
     @factory = my_factory
@@ -88,10 +47,6 @@ class ReviewsController < ApplicationController
       send_file File.join(Rails.root, "public", URI.decode(@attch)), :type => "application/force-download", :x_sendfile=>true
     end
   end
-  
-
-  
-  
   
 
   private
@@ -107,3 +62,42 @@ class ReviewsController < ApplicationController
   
 end
 
+#def new
+#  @review = Review.new
+#  
+#  #@review.exm_items.build
+#end
+# 
+#def create
+#  @factory = my_factory
+#  @review = Review.new(review_params)
+#  @review.factory = @factory
+#  if @review.save
+#    redirect_to reviews_path
+#  else
+#    render :new
+#  end
+#end
+# 
+#def edit
+#  @factory = my_factory
+#  @review = @factory.reviews.find(iddecode(params[:id]))
+#end
+# 
+#def update
+#  @factory = my_factory
+#  @review = @factory.reviews.find(iddecode(params[:id]))
+#  if @review.update(review_params)
+#    redirect_to reviews_path
+#  else
+#    render :edit
+#  end
+#end
+# 
+#def destroy
+#  @factory = my_factory
+#  @review = @factory.reviews.find(iddecode(params[:id]))
+#  @review.destroy
+#  redirect_to :action => :index
+#end
+ 

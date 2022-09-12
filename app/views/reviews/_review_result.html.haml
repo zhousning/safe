@@ -1,0 +1,66 @@
+.container-fluid
+  .row
+    .col-sm-12
+      %h2.text-center
+        = image_tag "gykg.jpg"
+        = Setting.review_results.label
+    .col-md-8.offset-2.p-5.border
+      .card.border-0.mb-3.rounded-0
+        -#
+          .card-header.bg-transparent.border-dark
+          %h5
+        .card-body
+          %table.table-bordered.day-pdt-table.w-100.mb-3
+            %tbody
+            
+              %tr
+                %td.p-2.text-center
+                  = Setting.review_results.worker
+                %td.p-2.text-center
+                  = @review_result.worker
+            
+              
+                %td.p-2.text-center
+                  = Setting.review_results.signer
+                %td.p-2.text-center
+                  = @review_result.signer
+            
+              
+                %td.p-2.text-center
+                  = Setting.review_results.search_date
+                %td.p-2.text-center
+                  = @review_result.search_date
+            
+              %tr
+                %td.p-2.text-center
+                  = Setting.review_results.number
+                %td.p-2.text-center
+                  = @review_result.number
+            
+              
+                %td.p-2.text-center
+                  = Setting.review_results.content
+                %td.p-2.text-center
+                  = @review_result.content
+            
+      .row
+      
+      .row
+      
+      .row
+      
+        .col-md-6
+          - unless @review_result.attach.blank?
+            = link_to URI.decode(File.basename(@review_result.attach_url)), download_append_factory_review_review_result_path(idencode(@factory.id), idencode(@review.id), idencode(@review_result.id))
+      
+        .col-md-6
+          - unless @review_result.idattach.blank?
+            = link_to URI.decode(File.basename(@review_result.idattach_url)), download_append_factory_review_review_result_path(idencode(@factory.id), idencode(@review.id), idencode(@review_result.id))
+      
+      
+      .row
+        - @review_result.attachments.each_with_index do |e, i|
+          .col-md-12
+            = link_to File.basename(URI.decode(e.file_url)), download_attachment_factory_review_review_result_path(idencode(@factory.id), idencode(@review.id), idencode(@review_result.id), :number => i, :ft => '')
+      
+      

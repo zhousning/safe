@@ -230,6 +230,7 @@ Rails.application.routes.draw do
   resources :grp_reviews do
     get :download_attachment, :on => :member
     get :download_append, :on => :member
+    get :review, :on => :member
     get :query_all, :on => :collection
     get :publish, :on => :member 
   end
