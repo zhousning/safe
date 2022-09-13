@@ -50,25 +50,25 @@ module DayPdtRptsHelper
   end
 
   def review_state(review)
-    str = ''
+    str = ""
     if review.state == Setting.states.created
-      str = '待检查'
+      str = "<span class='text-dark border border-dark p-2'>待检查</span>"
     elsif review.state == Setting.states.modifying
-      str = '已下整改'
+      str = "<span class='text-danger border border-danger p-2'>已下整改</span>"
     elsif review.state == Setting.states.modified
-      str = '已整改，待复检'
+      str = "<span class='text-info border border-info p-2'>已整改，待复检</span>"
     elsif review.state == Setting.states.review
-      str = '已复检，待上报水务集团'
+      str = "<span class='text-warning border border-warning p-2'>已复检，待上报水务集团</span>"
     elsif review.state == Setting.states.report
-      str = '已上报水务集团'
+      str = "<span class='text-primary border border-primary p-2'>已上报水务集团</span>"
     elsif review.state == Setting.states.reject
-      str = '集团驳回'
+      str = "<span class='text-danger border border-danger p-2'>集团驳回</span>"
     elsif review.state == Setting.states.completed
-      str = '已办结'
+      str = "<span class='text-success border border-success p-2'>已办结</span>"
     elsif review.state == Setting.states.good
-      str = '检查完毕，无需整改'
+      str = "<span class='text-success border border-success p-2'>检查完毕，无需整改</span>"
     end
-    str
+    str.html_safe
   end
 
   def options_for_device_state

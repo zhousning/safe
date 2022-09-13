@@ -125,17 +125,20 @@ Rails.application.routes.draw do
         get :publish, :on => :member
         get :download_attachment, :on => :member
         get :download_append, :on => :member
+        get :download_idappend, :on => :member
         get :query_all, :on => :collection
       end
       resources :modify_results do
         get :download_attachment, :on => :member
         get :download_append, :on => :member
+        get :download_idappend, :on => :member
         get :modify, :on => :member
         get :query_all, :on => :collection
       end
       resources :recheck_results do
         get :download_attachment, :on => :member
         get :download_append, :on => :member
+        get :download_idappend, :on => :member
         get :recheck, :on => :member
         get :query_all, :on => :collection
       end

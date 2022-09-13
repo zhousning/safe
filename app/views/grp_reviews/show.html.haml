@@ -14,7 +14,7 @@
         .container-fluid
           .row
             .col-md-12
-              %table#item-table.text-center.table-sm{:'data-toggle' => "table", :'data-id-table'=>"advancedTable", :"data-pagination"=>"true", :'data-page-size' => "25", :"data-search" => "true", :'data-advanced-search'=>"true", :'data-virtual-scroll' => false }
+              %table.text-center.table.table-bordered
                 %thead
                   %tr
                     %th{:scope => "col", :'data-field' => "id"} #
@@ -49,7 +49,7 @@
                               = link_to "下整改",  edit_factory_review_review_result_path(idencode(review.factory.id), idencode(review.id), idencode(review.review_result.id)), :class => "button button-caution button-small mr-2" 
 
           .row
-            .col-md-8.offset-2.p-5.border
+            .col-md-8.p-5
               .card.border-0.mb-3.rounded-0
                 .card-body
                   %table.table-bordered.day-pdt-table.w-100.mb-3

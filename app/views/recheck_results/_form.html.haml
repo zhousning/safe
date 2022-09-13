@@ -69,7 +69,7 @@
                 %label.newbutton.button.button-primary
                   %p.append-url
                     = f.one_attachment("attach")
-                  = f.file_field :attach, :class => "select-file", :onchange => "readFileName(this);", :accept => ".doc,.docx"
+                  = f.file_field :attach, :class => "select-file", :onchange => "readFileName(this);"
           
             -#
               .form-group.row

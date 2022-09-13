@@ -44,8 +44,8 @@ class ReviewResultsController < ApplicationController
   
   def download_attachment 
    
-    @factory =Factory.find(params[:factory_id])
-    @review = @factory.reviews.find(params[:review_id])
+    @factory =Factory.find(iddecode(params[:factory_id]))
+    @review = @factory.reviews.find(iddecode(params[:review_id]))
     @review_result = @review.review_result
    
     @attachment_id = params[:number].to_i
@@ -60,8 +60,8 @@ class ReviewResultsController < ApplicationController
   
   def download_append
    
-    @factory =Factory.find(params[:factory_id])
-    @review = @factory.reviews.find(params[:review_id])
+    @factory =Factory.find(iddecode(params[:factory_id]))
+    @review = @factory.reviews.find(iddecode(params[:review_id]))
     @review_result = @review.review_result
    
     @attach = @review_result.attach_url
@@ -71,9 +71,9 @@ class ReviewResultsController < ApplicationController
     end
   end
   
-  def download_append
-    @factory =Factory.find(params[:factory_id])
-    @review = @factory.reviews.find(params[:review_id])
+  def download_idappend
+    @factory =Factory.find(iddecode(params[:factory_id]))
+    @review = @factory.reviews.find(iddecode(params[:review_id]))
     @review_result = @review.review_result
    
     @idattach = @review_result.idattach_url

@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
     @factory = my_factory
     @review = @factory.reviews.find(iddecode(params[:id]))
     @review.report
-    redirect_to :action => :index
+    redirect_to factory_review_path(idencode(@factory.id), idencode(@review.id)) 
   end
 
   def reject

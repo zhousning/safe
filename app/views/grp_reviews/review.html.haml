@@ -13,59 +13,38 @@
             = link_to "驳回", "/factories/#{idencode(@factory.id)}/reviews/#{idencode(@review.id)}/reject", :class => "button button-small  pull-right button-caution mr-3", :data => {:confirm => "确认驳回吗?"} 
             = link_to "办结", "/factories/#{idencode(@factory.id)}/reviews/#{idencode(@review.id)}/complete", :class => "button button-small  pull-right button-inverse mr-3", :data => {:confirm => "确认已办结吗?"} 
       - content_for :card_body do
+        .container
+          .row
+            .col-sm-12
+              %h2.text-right
+                = review_state(@review)
         .container-fluid
           .row
             .col-sm-12
               %h2.text-center
                 = image_tag "gykg.jpg"
-                = Setting.reviews.label
+                = @review.name
             .col-md-8.offset-2.p-5.border
               .card.border-0.mb-3.rounded-0
-                -#
-                  .card-header.bg-transparent.border-dark
-                  %h5
                 .card-body
                   %table.table-bordered.day-pdt-table.w-100.mb-3
                     %tbody
                     
                       %tr
                         %td.p-2.text-center
-                          = Setting.reviews.name
-                        %td.p-2.text-center
-                          = @review.name
-                    
-                      
-                        %td.p-2.text-center
                           = Setting.reviews.search_date
                         %td.p-2.text-center
                           = @review.search_date
                     
                       
-                        %td.p-2.text-center
-                          = Setting.reviews.content
-                        %td.p-2.text-center
-                          = @review.content
-                    
                       %tr
                         %td.p-2.text-center
-                          = Setting.reviews.state
-                        %td.p-2.text-center
-                          = @review.state
+                          = Setting.reviews.content
+                        %td.p-2.text-center{:colspan => 3}
+                          = @review.content
                     
-                      
-                        %td.p-2.text-center
-                          = Setting.reviews.desc1
-                        %td.p-2.text-center
-                          = @review.desc1
-                    
-                      
-                        %td.p-2.text-center
-                          = Setting.reviews.desc2
-                        %td.p-2.text-center
-                          = @review.desc2
                     
               .row
-              
                 .col-md-6
                   - unless @review.attch.blank?
                     = link_to URI.decode(File.basename(@review.attch_url)), download_append_review_path(idencode(@review.id))
@@ -75,6 +54,10 @@
                 - @review.attachments.each_with_index do |e, i|
                   .col-md-12
                     = link_to File.basename(URI.decode(e.file_url)), download_attachment_review_path(idencode(@review.id), :number => i, :ft => '')
+
+        = render 'reviews/review_result'
+        = render 'reviews/modify_result'
+        = render 'reviews/recheck_result'
               
               
       = render "layouts/bootstrap/card"

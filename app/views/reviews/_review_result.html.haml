@@ -46,7 +46,7 @@
       
         .col-md-6
           - unless @review_result.idattach.blank?
-            = link_to URI.decode(File.basename(@review_result.idattach_url)), download_append_factory_review_review_result_path(idencode(@factory.id), idencode(@review.id), idencode(@review_result.id))
+            = link_to URI.decode(File.basename(@review_result.idattach_url)), download_idappend_factory_review_review_result_path(idencode(@factory.id), idencode(@review.id), idencode(@review_result.id))
       
       
       .row

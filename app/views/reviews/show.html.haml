@@ -12,6 +12,11 @@
           - if @review.state == Setting.states.review
             = link_to "上报水务集团", "/factories/#{idencode(@factory.id)}/reviews/#{idencode(@review.id)}/report", :class => "button button-small  pull-right button-inverse mr-3", :data => {:confirm => "确认上报吗?"} 
       - content_for :card_body do
+        .container
+          .row
+            .col-sm-12
+              %h2.text-right
+                = review_state(@review)
         .container-fluid
           .row
             .col-sm-12
@@ -33,10 +38,6 @@
                         %td.p-2.text-center
                           = @grp_review.search_date
                     
-                        %td.p-2.text-center
-                          = Setting.reviews.state
-                        %td.p-2.text-center
-                          = review_state(@review)
                       
                       %tr
                         %td.p-2.text-center

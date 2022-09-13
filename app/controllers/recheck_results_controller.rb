@@ -36,7 +36,7 @@ class RecheckResultsController < ApplicationController
    
   
   def download_attachment 
-    @factory = my_factory
+    @factory =Factory.find(iddecode(params[:factory_id]))
     @review = @factory.reviews.find(iddecode(params[:review_id]))
     @recheck_result = @review.recheck_result
      
@@ -51,7 +51,7 @@ class RecheckResultsController < ApplicationController
 
   
   def download_append
-    @factory = my_factory
+    @factory =Factory.find(iddecode(params[:factory_id]))
     @review = @factory.reviews.find(iddecode(params[:review_id]))
     @recheck_result = @review.recheck_result
    
@@ -62,8 +62,8 @@ class RecheckResultsController < ApplicationController
     end
   end
   
-  def download_append
-    @factory = my_factory
+  def download_idappend
+    @factory =Factory.find(iddecode(params[:factory_id]))
     @review = @factory.reviews.find(iddecode(params[:review_id]))
     @recheck_result = @review.recheck_result
    

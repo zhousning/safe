@@ -52,6 +52,9 @@ class GrpReviewsController < ApplicationController
     @grp_review = GrpReview.find(iddecode(params[:id]))
     @review = Review.find(iddecode(params[:review_id]))
     @factory = @review.factory
+    @modify_result = @review.modify_result
+    @recheck_result = @review.recheck_result
+    @review_result = @review.review_result
   end
 
   
