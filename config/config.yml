@@ -206,9 +206,9 @@ defaults:
     report: report
     reject: reject
     created: created
-    modifying: modifying 
+    modifying: modifying
     modified: modified
-    review: review 
+    review: review
     good: good
   trade_orders: &17
     number: 订单编号
@@ -544,5 +544,17 @@ development:
     title: 标题
     content: 事务内容
     worktime: 时间
+  out_reviews:
+    label: 外部检查
+    title: 标题
+    search_date: 检查日期
+    content: 检查内容
+    state: 状态
+    desc1: 备用1
+    desc2: 备用2
+    official: 官方文件
+    result: 检查结果
+    modified: 整改材料
+    recheck: 复检材料
 test: 
 production: 

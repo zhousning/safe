@@ -1,0 +1,90 @@
+- provide(:title, t('.title'))
+
+.container-fluid
+  .row
+    = render "layouts/control_sidebar"
+    %main.col-md-11.ml-sm-auto.col-lg-11.p-3{:role => "main"}
+      - content_for :card_header do
+        %h5
+          = fa_icon "newspaper-o", text: t(controller_name + "." + action_name + '.title')
+          = link_to "/factories/#{idencode(@factory.id)}/#{controller_name}", :class => "button button-small  pull-right button-primary" do
+            = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
+      - content_for :card_body do
+        .container-fluid
+          .row
+            .col-sm-12
+              %h2.text-center
+                = image_tag "gykg.jpg"
+                = @out_review.title
+            .col-md-8.offset-2.p-5.border
+              .card.border-0.mb-3.rounded-0
+                -#
+                  .card-header.bg-transparent.border-dark
+                  %h5
+                .card-body
+                  %table.table-bordered.day-pdt-table.w-100.mb-3
+                    %tbody
+                    
+                      %tr
+                        %td.p-2.text-center
+                          = Setting.out_reviews.search_date
+                        %td.p-2.text-left
+                          = @out_review.search_date
+                    
+                      
+                      %tr
+                        %td.p-2.text-center
+                          = Setting.out_reviews.content
+                        %td.p-2.text-left
+                          = @out_review.content
+                    
+                    -#
+                      %tr
+                        %td.p-2.text-center
+                          = Setting.out_reviews.state
+                        %td.p-2.text-center
+                          = @out_review.state
+                    
+                      
+                        %td.p-2.text-center
+                          = Setting.out_reviews.desc1
+                        %td.p-2.text-center
+                          = @out_review.desc1
+                    
+                      
+                        %td.p-2.text-center
+                          = Setting.out_reviews.desc2
+                        %td.p-2.text-center
+                          = @out_review.desc2
+                    
+              .row
+              
+                .col-md-12.mb-3
+                  = Setting.out_reviews.official
+                  - unless @out_review.official.blank?
+                    = link_to URI.decode(File.basename(@out_review.official_url)), download_official_factory_out_review_path(idencode(@factory.id), idencode(@out_review.id))
+              
+                .col-md-12.mb-3
+                  = Setting.out_reviews.result
+                  - unless @out_review.result.blank?
+                    = link_to URI.decode(File.basename(@out_review.result_url)), download_result_factory_out_review_path(idencode(@factory.id), idencode(@out_review.id))
+              
+                .col-md-12.mb-3
+                  = Setting.out_reviews.modified
+                  - unless @out_review.modified.blank?
+                    = link_to URI.decode(File.basename(@out_review.modified_url)), download_modified_factory_out_review_path(idencode(@factory.id), idencode(@out_review.id))
+              
+                .col-md-12.mb-3
+                  = Setting.out_reviews.recheck
+                  - unless @out_review.recheck.blank?
+                    = link_to URI.decode(File.basename(@out_review.recheck_url)), download_recheck_factory_out_review_path(idencode(@factory.id), idencode(@out_review.id))
+              
+              
+              .row
+                其他附件
+                - @out_review.attachments.each_with_index do |e, i|
+                  .col-md-12
+                    = link_to File.basename(URI.decode(e.file_url)), download_attachment_factory_out_review_path(idencode(@factory.id), idencode(@out_review.id), :number => i, :ft => '')
+              
+              
+      = render "layouts/bootstrap/card"

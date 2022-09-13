@@ -61,6 +61,14 @@ Rails.application.routes.draw do
       #get :xls_download, :on => :collection
       get :query_all, :on => :collection
     end
+    resources :out_reviews do
+      get :download_attachment, :on => :member
+      get :download_official, :on => :member
+      get :download_modified, :on => :member
+      get :download_result, :on => :member
+      get :download_recheck, :on => :member
+      get :query_all, :on => :collection
+    end
     resources :inspectors, :only => [:index] do
       get :receive, :on => :member
       get :reject, :on => :member
@@ -239,6 +247,21 @@ Rails.application.routes.draw do
     get :review, :on => :member
     get :query_all, :on => :collection
     get :publish, :on => :member 
+  end
+  resources :out_reviews do
+    get :download_attachment, :on => :member
+    get :download_append, :on => :member
+    get :query_all, :on => :collection
+  end
+  resources :grp_out_reviews do
+    get :query_device, :on => :collection
+    get :query_list, :on => :collection
+    get :query_info, :on => :member
+  end
+  resources :grp_out_reviews do
+    get :query_device, :on => :collection
+    get :query_list, :on => :collection
+    get :query_info, :on => :member
   end
   resources :flower
 

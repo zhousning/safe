@@ -12,6 +12,8 @@ class CreateAttachments < ActiveRecord::Migration
       t.references :review_result
       t.references :modify_result
       t.references :recheck_result
+      t.references :out_review
+      t.references :out_review
     end
   end
 end

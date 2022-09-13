@@ -18,3 +18,5 @@
               = fa_icon "file-text", text: "文件报送", class: " ml-4 mr-2"
             = link_to grp_reviews_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0  #{(/review/ =~ request.path).nil? ? '' : 'text-danger'}" do
               = fa_icon "file-text", text: Setting.grp_reviews.label, class: " ml-4 mr-2"
+            = link_to grp_out_reviews_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0  #{(/out_review/ =~ request.path).nil? ? '' : 'text-danger'}" do
+              = fa_icon "file-text", text: Setting.grp_out_reviews.label, class: " ml-4 mr-2"
