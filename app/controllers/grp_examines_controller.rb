@@ -12,6 +12,7 @@ class GrpExaminesController < ApplicationController
   end
    
   def show
+    @grp_examine = GrpExamine.find(params[:id])
     @examines = Examine.where(:grp_examine_id => params[:id])
   end
 
@@ -103,9 +104,26 @@ class GrpExaminesController < ApplicationController
         @grp_examine.published
       rescue
       end
+    else
+      begin
+        Examine.transaction do
+          @grp_examine.examines.each do |examine|
+            examine.update_attributes!(:name => @grp_examine.name, :hierarchy => @grp_examine.hierarchy)
+          end
+        end
+      rescue
+      end
     end
     redirect_to grp_examines_path
   end
+
+  def reject_examine
+    @grp_examine = GrpExamine.find(iddecode(params[:id]))
+    @examine = @grp_examine.examines.find(iddecode(params[:examine_id]))
+    @examine.reject
+    redirect_to grp_examine_path(@grp_examine)
+  end
+
   private
     def examine_params
       params.require(:grp_examine).permit( :name, :search_date, :content, exm_items_attributes: exm_item_params)

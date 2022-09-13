@@ -1,45 +1,52 @@
 - provide(:title, t('.title'))
 
-- content_for :main_body do
-  .container-fluid.p-0
-    .row
-      .col-md-12
-        %table#day-pdt-rpt-table.text-center.table-sm{:'data-toggle' => "table", :"data-pagination"=>"true", :'data-id-table'=>"advancedTable"}
-          %thead
-            %tr
-              %th{:scope => "col"} #
+.container-fluid
+  .row
+    = render "layouts/control_sidebar"
+    %main.col-md-11.ml-sm-auto.col-lg-11.p-3{:role => "main"}
+      - content_for :card_header do
+        %h5
+          = fa_icon "newspaper-o", text: t(controller_name + "." + action_name + '.title')
+          = link_to "/grp_examines", :class => "button button-small  pull-right button-primary" do
+            = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
+      - content_for :card_body do
+        .container-fluid.p-0
+          .row
+            .col-md-12
+              %table#day-pdt-rpt-table.text-center.table.table-bordered
+                %thead
+                  %tr
+                    %th{:scope => "col"} #
 
-              %th.w-50{:scope => "col"}
-                = Setting.examines.name
+                    %th.w-25{:scope => "col"}
+                      = Setting.examines.name
 
-              %th{:scope => "col"}
-                状态
+                    %th{:scope => "col"}
+                      状态
 
-              %th.w-50{:scope => "col"}
-                设置
+                    %th.w-50{:scope => "col"}
+                      设置
 
-          %tbody
-            - @examines.each_with_index do |examine, index|
-              %tr
-                %td{:scope => "row"}
-                  = index+1
-              
-                %td
-                  = examine.name
-                %td
-                  = examine_state(examine)
-                %td
-                  .container-fluid
-                    .row.justify-content-center.align-items-center
-                      -#
-                        -unless examine.hierarchy.blank?
-                        = link_to "下载",  export_factory_examine_path(idencode(@factory.id), examine), :class => "button button-action button-small mr-1" 
-                
-                      %button.button.button-primary.button-small.pull-right.mr-1{"data-target" => "#newModal", "data-emid" => idencode(examine.id), "data-toggle" => "modal", :type => "button"}
-                        查看
+                %tbody
+                  - @examines.each_with_index do |examine, index|
+                    %tr
+                      %td{:scope => "row"}
+                        = index+1
+                    
+                      %td
+                        = examine.factory.name
+                      %td
+                        = examine_state(examine)
+                      %td
+                        .container-fluid
+                          .row.justify-content-center.align-items-center
+                            %button.button.button-primary.button-small.pull-right.mr-3{"data-target" => "#newModal", "data-emid" => idencode(examine.id), "data-toggle" => "modal", :type => "button"}
+                              查看
+                            -if examine.state == Setting.states.report
+                              = link_to "驳回", reject_examine_grp_examine_path(idencode(@grp_examine.id), :examine_id => idencode(examine.id)), :class => "button button-caution button-small mr-3" 
             
 
-= render "layouts/control_panel"
+      = render "layouts/bootstrap/card"
 
 #newModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "newModalLabel", :tabindex => "-1"}
   .modal-dialog.modal-lg.modal-dialog-centered

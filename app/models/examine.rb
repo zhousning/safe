@@ -10,12 +10,13 @@ class Examine < ActiveRecord::Base
   has_many :documents, :dependent => :destroy
   accepts_nested_attributes_for :documents, reject_if: :all_blank, allow_destroy: true
 
-  STATESTR = %w(opening report)
-  STATE = [Setting.states.opening, Setting.states.report]
+  STATESTR = %w(opening report reject)
+  STATE = [Setting.states.opening, Setting.states.report, Setting.states.reject]
   validates_inclusion_of :state, :in => STATE
   state_hash = {
     STATESTR[0] => Setting.states.opening, 
-    STATESTR[1] => Setting.states.report
+    STATESTR[1] => Setting.states.report,
+    STATESTR[2] => Setting.states.reject,
   }
 
   STATESTR.each do |state|
@@ -30,6 +31,10 @@ class Examine < ActiveRecord::Base
 
   def report
     update_attribute :state, Setting.states.report
+  end
+
+  def reject
+    update_attribute :state, Setting.states.reject
   end
 end
 

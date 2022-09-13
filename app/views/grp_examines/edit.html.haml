@@ -6,7 +6,7 @@
     %main.col-md-11.ml-sm-auto.col-lg-11.p-3{:role => "main"}
       - content_for :card_header do
         %h5
-          = link_to "/grp_examines", :class => "button pull-right button-primary" do
+          = link_to "/grp_examines", :class => "button pull-right button-primary button-small" do
             = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
 
       - content_for :card_body do

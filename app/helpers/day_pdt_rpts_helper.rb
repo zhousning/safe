@@ -39,6 +39,16 @@ module DayPdtRptsHelper
     str
   end
 
+  def grp_examine_state(examine)
+    str = ''
+    if examine.state == Setting.states.published
+      str = '已发布'
+    else
+      str = '待发布'
+    end
+    str
+  end
+
   def grp_review_state(review)
     str = ''
     if review.state == Setting.states.published
