@@ -24,16 +24,10 @@ $(".examines").ready(function() {
 			}
 		};
     var settingRight = {
-      view: {
-        addHoverDom: addHoverDom,
-        removeHoverDom: removeHoverDom,
-        selectedMulti: false
-      },
 	  	edit: {
 	  		enable: true,
-        editNameSelectAll: true,
-	  		showRemoveBtn: showRemoveBtn,
-	  		showRenameBtn: showRenameBtn
+				showRemoveBtn: false,
+				showRenameBtn: false
 	  	},
 	  	data: {
         keep: {
@@ -46,11 +40,6 @@ $(".examines").ready(function() {
 	  	},
 	  	callback: {
         beforeDrag: beforeDrag,
-        beforeEditName: beforeEditName,
-        beforeRemove: beforeRemove,
-        beforeRename: beforeRename,
-        onRemove: onRemove,
-        onRename: onRename
 	  	}
 	  };
     $.fn.zTree.init($("#treeLeft"), settingLeft, leftNodes);

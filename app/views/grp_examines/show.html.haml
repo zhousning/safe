@@ -43,6 +43,7 @@
                             %button.button.button-primary.button-small.pull-right.mr-3{"data-target" => "#newModal", "data-emid" => idencode(examine.id), "data-toggle" => "modal", :type => "button"}
                               查看
                             -if examine.state == Setting.states.report
+                              = link_to "下载", download_examine_grp_examine_path(idencode(@grp_examine.id), :examine_id => idencode(examine.id)), :class => "button button-royal button-small mr-3" 
                               = link_to "驳回", reject_examine_grp_examine_path(idencode(@grp_examine.id), :examine_id => idencode(examine.id)), :class => "button button-caution button-small mr-3" 
             
 
@@ -52,7 +53,8 @@
   .modal-dialog.modal-lg.modal-dialog-centered
     .modal-content
       .modal-header
-        = link_to '下载', nil, {:id => "zip-download", :class => "button button-royal button-small pull-right"} 
+        -#
+          = link_to '下载', nil, {:id => "zip-download", :class => "button button-royal button-small pull-right"} 
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} x 
       .modal-body.ctg-tree-ctn

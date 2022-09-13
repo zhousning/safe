@@ -111,20 +111,17 @@ class ExaminesController < ApplicationController
   def export
     @factory = my_factory
     @examine = @factory.examines.find(params[:id])
-    number = Time.now.to_i.to_s + "%04d" % [rand(10000)]
-    @document = Document.new(:examine => @examine, :title => number, :status => Setting.documents.status_none)
-    if @document.save
-      ExportWorker.perform_async(@examine.id, @document.id, number)
-      redirect_to examine_documents_path(@examine)
-    else
-      redirect_to :back
+
+    if @examine
+      send_file File.join(Rails.root, "public", "examines", @examine.id.to_s, @examine.html_link), :filename => @examine.grp_examine.name, :type => "application/force-download", :x_sendfile=>true 
     end
   end
 
   def report 
     @factory = my_factory
     @examine = @factory.examines.find(params[:id])
-    @examine.report
+    @examine.process
+    ExportWorker.perform_async(@examine.id)
     redirect_to :action => :index
   end
 

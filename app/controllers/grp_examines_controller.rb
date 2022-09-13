@@ -124,6 +124,15 @@ class GrpExaminesController < ApplicationController
     redirect_to grp_examine_path(@grp_examine)
   end
 
+  def download_examine 
+    @examine = Examine.find(iddecode(params[:examine_id]))
+
+    if @examine
+      send_file File.join(Rails.root, "public", "examines", @examine.id.to_s, @examine.html_link), :filename => @examine.grp_examine.name, :type => "application/force-download", :x_sendfile=>true 
+    end
+  end
+
+
   private
     def examine_params
       params.require(:grp_examine).permit( :name, :search_date, :content, exm_items_attributes: exm_item_params)

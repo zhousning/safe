@@ -229,6 +229,7 @@ Rails.application.routes.draw do
   resources :grp_examines do
     get :export, :on => :member 
     get :reject_examine, :on => :member 
+    get :download_examine, :on => :member 
     get :publish, :on => :member 
     get :drct_org, :on => :member 
     get :drct_info, :on => :member 

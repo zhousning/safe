@@ -11,12 +11,14 @@ class Examine < ActiveRecord::Base
   accepts_nested_attributes_for :documents, reject_if: :all_blank, allow_destroy: true
 
   STATESTR = %w(opening report reject)
-  STATE = [Setting.states.opening, Setting.states.report, Setting.states.reject]
+  STATE = [Setting.states.opening, Setting.states.processing,  Setting.states.error, Setting.states.report, Setting.states.reject]
   validates_inclusion_of :state, :in => STATE
   state_hash = {
     STATESTR[0] => Setting.states.opening, 
-    STATESTR[1] => Setting.states.report,
-    STATESTR[2] => Setting.states.reject,
+    STATESTR[1] => Setting.states.processing,
+    STATESTR[2] => Setting.states.error,
+    STATESTR[3] => Setting.states.report,
+    STATESTR[4] => Setting.states.reject,
   }
 
   STATESTR.each do |state|
@@ -31,6 +33,14 @@ class Examine < ActiveRecord::Base
 
   def report
     update_attribute :state, Setting.states.report
+  end
+
+  def process
+    update_attribute :state, Setting.states.processing
+  end
+
+  def error 
+    update_attribute :state, Setting.states.error
   end
 
   def reject

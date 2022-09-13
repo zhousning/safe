@@ -8,6 +8,7 @@ class CreateExamines < ActiveRecord::Migration
     
       t.string :state,  null: false, default: Setting.states.opening
     
+      t.string :html_link,  null: false, default: Setting.systems.default_str
     
       t.references :factory
 

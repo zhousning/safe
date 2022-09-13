@@ -33,6 +33,10 @@ module DayPdtRptsHelper
     str = ''
     if examine.state == Setting.states.report
       str = '已上报水务集团'
+    elsif examine.state == Setting.states.processing
+      str = '系统处理中'
+    elsif examine.state == Setting.states.error
+      str = '处理失败，请重新提报'
     else
       str = '待上报'
     end
