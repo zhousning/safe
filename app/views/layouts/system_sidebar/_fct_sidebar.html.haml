@@ -24,7 +24,8 @@
               = fa_icon "map-marker", text: Setting.drills.label, class: "ml-4 mr-2"  
             = link_to factory_summaries_path(idencode(fct.id)), :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/summarie/ =~ request.path).nil? ? '' : 'text-primary'} " do
               = fa_icon "sitemap", text: Setting.summaries.label, class: "ml-4 mr-2"  
-            = link_to factory_inventories_path(idencode(fct.id)), :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/inventory/ =~ request.path).nil? ? '' : 'text-primary'} " do
+            -#
+              = link_to factory_inventories_path(idencode(fct.id)), :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/inventory/ =~ request.path).nil? ? '' : 'text-primary'} " do
               = fa_icon "edit", text: Setting.inventories.label, class: "ml-4 mr-2"  
           .card-header.text-left.pl-2.pr-0.py-3.border.border-left-0.border-top-0.border-bottom-0.border-success{:id => "headingsummarie"}
             日程计划

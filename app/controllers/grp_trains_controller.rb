@@ -22,16 +22,14 @@ class GrpTrainsController < ApplicationController
         obj << {
           :id => index + 1,
           :fct_id  => idencode(fct.id), 
-          :button => "<button class = 'button button-royal button-small mr-1 log-show-btn' type = 'button' data-id ='" + idencode(item.id).to_s + "'>modal弹窗</button>",
+          :button => "<button class = 'button button-royal button-small mr-1 log-show-btn' type = 'button' data-id ='" + idencode(item.id).to_s + "'>查看</button>",
 
          
           :title => item.title,
          
           :content => item.content,
          
-          :place => item.place,
-         
-          :train_time => item.train_time,
+          :train_time => item.train_time.strftime("%Y-%m-%d %H:%M:%S"),
          
           :address => item.address
         
@@ -45,21 +43,35 @@ class GrpTrainsController < ApplicationController
 
   def query_info 
     train = Train.find(iddecode(params[:id]))
+    @factory = train.factory
     obj = []
+    img_hash = Hash.new
+    img_hash[Setting.trains.sign] = train.sign_url
+    img_hash[Setting.trains.scene] = train.scene_url     
+    img_hash[Setting.trains.estimate] = train.estimate_url 
+    img_hash[Setting.trains.paper] = train.paper_url
+
+    hash = Hash.new
+    hash[Setting.trains.wpaper] = download_append_factory_train_path(idencode(@factory.id), idencode(train.id))
+    train.attachments.each_with_index do |e, i|
+      hash[File.basename(URI.decode(e.file_url))] = download_attachment_factory_train_path(idencode(@factory.id), idencode(train.id), :number => i, :ft => '')
+    end
+
     obj << {
-      :time => train.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-       
         :title => train.title,
        
         :content => train.content,
        
-        :place => train.place,
+        :train_time => train.train_time.strftime('%Y-%m-%d %H:%M:%S'),
        
-        :train_time => train.train_time,
-       
-        :address => train.address
-      
+        :address => train.address,
+
+        :imgs => img_hash, 
+
+        :attchs => hash
+
     }
+    puts obj
     respond_to do |f|
       f.json{ render :json => obj.to_json}
     end

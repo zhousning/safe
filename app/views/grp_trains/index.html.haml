@@ -17,20 +17,17 @@
                   %tr
                     %th{:scope => "col", :'data-field' => "id"} #
                   
-                    %th{:scope => "col", :'data-field' => "title"}
-                      = Setting.trains.title
-                  
-                    %th{:scope => "col", :'data-field' => "content"}
-                      = Setting.trains.content
-                  
-                    %th{:scope => "col", :'data-field' => "place"}
-                      = Setting.trains.place
-                  
                     %th{:scope => "col", :'data-field' => "train_time"}
                       = Setting.trains.train_time
                   
+                    %th{:scope => "col", :'data-field' => "title"}
+                      = Setting.trains.title
+                  
                     %th{:scope => "col", :'data-field' => "address"}
                       = Setting.trains.address
+
+                    %th{:scope => "col", :'data-field' => "content"}
+                      = Setting.trains.content
                   
                     %th{:scope => "col", :'data-field' => "button"}
       = render "layouts/bootstrap/card"
@@ -71,3 +68,4 @@
         .row
           .col-12
             %table#log-day-emq-ctn.table.text-center.table-bordered
+          .col-12#log-attch-ctn
