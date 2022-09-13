@@ -12,41 +12,32 @@
         .card-body
           %table.table-bordered.day-pdt-table.w-100.mb-3
             %tbody
-            
+              %tr
+                %td.p-2.text-center
+                  = Setting.review_results.search_date
+                %td.p-2.text-center
+                  = @review_result.search_date
+                %td.p-2.text-center
+                  = Setting.review_results.number
+                %td.p-2.text-center
+                  = @review_result.number
               %tr
                 %td.p-2.text-center
                   = Setting.review_results.worker
                 %td.p-2.text-center
                   = @review_result.worker
-            
               
                 %td.p-2.text-center
                   = Setting.review_results.signer
                 %td.p-2.text-center
                   = @review_result.signer
             
-              
-                %td.p-2.text-center
-                  = Setting.review_results.search_date
-                %td.p-2.text-center
-                  = @review_result.search_date
-            
               %tr
                 %td.p-2.text-center
-                  = Setting.review_results.number
-                %td.p-2.text-center
-                  = @review_result.number
-            
-              
-                %td.p-2.text-center
                   = Setting.review_results.content
-                %td.p-2.text-center
+                %td.p-2.text-left{:colspan => 3}
                   = @review_result.content
             
-      .row
-      
-      .row
-      
       .row
       
         .col-md-6

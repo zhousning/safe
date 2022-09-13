@@ -69,12 +69,11 @@
                       %td
                         .container-fluid
                           .row.justify-content-center
-                            = link_to "查看",  grp_review_path(idencode(grp_review.id)), :class => "button button-primary button-small mr-1" 
+                            = link_to "查看",  grp_review_path(idencode(grp_review.id)), :class => "button button-primary button-small mr-2" 
                             - if grp_review.state != Setting.states.published
-                              = link_to publish_grp_review_path(grp_review), :data => {:confirm => "发布后不可修改,确定吗?"}, :class => "button button-small button-royal pull-right  mr-1" do
-                                = '发布' 
-                              = link_to "编辑", edit_grp_review_path(idencode(grp_review.id)), :class => "button button-royal button-small mr-1" 
-                              = link_to "删除",  grp_review_path(idencode(grp_review.id)), :method => :delete, :data => {:confirm => "确定删除吗?"}, :class => "button button-caution button-small" 
+                              = link_to "编辑", edit_grp_review_path(idencode(grp_review.id)), :class => "button button-royal button-small mr-2" 
+                              = link_to "删除",  grp_review_path(idencode(grp_review.id)), :method => :delete, :data => {:confirm => "确定删除吗?"}, :class => "button button-caution button-small mr-2" 
+                              = link_to '发布', publish_grp_review_path(grp_review), :data => {:confirm => "发布后不可修改,确定吗?"}, :class => "button button-small button-inverse pull-right  mr-2"
               .col-md-12.site-theme-paginate-wrapper.d-flex.justify-content-center.mt-3
                 = paginate @grp_reviews, window: 2, left: 1, right: 1 
       = render "layouts/bootstrap/card"

@@ -7,8 +7,11 @@
       - content_for :card_header do
         %h5
           = fa_icon "newspaper-o", text: t(controller_name + "." + action_name + '.title')
-          = link_to "/grp_reviews/#{idencode(@grp_review.id)}", :class => "button button-small  pull-right button-primary" do
+          = link_to "/grp_reviews/#{idencode(@grp_review.id)}", :class => "button button-small  pull-right button-primary mr-3" do
             = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
+          - if @review.state == Setting.states.report
+            = link_to "驳回", "/factories/#{idencode(@factory.id)}/reviews/#{idencode(@review.id)}/reject", :class => "button button-small  pull-right button-caution mr-3", :data => {:confirm => "确认驳回吗?"} 
+            = link_to "办结", "/factories/#{idencode(@factory.id)}/reviews/#{idencode(@review.id)}/complete", :class => "button button-small  pull-right button-inverse mr-3", :data => {:confirm => "确认已办结吗?"} 
       - content_for :card_body do
         .container-fluid
           .row

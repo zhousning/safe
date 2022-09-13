@@ -51,33 +51,34 @@ class GrpReviewsController < ApplicationController
   def review
     @grp_review = GrpReview.find(iddecode(params[:id]))
     @review = Review.find(iddecode(params[:review_id]))
+    @factory = @review.factory
   end
 
   
-    def download_attachment 
-     
-      @grp_review = GrpReview.find(iddecode(params[:id]))
-     
-      @attachment_id = params[:number].to_i
-      @attachment = @grp_review.attachments[@attachment_id]
+  def download_attachment 
+   
+    @grp_review = GrpReview.find(iddecode(params[:id]))
+   
+    @attachment_id = params[:number].to_i
+    @attachment = @grp_review.attachments[@attachment_id]
 
-      if @attachment
-        send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
-      end
+    if @attachment
+      send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
     end
+  end
   
 
   
-    def download_append
-     
-      @grp_review = GrpReview.find(iddecode(params[:id]))
-     
-      @attch = @grp_review.attch_url
+  def download_append
+   
+    @grp_review = GrpReview.find(iddecode(params[:id]))
+   
+    @attch = @grp_review.attch_url
 
-      if @attch
-        send_file File.join(Rails.root, "public", URI.decode(@attch)), :type => "application/force-download", :x_sendfile=>true
-      end
+    if @attch
+      send_file File.join(Rails.root, "public", URI.decode(@attch)), :type => "application/force-download", :x_sendfile=>true
     end
+  end
   
 
   

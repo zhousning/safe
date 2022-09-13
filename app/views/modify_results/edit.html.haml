@@ -9,10 +9,10 @@
           = fa_icon "wpforms", text: t(controller_name + "." + action_name + '.title')
           -#
             = link_to "#{request.url}".sub("edit", ""), :class => "button button-small pull-right button-primary" do
-          = link_to "/factories/#{idencode(@factory.id)}/reviews/", :class => "button button-small  pull-right button-primary mr-1" do
+          = link_to "/factories/#{idencode(@factory.id)}/reviews/", :class => "button button-small  pull-right button-primary mr-2" do
             = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
 
-          = link_to "确认整改", "/factories/#{idencode(@factory.id)}/reviews/#{idencode(@review.id)}/modify_results/#{idencode(@modify_result.id)})/modify", :class => "button button-small  pull-right button-primary mr-1", :data => {:confirm => "确定已整改?"}
+          = link_to "确认整改", "/factories/#{idencode(@factory.id)}/reviews/#{idencode(@review.id)}/modify_results/#{idencode(@modify_result.id)})/modify", :class => "button button-small  pull-right button-inverse mr-2", :data => {:confirm => "请先保存，确定已整改及保存?"}
 
       - content_for :card_body do
         .container-fluid.p-0

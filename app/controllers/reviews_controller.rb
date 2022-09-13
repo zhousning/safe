@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
   def show
     @factory = my_factory
     @review = @factory.reviews.find(iddecode(params[:id]))
+    @grp_review = @review.grp_review
     @modify_result = @review.modify_result
     @recheck_result = @review.recheck_result
     @review_result = @review.review_result
@@ -22,6 +23,23 @@ class ReviewsController < ApplicationController
     @review.report
     redirect_to :action => :index
   end
+
+  def reject
+    @factory = Factory.find(iddecode(params[:factory_id])) 
+    @review = @factory.reviews.find(iddecode(params[:id]))
+    @grp_review = @review.grp_review
+    @review.reject
+    redirect_to review_grp_review_path(idencode(@grp_review.id), :review_id => idencode(@review.id)) 
+  end
+  
+  def complete 
+    @factory = Factory.find(iddecode(params[:factory_id])) 
+    @review = @factory.reviews.find(iddecode(params[:id]))
+    @grp_review = @review.grp_review
+    @review.completed
+    redirect_to review_grp_review_path(idencode(@grp_review.id), :review_id => idencode(@review.id)) 
+  end
+  
   
   def download_attachment 
    

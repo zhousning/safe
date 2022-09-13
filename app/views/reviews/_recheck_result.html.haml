@@ -12,41 +12,35 @@
         .card-body
           %table.table-bordered.day-pdt-table.w-100.mb-3
             %tbody
+              %tr
+                %td.p-2.text-center
+                  = Setting.recheck_results.search_date
+                %td.p-2.text-center
+                  = @recheck_result.search_date
+            
+                %td.p-2.text-center
+                  = Setting.recheck_results.number
+                %td.p-2.text-center
+                  = @recheck_result.number
+            
             
               %tr
                 %td.p-2.text-center
                   = Setting.recheck_results.worker
                 %td.p-2.text-center
                   = @recheck_result.worker
-            
               
                 %td.p-2.text-center
                   = Setting.recheck_results.signer
                 %td.p-2.text-center
                   = @recheck_result.signer
             
-              
-                %td.p-2.text-center
-                  = Setting.recheck_results.search_date
-                %td.p-2.text-center
-                  = @recheck_result.search_date
-            
               %tr
                 %td.p-2.text-center
-                  = Setting.recheck_results.number
-                %td.p-2.text-center
-                  = @recheck_result.number
-            
-              
-                %td.p-2.text-center
                   = Setting.recheck_results.content
-                %td.p-2.text-center
+                %td.p-2.text-center{:colspan => 3}
                   = @recheck_result.content
             
-      .row
-      
-      .row
-      
       .row
       
         .col-md-6

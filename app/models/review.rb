@@ -31,17 +31,18 @@ class Review < ActiveRecord::Base
   #accepts_nested_attributes_for :recheck_results, reject_if: :all_blank, allow_destroy: true
 
 
-  STATESTR = %w(created modifying modified review reject completed good)
-  STATE = [Setting.states.created, Setting.states.modifying, Setting.states.modified, Setting.states.review, Setting.states.reject, Setting.states.completed, Setting.states.good ]
+  STATESTR = %w(created modifying modified review report reject completed good)
+  STATE = [Setting.states.created, Setting.states.modifying, Setting.states.modified, Setting.states.review, Setting.states.report, Setting.states.reject, Setting.states.completed, Setting.states.good ]
   validates_inclusion_of :state, :in => STATE
   state_hash = {
     STATESTR[0] => Setting.states.created, 
     STATESTR[1] => Setting.states.modifying,
     STATESTR[2] => Setting.states.modified, 
     STATESTR[3] => Setting.states.review, 
-    STATESTR[4] => Setting.states.reject, 
-    STATESTR[5] => Setting.states.completed, 
-    STATESTR[6] => Setting.states.good 
+    STATESTR[4] => Setting.states.report, 
+    STATESTR[5] => Setting.states.reject, 
+    STATESTR[6] => Setting.states.completed, 
+    STATESTR[7] => Setting.states.good 
   }
 
   STATESTR.each do |state|
@@ -61,7 +62,7 @@ class Review < ActiveRecord::Base
   end
 
   def modified
-    if modifying? || review?
+    if modifying? || review? || reject?
       update_attribute :state, Setting.states.modified
     end
   end
@@ -72,14 +73,20 @@ class Review < ActiveRecord::Base
     end
   end
 
-  def reject
+  def report
     if review?
+      update_attribute :state, Setting.states.report
+    end
+  end
+
+  def reject
+    if report?
       update_attribute :state, Setting.states.reject
     end
   end
 
   def completed
-    if review?
+    if report?
       update_attribute :state, Setting.states.completed
     end
   end

@@ -59,10 +59,12 @@ module DayPdtRptsHelper
       str = '已整改，待复检'
     elsif review.state == Setting.states.review
       str = '已复检，待上报水务集团'
+    elsif review.state == Setting.states.report
+      str = '已上报水务集团'
     elsif review.state == Setting.states.reject
       str = '集团驳回'
     elsif review.state == Setting.states.completed
-      str = '检查完毕'
+      str = '已办结'
     elsif review.state == Setting.states.good
       str = '检查完毕，无需整改'
     end

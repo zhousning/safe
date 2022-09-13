@@ -9,13 +9,15 @@
           = fa_icon "newspaper-o", text: t(controller_name + "." + action_name + '.title')
           = link_to "/factories/#{idencode(@factory.id)}/#{controller_name}", :class => "button button-small  pull-right button-primary" do
             = fa_icon " chevron-left", text: Setting.systems.btn_back, right: false 
+          - if @review.state == Setting.states.review
+            = link_to "上报水务集团", "/factories/#{idencode(@factory.id)}/reviews/#{idencode(@review.id)}/report", :class => "button button-small  pull-right button-inverse mr-3", :data => {:confirm => "确认上报吗?"} 
       - content_for :card_body do
         .container-fluid
           .row
             .col-sm-12
               %h2.text-center
                 = image_tag "gykg.jpg"
-                = Setting.reviews.label
+                = @grp_review.name
             .col-md-8.offset-2.p-5.border
               .card.border-0.mb-3.rounded-0
                 -#
@@ -27,51 +29,34 @@
                     
                       %tr
                         %td.p-2.text-center
-                          = Setting.reviews.name
-                        %td.p-2.text-center
-                          = @review.name
-                    
-                      
-                        %td.p-2.text-center
                           = Setting.reviews.search_date
                         %td.p-2.text-center
-                          = @review.search_date
+                          = @grp_review.search_date
                     
-                      
-                        %td.p-2.text-center
-                          = Setting.reviews.content
-                        %td.p-2.text-center
-                          = @review.content
-                    
-                      %tr
                         %td.p-2.text-center
                           = Setting.reviews.state
                         %td.p-2.text-center
-                          = @review.state
-                    
+                          = review_state(@review)
                       
+                      %tr
                         %td.p-2.text-center
-                          = Setting.reviews.desc1
-                        %td.p-2.text-center
-                          = @review.desc1
+                          = Setting.reviews.content
+                        %td.p-2.text-left{:colspan => 3}
+                          = @grp_review.content
                     
-                      
-                        %td.p-2.text-center
-                          = Setting.reviews.desc2
-                        %td.p-2.text-center
-                          = @review.desc2
                     
               .row
               
                 .col-md-6
-                  - unless @review.attch.blank?
-                    = link_to URI.decode(File.basename(@review.attch_url)), download_append_review_path(idencode(@review.id))
+                  - unless @grp_review.attch.blank?
+                    = link_to URI.decode(File.basename(@grp_review.attch_url)), download_append_grp_review_path(idencode(@grp_review.id))
               
               
               .row
-                - @review.attachments.each_with_index do |e, i|
+                - @grp_review.attachments.each_with_index do |e, i|
                   .col-md-12
-                    = link_to File.basename(URI.decode(e.file_url)), download_attachment_review_path(idencode(@review.id), :number => i, :ft => '')
+                    = link_to File.basename(URI.decode(e.file_url)), download_attachment_grp_review_path(idencode(@grp_review.id), :number => i, :ft => '')
+
         = render 'review_result'
         = render 'modify_result'
         = render 'recheck_result'

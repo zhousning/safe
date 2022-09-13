@@ -12,6 +12,16 @@
         .card-body
           %table.table-bordered.day-pdt-table.w-100.mb-3
             %tbody
+              %tr
+                %td.p-2.text-center
+                  = Setting.modify_results.search_date
+                %td.p-2.text-center
+                  = @modify_result.search_date
+            
+                %td.p-2.text-center
+                  = Setting.modify_results.number
+                %td.p-2.text-center
+                  = @modify_result.number
             
               %tr
                 %td.p-2.text-center
@@ -25,28 +35,12 @@
                 %td.p-2.text-center
                   = @modify_result.signer
             
-              
-                %td.p-2.text-center
-                  = Setting.modify_results.search_date
-                %td.p-2.text-center
-                  = @modify_result.search_date
-            
               %tr
                 %td.p-2.text-center
-                  = Setting.modify_results.number
-                %td.p-2.text-center
-                  = @modify_result.number
-            
-              
-                %td.p-2.text-center
                   = Setting.modify_results.content
-                %td.p-2.text-center
+                %td.p-2.text-center{:colspan => 3}
                   = @modify_result.content
             
-      .row
-      
-      .row
-      
       .row
       
         .col-md-6

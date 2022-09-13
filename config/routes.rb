@@ -117,6 +117,9 @@ Rails.application.routes.draw do
     resources :reviews do
       get :download_attachment, :on => :member
       get :download_append, :on => :member
+      get :report, :on => :member
+      get :reject, :on => :member
+      get :complete, :on => :member
       get :query_all, :on => :collection
       resources :review_results do
         get :publish, :on => :member
