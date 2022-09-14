@@ -12,25 +12,35 @@ $(".grp_drills").ready(function() {
       var url = "/grp_drills/" + data_id + "/query_info";
       $.get(url).done(function (data) {
         var emq = data;
-        var emq_table = '<tr><th></th><th>时间</th><th>负责人</th><th>站点</th><th></th></tr>';
+        var emq_table = '<tr><th>时间</th><th>地点</th><th>人数</th></tr>';
+        var attch = '';
+        var header_title = '';
         for (var i=0; i<emq.length; i++) {
           var j = i + 1
+          header_title += emq[i].title;
+
           emq_table += '<tr>'; 
-          emq_table += "<td>" + j + "</td>"; 
-           
-          emq_table += "<td>" + emq[i].title + "</td>"; 
-           
-          emq_table += "<td>" + emq[i].content + "</td>"; 
-           
-          emq_table += "<td>" + emq[i].place + "</td>"; 
            
           emq_table += "<td>" + emq[i].train_time + "</td>"; 
            
           emq_table += "<td>" + emq[i].address + "</td>"; 
           
+          emq_table += "<td>" + emq[i].number + "</td>"; 
+
           emq_table += '</tr>'; 
+
+          emq_table += "<tr><td class='text-left' colspan='3'>" + emq[i].content + "</td></tr>"; 
+
+          $.each(emq[i].imgs, function(k, v) {
+            attch += "<p>" + k + "</p>" + "<img class='w-100' src='" + v + "'>";
+          });
+          $.each(emq[i].attchs, function(k, v) {
+            attch += "<p><a href='" + v + "'>" + k + "</a></p>";
+          });
         }
+        $("#log-day-pdt-rpt-header").html(header_title);
         $("#log-day-emq-ctn").html(emq_table);
+        $("#log-attch-ctn").html(attch)
       });
     });
   }

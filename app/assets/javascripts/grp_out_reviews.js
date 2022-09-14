@@ -12,27 +12,22 @@ $(".grp_out_reviews").ready(function() {
       var url = "/grp_out_reviews/" + data_id + "/query_info";
       $.get(url).done(function (data) {
         var emq = data;
-        var emq_table = '<tr><th></th><th>时间</th><th>负责人</th><th>站点</th><th></th></tr>';
+        var attch = '';
+        var header_title = '';
+        var emq_table = '';
         for (var i=0; i<emq.length; i++) {
           var j = i + 1
-          emq_table += '<tr>'; 
-          emq_table += "<td>" + j + "</td>"; 
+          header_title += emq[i].search_date + '  |  ' + emq[i].title;
            
-          emq_table += "<td>" + emq[i].title + "</td>"; 
+          emq_table += "<p class='text-left'>" + emq[i].content + "</p>"; 
            
-          emq_table += "<td>" + emq[i].search_date + "</td>"; 
-           
-          emq_table += "<td>" + emq[i].content + "</td>"; 
-           
-          emq_table += "<td>" + emq[i].state + "</td>"; 
-           
-          emq_table += "<td>" + emq[i].desc1 + "</td>"; 
-           
-          emq_table += "<td>" + emq[i].desc2 + "</td>"; 
-          
-          emq_table += '</tr>'; 
+          $.each(emq[i].attchs, function(k, v) {
+            attch += "<p><a href='" + v + "'>" + k + "</a></p>";
+          });
         }
+        $("#log-day-pdt-rpt-header").html(header_title);
         $("#log-day-emq-ctn").html(emq_table);
+        $("#log-attch-ctn").html(attch)
       });
     });
   }

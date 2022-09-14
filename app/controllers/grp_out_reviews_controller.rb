@@ -22,21 +22,15 @@ class GrpOutReviewsController < ApplicationController
         obj << {
           :id => index + 1,
           :fct_id  => idencode(fct.id), 
-          :button => "<button class = 'button button-royal button-small mr-1 log-show-btn' type = 'button' data-id ='" + idencode(item.id).to_s + "'>modal弹窗</button>",
+          :button => "<button class = 'button button-royal button-small mr-1 log-show-btn' type = 'button' data-id ='" + idencode(item.id).to_s + "'>查看</button>",
 
          
           :title => item.title,
+
+          :content => item.content,
          
           :search_date => item.search_date,
          
-          :content => item.content,
-         
-          :state => item.state,
-         
-          :desc1 => item.desc1,
-         
-          :desc2 => item.desc2
-        
         }
       end
     end
@@ -47,22 +41,27 @@ class GrpOutReviewsController < ApplicationController
 
   def query_info 
     out_review = OutReview.find(iddecode(params[:id]))
+    @factory = out_review.factory
     obj = []
+    hash = Hash.new
+    hash[Setting.out_reviews.official] = download_official_factory_out_review_path(idencode(@factory.id), idencode(out_review.id))
+    hash[Setting.out_reviews.result] = download_result_factory_out_review_path(idencode(@factory.id), idencode(out_review.id))
+    hash[Setting.out_reviews.modified] = download_modified_factory_out_review_path(idencode(@factory.id), idencode(out_review.id))
+    hash[Setting.out_reviews.recheck] = download_recheck_factory_out_review_path(idencode(@factory.id), idencode(out_review.id))
+
+    out_review.attachments.each_with_index do |e, i|
+      hash[File.basename(URI.decode(e.file_url))] = download_attachment_factory_out_review_path(idencode(@factory.id), idencode(out_review.id), :number => i, :ft => '')
+    end
+
     obj << {
-      :time => out_review.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-       
         :title => out_review.title,
        
         :search_date => out_review.search_date,
        
         :content => out_review.content,
+
+        :attchs => hash
        
-        :state => out_review.state,
-       
-        :desc1 => out_review.desc1,
-       
-        :desc2 => out_review.desc2
-      
     }
     respond_to do |f|
       f.json{ render :json => obj.to_json}

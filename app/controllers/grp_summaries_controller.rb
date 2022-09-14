@@ -17,20 +17,20 @@ class GrpSummariesController < ApplicationController
 
     obj = []
     @factories.each do |fct|
-      items = fct.summaries.where(:search_date => [_start.._end]) 
+      items = fct.summaries.where(:end_date => [_start.._end]) 
       items.each_with_index do |item, index|
         obj << {
           :id => index + 1,
           :fct_id  => idencode(fct.id), 
-          :button => "<button class = 'button button-royal button-small mr-1 log-show-btn' type = 'button' data-id ='" + idencode(item.id).to_s + "'>modal弹窗</button>",
+          :button => "<button class = 'button button-royal button-small mr-1 log-show-btn' type = 'button' data-id ='" + idencode(item.id).to_s + "'>查看</button>",
 
+          :start_date => item.start_date,
+
+          :end_date => item.end_date,
          
           :title => item.title,
          
           :content => item.content,
-         
-          :place => item.place
-        
         }
       end
     end
@@ -41,15 +41,26 @@ class GrpSummariesController < ApplicationController
 
   def query_info 
     summary = Summary.find(iddecode(params[:id]))
+    @factory = summary.factory
     obj = []
+
+    hash = Hash.new
+    hash[Setting.summaries.attach] = download_append_factory_summary_path(idencode(@factory.id), idencode(summary.id))
+    summary.attachments.each_with_index do |e, i|
+      hash[File.basename(URI.decode(e.file_url))] = download_attachment_factory_summary_path(idencode(@factory.id), idencode(summary.id), :number => i, :ft => '')
+    end
+
     obj << {
       :time => summary.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+        :start_date => summary.start_date,
+
+        :end_date => summary.end_date,
        
         :title => summary.title,
        
         :content => summary.content,
        
-        :place => summary.place
+        :attchs => hash
       
     }
     respond_to do |f|

@@ -17,20 +17,17 @@
                   %tr
                     %th{:scope => "col", :'data-field' => "id"} #
                   
-                    %th{:scope => "col", :'data-field' => "title"}
-                      = Setting.drills.title
-                  
-                    %th{:scope => "col", :'data-field' => "content"}
-                      = Setting.drills.content
-                  
-                    %th{:scope => "col", :'data-field' => "place"}
-                      = Setting.drills.place
-                  
                     %th{:scope => "col", :'data-field' => "train_time"}
                       = Setting.drills.train_time
                   
+                    %th{:scope => "col", :'data-field' => "title"}
+                      = Setting.drills.title
+                  
                     %th{:scope => "col", :'data-field' => "address"}
                       = Setting.drills.address
+                  
+                    %th{:scope => "col", :'data-field' => "people"}
+                      = Setting.drills.people
                   
                     %th{:scope => "col", :'data-field' => "button"}
       = render "layouts/bootstrap/card"
@@ -71,3 +68,4 @@
         .row
           .col-12
             %table#log-day-emq-ctn.table.text-center.table-bordered
+          .col-12#log-attch-ctn

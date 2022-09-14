@@ -77,7 +77,7 @@
                 %label.newbutton.button.button-primary
                   %p.append-url
                     = f.one_attachment("official")
-                  = f.file_field :official, :class => "select-file", :onchange => "readFileName(this);", :accept => ".doc,.docx"
+                  = f.file_field :official, :class => "select-file", :onchange => "readFileName(this);"
           
             .form-group.row
               = f.label Setting.out_reviews.result, :class => "col-2 text-right col-form-label col-form-label text-right text-primary"
@@ -85,7 +85,7 @@
                 %label.newbutton.button.button-primary
                   %p.append-url
                     = f.one_attachment("result")
-                  = f.file_field :result, :class => "select-file", :onchange => "readFileName(this);", :accept => ".doc,.docx"
+                  = f.file_field :result, :class => "select-file", :onchange => "readFileName(this);"
           
             .form-group.row
               = f.label Setting.out_reviews.modified, :class => "col-2 text-right col-form-label col-form-label text-right text-primary"
@@ -93,7 +93,7 @@
                 %label.newbutton.button.button-primary
                   %p.append-url
                     = f.one_attachment("modified")
-                  = f.file_field :modified, :class => "select-file", :onchange => "readFileName(this);", :accept => ".doc,.docx"
+                  = f.file_field :modified, :class => "select-file", :onchange => "readFileName(this);"
           
             .form-group.row
               = f.label Setting.out_reviews.recheck, :class => "col-2 text-right col-form-label col-form-label text-right text-primary"
@@ -101,7 +101,7 @@
                 %label.newbutton.button.button-primary
                   %p.append-url
                     = f.one_attachment("recheck")
-                  = f.file_field :recheck, :class => "select-file", :onchange => "readFileName(this);", :accept => ".doc,.docx"
+                  = f.file_field :recheck, :class => "select-file", :onchange => "readFileName(this);"
           
           
           

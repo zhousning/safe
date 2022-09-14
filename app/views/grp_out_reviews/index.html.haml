@@ -17,23 +17,14 @@
                   %tr
                     %th{:scope => "col", :'data-field' => "id"} #
                   
-                    %th{:scope => "col", :'data-field' => "title"}
-                      = Setting.out_reviews.title
-                  
                     %th{:scope => "col", :'data-field' => "search_date"}
                       = Setting.out_reviews.search_date
                   
+                    %th{:scope => "col", :'data-field' => "title"}
+                      = Setting.out_reviews.title
+                  
                     %th{:scope => "col", :'data-field' => "content"}
                       = Setting.out_reviews.content
-                  
-                    %th{:scope => "col", :'data-field' => "state"}
-                      = Setting.out_reviews.state
-                  
-                    %th{:scope => "col", :'data-field' => "desc1"}
-                      = Setting.out_reviews.desc1
-                  
-                    %th{:scope => "col", :'data-field' => "desc2"}
-                      = Setting.out_reviews.desc2
                   
                     %th{:scope => "col", :'data-field' => "button"}
       = render "layouts/bootstrap/card"
@@ -72,5 +63,5 @@
         %h3#log-day-pdt-rpt-header.modal-title.text-center
       .modal-body
         .row
-          .col-12
-            %table#log-day-emq-ctn.table.text-center.table-bordered
+          .col-12#log-day-emq-ctn
+          .col-12#log-attch-ctn

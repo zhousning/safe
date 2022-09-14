@@ -66,12 +66,13 @@ class GrpTrainsController < ApplicationController
        
         :address => train.address,
 
+        :number => train.people,
+
         :imgs => img_hash, 
 
         :attchs => hash
 
     }
-    puts obj
     respond_to do |f|
       f.json{ render :json => obj.to_json}
     end

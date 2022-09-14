@@ -22,14 +22,12 @@ class GrpDrillsController < ApplicationController
         obj << {
           :id => index + 1,
           :fct_id  => idencode(fct.id), 
-          :button => "<button class = 'button button-royal button-small mr-1 log-show-btn' type = 'button' data-id ='" + idencode(item.id).to_s + "'>modal弹窗</button>",
+          :button => "<button class = 'button button-royal button-small mr-1 log-show-btn' type = 'button' data-id ='" + idencode(item.id).to_s + "'>查看</button>",
 
          
           :title => item.title,
          
-          :content => item.content,
-         
-          :place => item.place,
+          :people => item.people,
          
           :train_time => item.train_time,
          
@@ -45,7 +43,20 @@ class GrpDrillsController < ApplicationController
 
   def query_info 
     drill = Drill.find(iddecode(params[:id]))
+    @factory = drill.factory
     obj = []
+    img_hash = Hash.new
+    img_hash[Setting.drills.sign] = drill.sign_url
+    img_hash[Setting.drills.scene] = drill.scene_url     
+    img_hash[Setting.drills.estimate] = drill.estimate_url 
+
+    hash = Hash.new
+    hash[Setting.drills.summary] = download_append_factory_drill_path(idencode(@factory.id), idencode(drill.id))
+    drill.attachments.each_with_index do |e, i|
+      hash[File.basename(URI.decode(e.file_url))] = download_attachment_factory_drill_path(idencode(@factory.id), idencode(drill.id), :number => i, :ft => '')
+    end
+
+
     obj << {
       :time => drill.created_at.strftime('%Y-%m-%d %H:%M:%S'),
        
@@ -53,12 +64,16 @@ class GrpDrillsController < ApplicationController
        
         :content => drill.content,
        
-        :place => drill.place,
+        :number => drill.people,
        
-        :train_time => drill.train_time,
+        :train_time => drill.train_time.strftime('%Y-%m-%d %H:%M:%S'),
        
-        :address => drill.address
+        :address => drill.address,
       
+        :imgs => img_hash, 
+
+        :attchs => hash
+
     }
     respond_to do |f|
       f.json{ render :json => obj.to_json}
