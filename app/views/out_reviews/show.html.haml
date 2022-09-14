@@ -31,11 +31,15 @@
                         %td.p-2.text-left
                           = @out_review.search_date
                     
+                        %td.p-2.text-center
+                          = Setting.out_reviews.desc1
+                        %td.p-2.text-center
+                          = @out_review.desc1
                       
                       %tr
                         %td.p-2.text-center
                           = Setting.out_reviews.content
-                        %td.p-2.text-left
+                        %td.p-2.text-left{:colspan => 3}
                           = @out_review.content
                     
                     -#
@@ -46,10 +50,6 @@
                           = @out_review.state
                     
                       
-                        %td.p-2.text-center
-                          = Setting.out_reviews.desc1
-                        %td.p-2.text-center
-                          = @out_review.desc1
                     
                       
                         %td.p-2.text-center

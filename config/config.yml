@@ -551,7 +551,7 @@ development:
     search_date: 检查日期
     content: 检查内容
     state: 状态
-    desc1: 备用1
+    desc1: 检查单位 
     desc2: 备用2
     official: 官方文件
     result: 检查结果

@@ -32,15 +32,15 @@
                     %th{:scope => "col", :'data-field' => "title"}
                       = Setting.out_reviews.title
                   
+                    %th{:scope => "col", :'data-field' => "desc1"}
+                      = Setting.out_reviews.desc1
+                  
                     -#
                       %th{:scope => "col", :'data-field' => "content"}
                         = Setting.out_reviews.content
                   
                       %th{:scope => "col", :'data-field' => "state"}
                         = Setting.out_reviews.state
-                  
-                      %th{:scope => "col", :'data-field' => "desc1"}
-                        = Setting.out_reviews.desc1
                   
                       %th{:scope => "col", :'data-field' => "desc2"}
                         = Setting.out_reviews.desc2
@@ -56,13 +56,13 @@
                         = out_review.search_date
                       %td
                         = out_review.title
+                      %td
+                        = out_review.desc1
                       -#
                         %td
                           = out_review.content
                         %td
                           = out_review.state
-                        %td
-                          = out_review.desc1
                         %td
                           = out_review.desc2
                       %td

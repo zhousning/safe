@@ -23,7 +23,11 @@
                     %th{:scope => "col", :'data-field' => "title"}
                       = Setting.out_reviews.title
                   
-                    %th{:scope => "col", :'data-field' => "content"}
+                    %th{:scope => "col", :'data-field' => "desc1"}
+                      = Setting.out_reviews.desc1
+                  
+                    -#
+                      %th{:scope => "col", :'data-field' => "content"}
                       = Setting.out_reviews.content
                   
                     %th{:scope => "col", :'data-field' => "button"}

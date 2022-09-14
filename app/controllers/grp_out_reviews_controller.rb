@@ -27,7 +27,7 @@ class GrpOutReviewsController < ApplicationController
          
           :title => item.title,
 
-          :content => item.content,
+          :desc1 => item.desc1,
          
           :search_date => item.search_date,
          
@@ -56,6 +56,8 @@ class GrpOutReviewsController < ApplicationController
     obj << {
         :title => out_review.title,
        
+        :desc1 => out_review.desc1,
+
         :search_date => out_review.search_date,
        
         :content => out_review.content,

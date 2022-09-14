@@ -28,11 +28,17 @@
                     %tr
                       %td.p-2.text-center
                         = f.label Setting.out_reviews.title, :class => "text-center"
-                      %td.p-2.text-center
+                      %td.p-2.text-center{:colspan => 3}
                         = f.text_field :title, :class => "form-control" , :required => true
                       
                     
                     
+                    %tr
+                      %td.p-2.text-center
+                        = f.label Setting.out_reviews.desc1, :class => "text-center"
+                      %td.p-2.text-center
+                        = f.text_field :desc1, :class => "form-control" , :required => true
+                      
                       %td.p-2.text-center
                         = f.label Setting.out_reviews.search_date, :class => "text-center"
                       %td.p-2.text-center

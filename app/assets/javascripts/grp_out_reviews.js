@@ -17,7 +17,7 @@ $(".grp_out_reviews").ready(function() {
         var emq_table = '';
         for (var i=0; i<emq.length; i++) {
           var j = i + 1
-          header_title += emq[i].search_date + '  |  ' + emq[i].title;
+          header_title += emq[i].search_date + '  |  ' + emq[i].desc1 + '  |  ' + emq[i].title;
            
           emq_table += "<p class='text-left'>" + emq[i].content + "</p>"; 
            
