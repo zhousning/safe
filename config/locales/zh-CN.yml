@@ -154,121 +154,9 @@ zh-CN:
       title: 编辑数据
     show:
       title: 图表
-  projects:
-    index:
-      title: 工程列表
-    new:
-      title: 新建工程
-    edit:
-      title: 编辑工程
-    show:
-      title: 工程详情
-    project_table:
-      title: 添加工程用表
   ocrs:
     index:
       title: 人工智能工具箱 
-  day_pdts:
-    index:
-      title: 生产运营数据 
-    new:
-      title: 添加生产运营数据
-    create:
-      title: 创建生产运营数据
-    edit:
-      title: 编辑生产运营数据
-    update:
-      title: 编辑生产运营数据
-    show:
-      title: 查看生产运营数据信息
-    verifying:
-      title: 运营数据提交审核
-    verify_index:
-      title: 运营数据审核-列表
-    verify_show:
-      title: 运营数据审核-查看
-    rejected:
-      title: 运营数据审核-驳回
-    cmp_verifying:
-      title: 运营数据提交管理者审核
-    cmp_verify_index:
-      title: 管理者运营数据审核-列表
-    cmp_verify_show:
-      title: 管理者运营数据审核-查看
-    cmp_rejected:
-      title: 管理者运营数据审核-驳回
-    upreport:
-      title: 运营数据审核-上报
-  day_pdt_rpts:
-    index:
-      title: 生产运营日报表
-    edit:
-      title: 编辑日报表
-    show:
-      title: 查看日报表
-    static_pool:
-      title: 汇总统计数据-表格展示用
-    produce_report:
-      title: 日报表 modal展示图表 
-    sglfct_statistic:
-      title: 数据立方
-    sglfct_stc_cau:
-      title: 数据立方-时间区间内单厂多指标
-    emq_cau:
-      title: 数据立方-削减量
-    emr_cau:
-      title: 数据立方-削减率
-    bom_cau:
-      title: 数据立方-削减电单耗
-    power_cau:
-      title: 数据立方-耗电量、电单耗
-    radar_chart:
-      title: 首页-雷达图
-    new_quota_chart:
-      title: 首页-仪表数据
-    produce_report:
-      title: 日报表图表查看 
-    xls_day_download:
-      title: 日报表-下载excel 
-  mth_pdt_rpts:
-    mth_rpt_create:
-      title: 月报表填报
-    index:
-      title: 月报表填报-列表
-    edit:
-      title: 月报表填报-编辑
-    update:        
-      title: 月报表填报-编辑
-    show:          
-      title: 月报表填报-查看
-    verifying:
-      title: 月报表填报-提交审核
-    verify_index:
-      title: 月报表审核-列表
-    verify_show:
-      title: 月报表审核-查看
-    rejected:
-      title: 月报表审核-驳回
-    cmp_verifying:
-      title: 月报表提交管理者审核
-    cmp_verify_index:
-      title: 管理者月报表审核-列表
-    cmp_verify_show:
-      title: 管理者月报表审核-查看
-    cmp_rejected:
-      title: 管理者月报表审核-驳回
-    upreport:
-      title: 月报表审核-上报
-    mth_report_finish_index:
-      title: 月报表-列表
-    mth_report_finish_show:
-      title: 月报表-明细
-    xls_mth_download:
-      title: 月报表-下载excel
-    download_report:
-      title: 月报表-下载word
-    mth_rpt_sync:
-      title: 更新月报表
   analyses:
     compare:
       title: 指标对比
@@ -283,156 +171,6 @@ zh-CN:
       title: 厂区-编辑厂区信息
     update:
       title: 厂区-编辑厂区信息
-  reports:
-    index:
-      title: 报表
-    mth_report_show:
-      title: 查看报表
-    day_report:
-      title: 日报表
-    mth_report:
-      title: 月报表
-    xls_day_download:
-      title: 下载excel日报表
-    xls_mth_download:
-      title: 下载excel月报表
-  devices:
-    index:
-      title: 站点档案列表  
-    new:
-      title: 新建站点档案
-    create:
-      title: 新建站点档案
-    edit:
-      title: 编辑站点档案
-    update:
-      title: 编辑站点档案
-    show:
-      title: 站点档案详情 
-    info:
-      title: 站点档案详情 
-    uphold:
-      title: 站点档案巡检记录
-    destroy:
-      title: 删除站点档案 
-    update_count:
-      title: 更改数量 
-    xls_download:
-      title: 下载模板 
-    parse_excel:
-      title: 上传excel数据 
-    query_all:
-      title: ajax查询站点档案
-  inspectors:
-    index:
-      title: 签到负责人列表  
-    new:
-      title: 新建签到负责人
-    create:
-      title: 新建签到负责人
-    edit:
-      title: 编辑签到负责人
-    update:
-      title: 编辑签到负责人
-    show:
-      title: 签到负责人详情 
-    destroy:
-      title: 删除签到负责人 
-    receive:
-      title: 签到负责人审核通过
-    reject:
-      title: 签到负责人审核不通过
-    xls_download:
-      title: 下载模板 
-    parse_excel:
-      title: 上传excel数据 
-    query_all:
-      title: ajax查询签到负责人
-    query_devices:
-      title: ajax查询所有站点
-  tasks:
-    index:
-      title: 巡检任务列表  
-    new:
-      title: 新建巡检任务
-    create:
-      title: 新建巡检任务
-    edit:
-      title: 编辑巡检任务
-    update:
-      title: 编辑巡检任务
-    show:
-      title: 巡检任务详情 
-    destroy:
-      title: 删除巡检任务 
-    update_count:
-      title: 更改数量 
-    xls_download:
-      title: 下载模板 
-    parse_excel:
-      title: 上传excel数据 
-    query_all:
-      title: ajax查询巡检任务
-    query_devices:
-      title: ajax查询所有站点
-  workers:
-    index:
-      title: 工人列表  
-    new:
-      title: 新建工人
-    create:
-      title: 新建工人
-    edit:
-      title: 编辑工人
-    update:
-      title: 编辑工人
-    show:
-      title: 工人详情 
-    destroy:
-      title: 删除工人 
-    signlogs:
-      title: 签到记录 
-    update_count:
-      title: 更改数量 
-    xls_download:
-      title: 下载模板 
-    parse_excel:
-      title: 上传excel数据 
-    query_all:
-      title: ajax查询工人
-    query_info:
-      title: 查询工人信息
-    receive:
-      title: 工人审核通过
-    reject:
-      title: 工人审核不通过
-    signlogs:
-      title: 工人签到记录
-  sign_logs:
-    index:
-      title: 签到记录列表  
-    new:
-      title: 新建签到记录
-    create:
-      title: 新建签到记录
-    edit:
-      title: 编辑签到记录
-    update:
-      title: 编辑签到记录
-    show:
-      title: 签到记录详情 
-    destroy:
-      title: 删除签到记录 
-    update_count:
-      title: 更改数量 
-    xls_download:
-      title: 下载模板 
-    parse_excel:
-      title: 上传excel数据 
-    query_list:
-      title: 签到记录ajax查询签到记录
-    query_device:
-      title: 签到记录ajax查询所有站点
   agendas:
     index:
       title: 日程计划 
@@ -451,31 +189,6 @@ zh-CN:
       title: 编辑档案库
     show:
       title: 档案库
-  meter_standards:
-    edit:
-      title: 编辑计件标准
-    show:
-      title: 计件标准
-  meter_reads:
-    index:
-      title: 计件 
-    new:
-      title: 新建计件
-    edit:
-      title: 编辑计件
-    show:
-      title: 计件详情
-  examines:
-    index:
-      title: 档案自选库 
-    new:
-      title: 新建自选方案
-    edit:
-      title: 编辑方案
-    show:
-      title: 方案详情
-    drct_org:
-      title: 组织目录 
   portfolios:
     index:
       title: 子文件夹 
@@ -486,111 +199,444 @@ zh-CN:
   file_libs:
     index:
       title: 文件列表
-  grp_sign_logs:
+  recheck_results:
     index:
-      title: 集团-签到记录列表  
+      title: 复检列表  
     new:
-      title: 集团-新建签到记录
+      title: 新建复检
     create:
-      title: 集团-新建签到记录
+      title: 新建复检
     edit:
-      title: 集团-编辑签到记录
+      title: 编辑复检
     update:
-      title: 集团-编辑签到记录
+      title: 编辑复检
     show:
-      title: 集团-签到记录详情 
+      title: 复检详情 
     destroy:
-      title: 集团-删除签到记录 
-    xls_download:
-      title: 集团-下载模板 
-    parse_excel:
-      title: 集团-上传excel数据 
-    query_list:
-      title: 集团-签到记录ajax查询签到记录
-    query_device:
-      title: 集团-签到记录ajax查询所有站点
-  grp_inspectors:
-    index:
-      title: 集团-签到负责人列表  
-    new:
-      title: 集团-新建签到负责人
-    create:
-      title: 集团-新建签到负责人
-    edit:
-      title: 集团-编辑签到负责人
-    update:
-      title: 集团-编辑签到负责人
-    show:
-      title: 集团-签到负责人详情 
-    destroy:
-      title: 集团-删除签到负责人 
-    receive:
-      title: 集团-签到负责人审核通过
-    reject:
-      title: 集团-签到负责人审核不通过
-    xls_download:
-      title: 集团-下载模板 
-    parse_excel:
-      title: 集团-上传excel数据 
-    query_all:
-      title: 集团-ajax查询签到负责人
-    query_devices:
-      title: 集团-ajax查询所有站点
-  grp_devices:
-    index:
-      title: 集团-站点档案列表  
-    new:
-      title: 集团-新建站点档案
-    create:
-      title: 集团-新建站点档案
-    edit:
-      title: 集团-编辑站点档案
-    update:
-      title: 集团-编辑站点档案
-    show:
-      title: 集团-站点档案详情 
-    info:
-      title: 集团-站点档案详情 
-    uphold:
-      title: 集团-站点档案巡检记录
-    destroy:
-      title: 集团-删除站点档案 
-    update_count:
-      title: 集团-更改数量 
-    xls_download:
-      title: 集团-下载模板 
-    parse_excel:
-      title: 集团-上传excel数据 
-    query_all:
-      title: 集团-ajax查询站点档案
-  grp_workers:
-    index:
-      title: 集团-工人列表  
-    new:
-      title: 集团-新建工人
-    create:
-      title: 集团-新建工人
-    edit:
-      title: 集团-编辑工人
-    update:
-      title: 集团-编辑工人
-    show:
-      title: 集团-工人详情 
-    destroy:
-      title: 集团-删除工人 
+      title: 删除复检 
     signlogs:
-      title: 集团-签到记录 
+      title: 签到记录 
     xls_download:
-      title: 集团-下载模板 
+      title: 下载模板 
     parse_excel:
-      title: 集团-上传excel数据 
+      title: 上传excel数据 
     query_all:
-      title: 集团-ajax查询工人
+      title: ajax查询复检
     query_info:
-      title: 集团-查询工人信息
+      title: 查询复检信息
     receive:
-      title: 集团-工人审核通过
+      title: 复检审核通过
     reject:
-      title: 集团-工人审核不通过
+      title: 复检审核不通过
+  review_results:
+    index:
+      title: 检查结果列表  
+    new:
+      title: 新建检查结果
+    create:
+      title: 新建检查结果
+    edit:
+      title: 编辑检查结果
+    update:
+      title: 编辑检查结果
+    show:
+      title: 检查结果详情 
+    destroy:
+      title: 删除检查结果 
     signlogs:
-      title: 集团-工人签到记录
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询检查结果
+    query_info:
+      title: 查询检查结果信息
+    receive:
+      title: 检查结果审核通过
+    reject:
+      title: 检查结果审核不通过
+  modify_results:
+    index:
+      title: 整改列表  
+    new:
+      title: 新建整改
+    create:
+      title: 新建整改
+    edit:
+      title: 编辑整改
+    update:
+      title: 编辑整改
+    show:
+      title: 整改详情 
+    destroy:
+      title: 删除整改 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询整改
+    query_info:
+      title: 查询整改信息
+    receive:
+      title: 整改审核通过
+    reject:
+      title: 整改审核不通过
+  reviews:
+    index:
+      title: 集团检查列表  
+    new:
+      title: 新建集团检查
+    create:
+      title: 新建集团检查
+    edit:
+      title: 编辑集团检查
+    update:
+      title: 编辑集团检查
+    show:
+      title: 集团检查详情 
+    destroy:
+      title: 删除集团检查 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询集团检查
+    query_info:
+      title: 查询集团检查信息
+    receive:
+      title: 集团检查审核通过
+    reject:
+      title: 集团检查审核不通过
+  examines:
+    drct_org:
+      title: 组织目录  
+    index:
+      title: 文件报送列表  
+    new:
+      title: 新建文件报送
+    create:
+      title: 新建文件报送
+    edit:
+      title: 编辑文件报送
+    update:
+      title: 编辑文件报送
+    show:
+      title: 文件报送详情 
+    destroy:
+      title: 删除文件报送 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询文件报送
+    query_info:
+      title: 查询文件报送信息
+    receive:
+      title: 文件报送审核通过
+    reject:
+      title: 文件报送审核不通过
+  summaries:
+    index:
+      title: 总结列表  
+    new:
+      title: 新建总结
+    create:
+      title: 新建总结
+    edit:
+      title: 编辑总结
+    update:
+      title: 编辑总结
+    show:
+      title: 总结详情 
+    destroy:
+      title: 删除总结 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询总结
+    query_info:
+      title: 查询总结信息
+    receive:
+      title: 总结审核通过
+    reject:
+      title: 总结审核不通过
+  drills:
+    index:
+      title: 演练列表  
+    new:
+      title: 新建演练
+    create:
+      title: 新建演练
+    edit:
+      title: 编辑演练
+    update:
+      title: 编辑演练
+    show:
+      title: 演练详情 
+    destroy:
+      title: 删除演练 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询演练
+    query_info:
+      title: 查询演练信息
+    receive:
+      title: 演练审核通过
+    reject:
+      title: 演练审核不通过
+  trains:
+    index:
+      title: 培训列表  
+    new:
+      title: 新建培训
+    create:
+      title: 新建培训
+    edit:
+      title: 编辑培训
+    update:
+      title: 编辑培训
+    show:
+      title: 培训详情 
+    destroy:
+      title: 删除培训 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询培训
+    query_info:
+      title: 查询培训信息
+    receive:
+      title: 培训审核通过
+    reject:
+      title: 培训审核不通过
+  out_reviews:
+    index:
+      title: 外部检查列表  
+    new:
+      title: 新建外部检查
+    create:
+      title: 新建外部检查
+    edit:
+      title: 编辑外部检查
+    update:
+      title: 编辑外部检查
+    show:
+      title: 外部检查详情 
+    destroy:
+      title: 删除外部检查 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询外部检查
+    query_info:
+      title: 查询外部检查信息
+    receive:
+      title: 外部检查审核通过
+    reject:
+      title: 外部检查审核不通过
+  grp_reviews:
+    index:
+      title: 集团检查列表  
+    new:
+      title: 新建集团检查
+    create:
+      title: 新建集团检查
+    edit:
+      title: 编辑集团检查
+    update:
+      title: 编辑集团检查
+    show:
+      title: 集团检查详情 
+    destroy:
+      title: 删除集团检查 
+    signlogs:
+      title: 签到记录 
+    review:
+      title: 检查  
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询集团检查
+    query_info:
+      title: 查询集团检查信息
+    receive:
+      title: 集团检查审核通过
+    reject:
+      title: 集团检查审核不通过
+  grp_examines:
+    drct_org:
+      title: 组织目录  
+    index:
+      title: 文件报送列表  
+    new:
+      title: 新建文件报送
+    create:
+      title: 新建文件报送
+    edit:
+      title: 编辑文件报送
+    update:
+      title: 编辑文件报送
+    show:
+      title: 文件报送详情 
+    destroy:
+      title: 删除文件报送 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询文件报送
+    query_info:
+      title: 查询文件报送信息
+    receive:
+      title: 文件报送审核通过
+    reject:
+      title: 文件报送审核不通过
+  grp_summaries:
+    index:
+      title: 总结列表  
+    new:
+      title: 新建总结
+    create:
+      title: 新建总结
+    edit:
+      title: 编辑总结
+    update:
+      title: 编辑总结
+    show:
+      title: 总结详情 
+    destroy:
+      title: 删除总结 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询总结
+    query_info:
+      title: 查询总结信息
+    receive:
+      title: 总结审核通过
+    reject:
+      title: 总结审核不通过
+  grp_drills:
+    index:
+      title: 演练列表  
+    new:
+      title: 新建演练
+    create:
+      title: 新建演练
+    edit:
+      title: 编辑演练
+    update:
+      title: 编辑演练
+    show:
+      title: 演练详情 
+    destroy:
+      title: 删除演练 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询演练
+    query_info:
+      title: 查询演练信息
+    receive:
+      title: 演练审核通过
+    reject:
+      title: 演练审核不通过
+  grp_trains:
+    index:
+      title: 培训列表  
+    new:
+      title: 新建培训
+    create:
+      title: 新建培训
+    edit:
+      title: 编辑培训
+    update:
+      title: 编辑培训
+    show:
+      title: 培训详情 
+    destroy:
+      title: 删除培训 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询培训
+    query_info:
+      title: 查询培训信息
+    receive:
+      title: 培训审核通过
+    reject:
+      title: 培训审核不通过
+  grp_out_reviews:
+    index:
+      title: 外部检查列表  
+    new:
+      title: 新建外部检查
+    create:
+      title: 新建外部检查
+    edit:
+      title: 编辑外部检查
+    update:
+      title: 编辑外部检查
+    show:
+      title: 外部检查详情 
+    destroy:
+      title: 删除外部检查 
+    signlogs:
+      title: 签到记录 
+    xls_download:
+      title: 下载模板 
+    parse_excel:
+      title: 上传excel数据 
+    query_all:
+      title: ajax查询外部检查
+    query_info:
+      title: 查询外部检查信息
+    receive:
+      title: 外部检查审核通过
+    reject:
+      title: 外部检查审核不通过

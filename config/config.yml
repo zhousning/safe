@@ -1,13 +1,13 @@
 ---
-mysetting:
-  notices: &1
+mysetting: &mysetting
+  notices: 
     label: 通知公告
     title: 标题
     content: 内容
-  reports: &2
+  reports: 
     title: 标题
     content: 正文
-  models: &3
+  models: 
     label: ''
     name: 名称
     image: 图像
@@ -19,15 +19,15 @@ mysetting:
     js: js
     scss: 是否添加集团内容
     admin: 添加到后台
-  properties: &4
+  properties: 
     label: 嵌套显示的属性
     name: 属性名
     tag: 标签
-  relates: &5
+  relates: 
     label: ''
     type: 关联类型
     obj: 对象
-  templates: &6
+  templates: 
     label: 模板
     name: 英文名称
     cn_name: 中文名称
@@ -48,13 +48,13 @@ mysetting:
     upload: 上传解析表格
     admin: 添加到后台
     current_user: current_user
-  natures: &7
+  natures: 
     label: ''
     name: 英文属性名
     type: 类型
     title: 中文属性名
     tag: 标签
-  wx_templates: &8
+  wx_templates: 
     label: 模板
     name: 英文名称
     cn_name: 中文名称
@@ -74,7 +74,7 @@ mysetting:
     upload: 平分Tab
     admin: 图标Tab
     current_user: 时间轴
-  spiders: &9
+  spiders: 
     label: 爬虫
     link: 请求地址
     cookie: cookie
@@ -85,7 +85,7 @@ mysetting:
     referer: referer
     host: host
     redirection: redirection
-  selectors: &10
+  selectors: 
     label: 选择器
     name: 选择器名称
     category: 类型
@@ -100,13 +100,13 @@ mysetting:
       img:
         info: 图片
         value: '2'
-defaults:
-  admins: &11
+defaults: &defaults
+  admins: 
     class_name: all
     email: myzn@world.com
     phone: '15763703188'
     password: dagening@521
-  users: &12
+  users: 
     class_name: User
     opening: 0
     pending: 1
@@ -125,7 +125,7 @@ defaults:
     status: 认证状态
     level: 等级
     inviter: 邀请者
-  roles: &13
+  roles: 
     label: 角色
     name: 名称
     class_name: Role
@@ -140,14 +140,14 @@ defaults:
     role_grp_inspector: 集团-签到负责人
     role_grp_worker: 集团-工人管理
     role_grp_sign_log: 集团-签到记录
-  permissions: &14
+  permissions: 
     super_admin: 管理系统所有资源
     label: 权限管理
     name: 名称
     subject_class: controller单数名称
     action: action
     description: 描述
-  systems: &15
+  systems: 
     poundage: 0.1
     commision: 0.1
     authc_pay: 1
@@ -187,7 +187,7 @@ defaults:
     man: 男
     woman_no: '1'
     woman: 女
-  states: &16
+  states: 
     opening: opening
     selecting: selecting
     selected: selected
@@ -211,7 +211,7 @@ defaults:
     modified: modified
     review: review
     good: good
-  trade_orders: &17
+  trade_orders: 
     number: 订单编号
     price: 价格
     state: 状态
@@ -231,7 +231,7 @@ defaults:
     completed_title: 已完成
     canceled: canceled
     canceled_title: 已取消
-  extract_cashes: &18
+  extract_cashes: 
     coin: 提取金额
     status: 状态
     pending: pending
@@ -240,21 +240,21 @@ defaults:
     agree_title: 同意
     disagree: disagree
     disagree_title: 不同意
-  statistics: &19
+  statistics: 
     label: 统计
     title: 标题
     xtitle: x轴标题
     ytitle: y轴标题
     legend: 图例
     data: 数据
-  companies: &20
+  companies: 
     label: 公司
     area: 地区
     name: 名称
     info: 简介
     lnt: 经度
     lat: 维度
-  factories: &21
+  factories: 
     label: 工厂
     area: 地区
     name: 名称
@@ -263,11 +263,11 @@ defaults:
     lnt: 经度
     lat: 维度
     plan: 计划
-  departments: &22
+  departments: 
     label: 部门
     name: 名称
     info: 简介
-  charts: &23
+  charts: 
     line: '0'
     bar: '1'
     gauge: '2'
@@ -280,7 +280,7 @@ defaults:
     table_t: table
     radar_t: radar
     scatter_3d_t: scatter_3d
-  months: &24
+  months: 
     one: '1'
     one_t: 一月
     two: '2'
@@ -305,7 +305,7 @@ defaults:
     eleven_t: 十一月
     twelve: '12'
     twelve_t: 十二月
-  accounts: &25
+  accounts: 
     coin: 金额
     password: 安全密码
     number: 卡号
@@ -316,7 +316,7 @@ defaults:
     award_invite_recharge: 40
     enable: enable
     disable: disable
-  devices: &26
+  devices: 
     label: 施工站点
     idno: 站点编号
     name: 站点名称
@@ -335,48 +335,48 @@ defaults:
     state_normal: 施工中
     state_repair: 已完工
     state_stop: 停工
-  upholds: &27
+  upholds: 
     label: 巡检记录
     uphold_date: 日期
     reason: 巡检原因
     content: 巡检内容
     cost: 费用
     state: 状态
-  patrolers: &28
+  patrolers: 
     label: 签到负责人
     name: 姓名
     phone: 电话
     password: 密码
-  tasks: &29
+  tasks: 
     label: 巡检任务
     task_date: 巡检日期
     des: 备注
-  task_reports: &30
+  task_reports: 
     label: 巡检报告
     longitude: 经度
     latitude: 维度
     state: 运行状态
     question: 问题
-  task_logs: &31
+  task_logs: 
     label: 巡检日志
     start_time: 开始时间
     end_time: 结束时间
     state: 状态
-  gdservices: &32
+  gdservices: 
     label: 北斗定位终端
     key: key
     name: name
     sid: sid
-  gdteminals: &33
+  gdteminals: 
     label: 北斗地图终端
     name: name
     tid: tid
     desc: desc
-  gdtraces: &34
+  gdtraces: 
     label: 北斗地图轨迹管理
     trid: trid
     trname: trname
-  workers: &35
+  workers: 
     label: 工人管理
     name: 姓名
     idno: 身份证
@@ -387,48 +387,11 @@ defaults:
     idfront: 身份证正面
     idback: 身份证反面
     avatar: 一寸照片
-  sign_logs: &36
+  sign_logs: 
     label: 签到记录
     sign_date: 签到日期
     wx_user_id: 签到审核人
     device_id: 站点
-development:
-  notices: *1
-  reports: *2
-  models: *3
-  properties: *4
-  relates: *5
-  templates: *6
-  natures: *7
-  wx_templates: *8
-  spiders: *9
-  selectors: *10
-  admins: *11
-  users: *12
-  roles: *13
-  permissions: *14
-  systems: *15
-  states: *16
-  trade_orders: *17
-  extract_cashes: *18
-  statistics: *19
-  companies: *20
-  factories: *21
-  departments: *22
-  charts: *23
-  months: *24
-  accounts: *25
-  devices: *26
-  upholds: *27
-  patrolers: *28
-  tasks: *29
-  task_reports: *30
-  task_logs: *31
-  gdservices: *32
-  gdteminals: *33
-  gdtraces: *34
-  workers: *35
-  sign_logs: *36
   trains:
     label: 培训管理
     title: 培训标题
@@ -557,5 +520,10 @@ development:
     result: 检查结果
     modified: 整改材料
     recheck: 复检材料
+development:
+  <<: *mysetting
+  <<: *defaults
 test: 
 production: 
+  <<: *mysetting
+  <<: *defaults
