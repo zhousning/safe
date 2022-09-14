@@ -24,6 +24,7 @@ class GrpOutReviewsController < ApplicationController
           :fct_id  => idencode(fct.id), 
           :button => "<button class = 'button button-royal button-small mr-1 log-show-btn' type = 'button' data-id ='" + idencode(item.id).to_s + "'>查看</button>",
 
+          :fct => fct.name,
          
           :title => item.title,
 

@@ -2,62 +2,92 @@
 - 
   role_name: 厂区用户
   level: 1
+  permissions: 
+    -
+      controller: agendas_controller
+      actions: [index, new, create, edit, update, show, destroy, download_append]
+    -
+      controller: archives_controller
+      actions: [index, new, create, edit, update, destroy]
+    -
+      controller: portfolios_controller
+      actions: [index, new, create, edit, update, show, destroy, upload]
+    -
+      controller: file_libs_controller
+      actions: [index, new, create, edit, update, show, destroy, download]
+    -
+      controller: out_reviews_controller
+      actions: [index, new, create, edit, update, show, destroy, download_attachment, download_official, download_modified, download_result, download_recheck]
+    -
+      controller: trains_controller
+      actions: [index, new, create, edit, update, show, destroy, download_attachment, download_append]
+    -
+      controller: drills_controller
+      actions: [index, new, create, edit, update, show, destroy, download_attachment, download_append]
+    -
+      controller: summaries_controller
+      actions: [index, new, create, edit, update, show, destroy, download_attachment, download_append]
+    -
+      controller: examines_controller
+      actions: [index, export, report, drct_org, create_drct]
+    -
+      controller: reviews_controller
+      actions: [index, show, download_attachment, download_append, report]
+    -
+      controller: modify_results_controller
+      actions: [edit, update, modify, download_attachment, download_append, download_idappend]
+    -
+      controller: recheck_results_controller
+      actions: [edit, update, recheck, download_attachment, download_append, download_idappend]
+    -
+      controller: review_results_controller
+      actions: [download_attachment, download_append, download_idappend]
+    -
+      controller: grp_reviews_controller
+      actions: [download_attachment, download_append]
 - 
   role_name: 集团用户
   level: 1
-- 
-  role_name: 厂区-施工站点
-  level: 1
   permissions: 
     -
-      controller: devices_controller
-      actions: [index, new, create, edit, update, show, uphold, destroy, xls_download, parse_excel, query_all]
-- 
-  role_name: 厂区-签到负责人
-  level: 1
-  permissions: 
+      controller: agendas_controller
+      actions: [index, new, create, edit, update, show, destroy, download_append]
     -
-      controller: inspectors_controller
-      actions: [index, receive, reject]
-- 
-  role_name: 厂区-工人管理
-  level: 1
-  permissions: 
+      controller: archives_controller
+      actions: [index, new, create, edit, update, destroy]
     -
-      controller: workers_controller
-      actions: [index, destroy, receive, reject, query_info, signlogs]
-- 
-  role_name: 厂区-签到记录
-  level: 1
-  permissions: 
+      controller: portfolios_controller
+      actions: [index, new, create, edit, update, show, destroy, upload]
     -
-      controller: sign_logs_controller
-      actions: [index, query_list, query_device]
-- 
-  role_name: 集团-施工站点
-  level: 1
-  permissions: 
+      controller: file_libs_controller
+      actions: [index, new, create, edit, update, show, destroy, download]
     -
-      controller: grp_devices_controller
-      actions: [index, edit, update, destroy, query_all, xls_download, parse_excel]
-- 
-  role_name: 集团-签到负责人
-  level: 1
-  permissions: 
+      controller: reviews_controller
+      actions: [reject, complete]
     -
-      controller: grp_inspectors_controller
-      actions: [index]
-- 
-  role_name: 集团-工人管理
-  level: 1
-  permissions: 
+      controller: review_results_controller
+      actions: [edit, update, publish, download_attachment, download_append, download_idappend]
     -
-      controller: grp_workers_controller
-      actions: [index, query_all, query_info, signlogs]
-- 
-  role_name: 集团-签到记录
-  level: 1
-  permissions: 
+      controller: modify_results_controller
+      actions: [download_attachment, download_append, download_idappend]
     -
-      controller: grp_sign_logs_controller
-      actions: [index, query_list, query_device]
+      controller: recheck_results_controller
+      actions: [download_attachment, download_append, download_idappend]
+    -
+      controller: grp_trains_controller
+      actions: [index, query_list, query_info, download_attachment, download_append]
+    -
+      controller: grp_drills_controller
+      actions: [index, query_list, query_info, download_attachment, download_append]
+    -
+      controller: grp_summaries_controller
+      actions: [index, query_list, query_info, download_attachment, download_append]
+    -
+      controller: grp_examines_controller
+      actions: [index, new, create, edit, update, show, destroy, export, reject_examine, download_examine, publish, drct_org, drct_info, create_drct]
+    -
+      controller: grp_reviews_controller
+      actions: [index, new, create, edit, update, show, destroy, download_attachment, download_append, review, publish]
+    -
+      controller: grp_out_reviews_controller
+      actions: [index, query_list, query_info, download_attachment, download_official, download_modified, download_result, download_recheck]

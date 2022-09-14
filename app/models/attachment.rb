@@ -9,7 +9,6 @@ class Attachment < ActiveRecord::Base
   belongs_to :modify_result
   belongs_to :recheck_result
   belongs_to :out_review
-  belongs_to :out_review
 end
 
 

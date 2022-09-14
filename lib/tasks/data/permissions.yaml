@@ -1,26 +1,59 @@
 ---
 #controller的名字均为程序中controller名称的单数，如AnalysesController为Analysis，必须有对应的model,可以建空model
 -
-  controller: devices_controller
-  actions: [index, new, create, edit, update, show, uphold, destroy, xls_download, parse_excel, query_all]
+  controller: agendas_controller
+  actions: [index, new, create, edit, update, show, destroy, download_append]
 -
-  controller: inspectors_controller
-  actions: [index, receive, reject]
+  controller: out_reviews_controller
+  actions: [index, new, create, edit, update, show, destroy, download_attachment, download_official, download_modified, download_result, download_recheck]
 -
-  controller: workers_controller
-  actions: [index, destroy, receive, reject, query_info, signlogs]
+  controller: trains_controller
+  actions: [index, new, create, edit, update, show, destroy, download_attachment, download_append]
 -
-  controller: sign_logs_controller
-  actions: [index, query_list, query_device]
+  controller: drills_controller
+  actions: [index, new, create, edit, update, show, destroy, download_attachment, download_append]
 -
-  controller: grp_sign_logs_controller
-  actions: [index, query_list, query_device]
+  controller: summaries_controller
+  actions: [index, new, create, edit, update, show, destroy, download_attachment, download_append]
 -
-  controller: grp_inspectors_controller
-  actions: [index]
+  controller: archives_controller
+  actions: [index, new, create, edit, update, destroy]
 -
-  controller: grp_devices_controller
-  actions: [index, edit, update, destroy, query_all, xls_download, parse_excel]
+  controller: portfolios_controller
+  actions: [index, new, create, edit, update, show, destroy, upload]
 -
-  controller: grp_workers_controller
-  actions: [index, query_all, query_info, signlogs]
+  controller: file_libs_controller
+  actions: [index, new, create, edit, update, show, destroy, download]
+-
+  controller: examines_controller
+  actions: [index, export, report, drct_org, create_drct]
+-
+  controller: reviews_controller
+  actions: [index, show, download_attachment, download_append, report, reject, complete]
+-
+  controller: review_results_controller
+  actions: [edit, update, publish, download_attachment, download_append, download_idappend]
+-
+  controller: modify_results_controller
+  actions: [edit, update, modify, download_attachment, download_append, download_idappend]
+-
+  controller: recheck_results_controller
+  actions: [edit, update, recheck, download_attachment, download_append, download_idappend]
+-
+  controller: grp_trains_controller
+  actions: [index, query_list, query_info, download_attachment, download_append]
+-
+  controller: grp_drills_controller
+  actions: [index, query_list, query_info, download_attachment, download_append]
+-
+  controller: grp_summaries_controller
+  actions: [index, query_list, query_info, download_attachment, download_append]
+-
+  controller: grp_examines_controller
+  actions: [index, new, create, edit, update, show, destroy, export, reject_examine, download_examine, publish, drct_org, drct_info, create_drct]
+-
+  controller: grp_reviews_controller
+  actions: [index, new, create, edit, update, show, destroy, download_attachment, download_append, review, publish]
+-
+  controller: grp_out_reviews_controller
+  actions: [index, query_list, query_info, download_attachment, download_official, download_modified, download_result, download_recheck]

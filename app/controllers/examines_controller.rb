@@ -4,7 +4,7 @@ class ExaminesController < ApplicationController
   protect_from_forgery :except => :create_drct
 
   layout "application_control"
-  before_filter :authenticate_user!, :except => :create_drct
+  before_filter :authenticate_user!
   authorize_resource :except => :create_drct
    
   def index

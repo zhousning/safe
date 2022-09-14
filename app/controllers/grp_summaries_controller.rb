@@ -21,6 +21,7 @@ class GrpSummariesController < ApplicationController
           :id => index + 1,
           :fct_id  => idencode(fct.id), 
           :button => "<button class = 'button button-royal button-small mr-1 log-show-btn' type = 'button' data-id ='" + idencode(item.id).to_s + "'>查看</button>",
+          :fct => fct.name,
 
           :start_date => item.start_date,
 

@@ -23,7 +23,7 @@
             .col-sm-12
               %h2.text-center
                 = image_tag "gykg.jpg"
-                = @review.name
+                = @grp_review.name
             .col-md-8.offset-2.p-5.border
               .card.border-0.mb-3.rounded-0
                 .card-body
@@ -34,26 +34,26 @@
                         %td.p-2.text-center
                           = Setting.reviews.search_date
                         %td.p-2.text-center
-                          = @review.search_date
+                          = @grp_review.search_date
                     
                       
                       %tr
                         %td.p-2.text-center
                           = Setting.reviews.content
                         %td.p-2.text-center{:colspan => 3}
-                          = @review.content
+                          = @grp_review.content
                     
                     
               .row
                 .col-md-6
-                  - unless @review.attch.blank?
-                    = link_to URI.decode(File.basename(@review.attch_url)), download_append_review_path(idencode(@review.id))
+                  - unless @grp_review.attch.blank?
+                    = link_to URI.decode(File.basename(@grp_review.attch_url)), download_append_grp_review_path(idencode(@grp_review.id))
               
               
               .row
-                - @review.attachments.each_with_index do |e, i|
+                - @grp_review.attachments.each_with_index do |e, i|
                   .col-md-12
-                    = link_to File.basename(URI.decode(e.file_url)), download_attachment_review_path(idencode(@review.id), :number => i, :ft => '')
+                    = link_to File.basename(URI.decode(e.file_url)), download_attachment_grp_review_path(idencode(@grp_review.id), :number => i, :ft => '')
 
         = render 'reviews/review_result'
         = render 'reviews/modify_result'

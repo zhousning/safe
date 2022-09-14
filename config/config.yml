@@ -437,9 +437,9 @@ development:
     place: 预留字段
     train_time: 培训时间
     address: 培训地点
-    sign: 签到表
+    sign: 签到表照片
     scene: 现场照片
-    estimate: 效果评估
+    estimate: 效果评估照片
     paper: 考试试卷照片
     wpaper: 试卷原件
   drills:
@@ -450,9 +450,9 @@ development:
     place: 预留字段
     train_time: 演练时间
     address: 演练地点
-    sign: 签到表
+    sign: 签到表照片
     scene: 现场照片
-    estimate: 效果评估
+    estimate: 效果评估照片
     summary: 总结
   summaries:
     label: 安全工作总结
