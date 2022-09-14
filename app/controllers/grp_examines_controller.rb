@@ -4,8 +4,8 @@ class GrpExaminesController < ApplicationController
   protect_from_forgery :except => :create_drct
 
   layout "application_control"
-  before_filter :authenticate_user!
-  #load_and_authorize_resource
+  before_filter :authenticate_user!, :except => :create_drct
+  authorize_resource :except => :create_drct
    
   def index
     @grp_examines = GrpExamine.order('search_date DESC').all.page( params[:page]).per( Setting.systems.per_page )
@@ -18,8 +18,6 @@ class GrpExaminesController < ApplicationController
 
   def new
     @grp_examine = GrpExamine.new
-    
-    #@examine.exm_items.build
   end
    
   def create

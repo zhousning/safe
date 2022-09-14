@@ -1,6 +1,5 @@
 $(".grp_drills").ready(function() {
   if ($(".grp_drills.index").length > 0) {
-     
 
     var url = '/grp_drills/query_list';
     fct_date_event("#day-pdt-rpt-table", url)

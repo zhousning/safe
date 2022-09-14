@@ -3,7 +3,7 @@ class ControlsController < ApplicationController
   before_filter :authenticate_user!
   #authorize_resource
 
-def index
+  def index
     @agendas = current_user.agendas
     gon.events = []
     @agendas.each do |agenda|

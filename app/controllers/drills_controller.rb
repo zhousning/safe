@@ -1,7 +1,7 @@
 class DrillsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
    
   def index
@@ -12,35 +12,6 @@ class DrillsController < ApplicationController
   end
    
 
-  #def query_all 
-  #  items = Drill.all
-  # 
-  #  obj = []
-  #  items.each do |item|
-  #    obj << {
-  #      #:factory => idencode(factory.id),
-  #      :id => idencode(item.id),
-  #     
-  #      :title => item.title,
-  #     
-  #      :content => item.content,
-  #     
-  #      :place => item.place,
-  #     
-  #      :train_time => item.train_time,
-  #     
-  #      :address => item.address
-  #    
-  #    }
-  #  end
-  #  respond_to do |f|
-  #    f.json{ render :json => obj.to_json}
-  #  end
-  #end
-
-
-
-   
   def show
    
     @factory = my_factory

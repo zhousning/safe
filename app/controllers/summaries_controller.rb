@@ -1,7 +1,7 @@
 class SummariesController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
    
   def index
@@ -11,30 +11,6 @@ class SummariesController < ApplicationController
    
   end
    
-
-  #def query_all 
-  #  items = Summary.all
-  # 
-  #  obj = []
-  #  items.each do |item|
-  #    obj << {
-  #      #:factory => idencode(factory.id),
-  #      :id => idencode(item.id),
-  #     
-  #      :title => item.title,
-  #     
-  #      :content => item.content,
-  #     
-  #      :place => item.place
-  #    
-  #    }
-  #  end
-  #  respond_to do |f|
-  #    f.json{ render :json => obj.to_json}
-  #  end
-  #end
-
-
 
    
   def show

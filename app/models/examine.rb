@@ -4,12 +4,6 @@ class Examine < ActiveRecord::Base
 
   belongs_to :grp_examine
 
-  has_many :exm_items, :dependent => :destroy
-  accepts_nested_attributes_for :exm_items, reject_if: :all_blank, allow_destroy: true
-
-  has_many :documents, :dependent => :destroy
-  accepts_nested_attributes_for :documents, reject_if: :all_blank, allow_destroy: true
-
   STATESTR = %w(opening report reject)
   STATE = [Setting.states.opening, Setting.states.processing,  Setting.states.error, Setting.states.report, Setting.states.reject]
   validates_inclusion_of :state, :in => STATE

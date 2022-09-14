@@ -1,7 +1,7 @@
 class FileLibsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #load_and_authorize_resource
+  #authorize_resource
 
    
   def index
@@ -11,54 +11,6 @@ class FileLibsController < ApplicationController
     @file_libs = @portfolio.file_libs
     gon.portfolio = @portfolio.id
   end
-   
-
-   
-  def show
-    @portfolio = Portfolio.find(params[:portfolio_id])
-    @file_lib = @portfolio.file_libs.find(params[:id])
-  end
-   
-
-   
-  def new
-    @file_lib = FileLib.new
-    
-  end
-   
-
-   
-  def create
-    @portfolio = Portfolio.find(params[:portfolio_id])
-    @file_lib = FileLib.new(file_lib_params)
-    @file_lib.portfolio = @portfolio
-    if @file_lib.save
-      redirect_to @file_lib
-    else
-      render :new
-    end
-  end
-   
-
-   
-  def edit
-    @portfolio = Portfolio.find(params[:portfolio_id])
-    @file_lib = @portfolio.file_libs.find(params[:id])
-  end
-   
-
-   
-  def update
-    @portfolio = Portfolio.find(params[:portfolio_id])
-    @file_lib = @portfolio.file_libs.find(params[:id])
-    if @file_lib.update(file_lib_params)
-      redirect_to file_lib_path(@file_lib) 
-    else
-      render :edit
-    end
-  end
-   
-
    
   def destroy
     @portfolio = Portfolio.find(params[:portfolio_id])

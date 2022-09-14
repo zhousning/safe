@@ -1,7 +1,7 @@
 class GrpReviewsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
    
   def index
@@ -15,8 +15,6 @@ class GrpReviewsController < ApplicationController
 
   def new
     @grp_review = GrpReview.new
-    
-    #@review.exm_items.build
   end
    
   def create

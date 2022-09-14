@@ -1,7 +1,7 @@
 class GrpDrillsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
    
    
@@ -51,15 +51,13 @@ class GrpDrillsController < ApplicationController
     img_hash[Setting.drills.estimate] = drill.estimate_url 
 
     hash = Hash.new
-    hash[Setting.drills.summary] = download_append_factory_drill_path(idencode(@factory.id), idencode(drill.id))
+    hash[Setting.drills.summary] = download_append_grp_drill_path(idencode(drill.id))
     drill.attachments.each_with_index do |e, i|
-      hash[File.basename(URI.decode(e.file_url))] = download_attachment_factory_drill_path(idencode(@factory.id), idencode(drill.id), :number => i, :ft => '')
+      hash[File.basename(URI.decode(e.file_url))] = download_attachment_grp_drill_path(idencode(drill.id), :number => i, :ft => '')
     end
 
 
     obj << {
-      :time => drill.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-       
         :title => drill.title,
        
         :content => drill.content,
@@ -86,112 +84,28 @@ class GrpDrillsController < ApplicationController
      
     @factories = Factory.all
      
-    @drills = Drill.all.page( params[:page]).per( Setting.systems.per_page )
   end
    
-
-  def query_all 
-    items = Drill.all
-   
-    obj = []
-    items.each do |item|
-      obj << {
-        #:factory => idencode(factory.id),
-        :id => idencode(item.id),
-       
-        :title => item.title,
-       
-        :content => item.content,
-       
-        :place => item.place,
-       
-        :train_time => item.train_time,
-       
-        :address => item.address
-      
-      }
-    end
-    respond_to do |f|
-      f.json{ render :json => obj.to_json}
-    end
-  end
-
-
-
-   
-  def show
+  def download_attachment 
     @drill = Drill.find(iddecode(params[:id]))
-  end
-   
+    @attachment_id = params[:number].to_i
+    @attachment = @drill.attachments[@attachment_id]
 
-   
-  def new
-    @drill = Drill.new
-    
-  end
-   
-
-   
-  def create
-    @drill = Drill.new(drill_params)
-    if @drill.save
-      redirect_to :action => :index
-    else
-      render :new
+    if @attachment
+      send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
     end
   end
-   
+  
 
-   
-  def edit
+  
+  def download_append
     @drill = Drill.find(iddecode(params[:id]))
-  end
-   
+    @summary = @drill.summary_url
 
-   
-  def update
-    @drill = Drill.find(iddecode(params[:id]))
-    if @drill.update(drill_params)
-      redirect_to drill_path(idencode(@drill.id)) 
-    else
-      render :edit
+    if @summary
+      send_file File.join(Rails.root, "public", URI.decode(@summary)), :type => "application/force-download", :x_sendfile=>true
     end
   end
-   
-
-   
-  def destroy
-    @drill = Drill.find(iddecode(params[:id]))
-    @drill.destroy
-    redirect_to :action => :index
-  end
-   
-
-  
-    def download_attachment 
-      @drill = Drill.find(iddecode(params[:id]))
-      @attachment_id = params[:number].to_i
-      @attachment = @drill.attachments[@attachment_id]
-
-      if @attachment
-        send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
-
-  
-    def download_append
-      @drill = Drill.find(iddecode(params[:id]))
-      @summary = @drill.summary_url
-
-      if @summary
-        send_file File.join(Rails.root, "public", URI.decode(@summary)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
-
-  
-  
   
 
   private

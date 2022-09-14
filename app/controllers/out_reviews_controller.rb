@@ -1,7 +1,7 @@
 class OutReviewsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
    
   def index
@@ -12,37 +12,6 @@ class OutReviewsController < ApplicationController
   end
    
 
-  #def query_all 
-  #  items = OutReview.all
-  # 
-  #  obj = []
-  #  items.each do |item|
-  #    obj << {
-  #      #:factory => idencode(factory.id),
-  #      :id => idencode(item.id),
-  #     
-  #      :title => item.title,
-  #     
-  #      :search_date => item.search_date,
-  #     
-  #      :content => item.content,
-  #     
-  #      :state => item.state,
-  #     
-  #      :desc1 => item.desc1,
-  #     
-  #      :desc2 => item.desc2
-  #    
-  #    }
-  #  end
-  #  respond_to do |f|
-  #    f.json{ render :json => obj.to_json}
-  #  end
-  #end
-
-
-
-   
   def show
    
     @factory = my_factory

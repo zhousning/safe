@@ -4,58 +4,14 @@ class ExaminesController < ApplicationController
   protect_from_forgery :except => :create_drct
 
   layout "application_control"
-  before_filter :authenticate_user!
-  #load_and_authorize_resource
+  before_filter :authenticate_user!, :except => :create_drct
+  authorize_resource :except => :create_drct
    
   def index
     @factory = my_factory
-    @examines = @factory.examines.page( params[:page]).per( Setting.systems.per_page )
+    @examines = @factory.examines.order('created_at DESC').page( params[:page]).per( Setting.systems.per_page )
   end
    
-  def show
-    @factory = my_factory
-    @examine = @factory.examines.find(params[:id])
-  end
-
-  def new
-    @examine = Examine.new
-    
-    #@examine.exm_items.build
-  end
-   
-  def create
-    @factory = my_factory
-    @examine = Examine.new(examine_params)
-    @examine.factory = @factory
-    if @examine.save
-      redirect_to examines_path
-    else
-      render :new
-    end
-  end
-   
-  def edit
-    @factory = my_factory
-    @examine = @factory.examines.find(params[:id])
-  end
-   
-  def update
-    @factory = my_factory
-    @examine = @factory.examines.find(params[:id])
-    if @examine.update(examine_params)
-      redirect_to examines_path
-    else
-      render :edit
-    end
-  end
-   
-  def destroy
-    @factory = my_factory
-    @examine = @factory.examines.find(params[:id])
-    @examine.destroy
-    redirect_to :action => :index
-  end
-
   def drct_org
     @factory = my_factory
     gon.fct = idencode(@factory.id)

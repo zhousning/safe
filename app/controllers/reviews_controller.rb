@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
   def index
     @factory = my_factory
@@ -80,42 +80,3 @@ class ReviewsController < ApplicationController
   
 end
 
-#def new
-#  @review = Review.new
-#  
-#  #@review.exm_items.build
-#end
-# 
-#def create
-#  @factory = my_factory
-#  @review = Review.new(review_params)
-#  @review.factory = @factory
-#  if @review.save
-#    redirect_to reviews_path
-#  else
-#    render :new
-#  end
-#end
-# 
-#def edit
-#  @factory = my_factory
-#  @review = @factory.reviews.find(iddecode(params[:id]))
-#end
-# 
-#def update
-#  @factory = my_factory
-#  @review = @factory.reviews.find(iddecode(params[:id]))
-#  if @review.update(review_params)
-#    redirect_to reviews_path
-#  else
-#    render :edit
-#  end
-#end
-# 
-#def destroy
-#  @factory = my_factory
-#  @review = @factory.reviews.find(iddecode(params[:id]))
-#  @review.destroy
-#  redirect_to :action => :index
-#end
- 

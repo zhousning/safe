@@ -1,7 +1,7 @@
 class TrainsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
    
   def index
@@ -9,36 +9,6 @@ class TrainsController < ApplicationController
     @trains = @factory.trains.order('train_time DESC').page( params[:page]).per( Setting.systems.per_page )
    
   end
-   
-
-  #def query_all 
-  #  items = Train.all
-  # 
-  #  obj = []
-  #  items.each do |item|
-  #    obj << {
-  #      #:factory => idencode(factory.id),
-  #      :id => idencode(item.id),
-  #     
-  #      :title => item.title,
-  #     
-  #      :content => item.content,
-  #     
-  #      :place => item.place,
-  #     
-  #      :train_time => item.train_time,
-  #     
-  #      :address => item.address
-  #    
-  #    }
-  #  end
-  #  respond_to do |f|
-  #    f.json{ render :json => obj.to_json}
-  #  end
-  #end
-
-
-
    
   def show
    

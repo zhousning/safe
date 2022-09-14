@@ -1,7 +1,7 @@
 class GrpOutReviewsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
    
    
@@ -44,13 +44,13 @@ class GrpOutReviewsController < ApplicationController
     @factory = out_review.factory
     obj = []
     hash = Hash.new
-    hash[Setting.out_reviews.official] = download_official_factory_out_review_path(idencode(@factory.id), idencode(out_review.id))
-    hash[Setting.out_reviews.result] = download_result_factory_out_review_path(idencode(@factory.id), idencode(out_review.id))
-    hash[Setting.out_reviews.modified] = download_modified_factory_out_review_path(idencode(@factory.id), idencode(out_review.id))
-    hash[Setting.out_reviews.recheck] = download_recheck_factory_out_review_path(idencode(@factory.id), idencode(out_review.id))
+    hash[Setting.out_reviews.official] = download_official_grp_out_review_path(idencode(out_review.id))
+    hash[Setting.out_reviews.result] = download_result_grp_out_review_path(idencode(out_review.id))
+    hash[Setting.out_reviews.modified] = download_modified_grp_out_review_path(idencode(out_review.id))
+    hash[Setting.out_reviews.recheck] = download_recheck_grp_out_review_path(idencode(out_review.id))
 
     out_review.attachments.each_with_index do |e, i|
-      hash[File.basename(URI.decode(e.file_url))] = download_attachment_factory_out_review_path(idencode(@factory.id), idencode(out_review.id), :number => i, :ft => '')
+      hash[File.basename(URI.decode(e.file_url))] = download_attachment_grp_out_review_path(idencode(out_review.id), :number => i, :ft => '')
     end
 
     obj << {
@@ -76,137 +76,56 @@ class GrpOutReviewsController < ApplicationController
      
     @factories = Factory.all
      
-    @out_reviews = OutReview.all.page( params[:page]).per( Setting.systems.per_page )
   end
    
 
-  def query_all 
-    items = OutReview.all
-   
-    obj = []
-    items.each do |item|
-      obj << {
-        #:factory => idencode(factory.id),
-        :id => idencode(item.id),
-       
-        :title => item.title,
-       
-        :search_date => item.search_date,
-       
-        :content => item.content,
-       
-        :state => item.state,
-       
-        :desc1 => item.desc1,
-       
-        :desc2 => item.desc2
-      
-      }
-    end
-    respond_to do |f|
-      f.json{ render :json => obj.to_json}
-    end
-  end
-
-
-
-   
-  def show
+  def download_attachment 
     @out_review = OutReview.find(iddecode(params[:id]))
-  end
-   
+    @attachment_id = params[:number].to_i
+    @attachment = @out_review.attachments[@attachment_id]
 
-   
-  def new
-    @out_review = OutReview.new
-    
-  end
-   
-
-   
-  def create
-    @out_review = OutReview.new(out_review_params)
-    if @out_review.save
-      redirect_to :action => :index
-    else
-      render :new
+    if @attachment
+      send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
     end
   end
-   
+  
 
-   
-  def edit
+  
+  def download_official
     @out_review = OutReview.find(iddecode(params[:id]))
-  end
-   
+    @official = @out_review.official_url
 
-   
-  def update
+    if @official
+      send_file File.join(Rails.root, "public", URI.decode(@official)), :type => "application/force-download", :x_sendfile=>true
+    end
+  end
+  
+  def download_result
     @out_review = OutReview.find(iddecode(params[:id]))
-    if @out_review.update(out_review_params)
-      redirect_to out_review_path(idencode(@out_review.id)) 
-    else
-      render :edit
+    @result = @out_review.result_url
+
+    if @result
+      send_file File.join(Rails.root, "public", URI.decode(@result)), :type => "application/force-download", :x_sendfile=>true
     end
   end
-   
-
-   
-  def destroy
+  
+  def download_modified
     @out_review = OutReview.find(iddecode(params[:id]))
-    @out_review.destroy
-    redirect_to :action => :index
+    @modified = @out_review.modified_url
+
+    if @modified
+      send_file File.join(Rails.root, "public", URI.decode(@modified)), :type => "application/force-download", :x_sendfile=>true
+    end
   end
-   
-
   
-    def download_attachment 
-      @out_review = OutReview.find(iddecode(params[:id]))
-      @attachment_id = params[:number].to_i
-      @attachment = @out_review.attachments[@attachment_id]
+  def download_recheck
+    @out_review = OutReview.find(iddecode(params[:id]))
+    @recheck = @out_review.recheck_url
 
-      if @attachment
-        send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
-      end
+    if @recheck
+      send_file File.join(Rails.root, "public", URI.decode(@recheck)), :type => "application/force-download", :x_sendfile=>true
     end
-  
-
-  
-    def download_append
-      @out_review = OutReview.find(iddecode(params[:id]))
-      @official = @out_review.official_url
-
-      if @official
-        send_file File.join(Rails.root, "public", URI.decode(@official)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
-    def download_append
-      @out_review = OutReview.find(iddecode(params[:id]))
-      @result = @out_review.result_url
-
-      if @result
-        send_file File.join(Rails.root, "public", URI.decode(@result)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
-    def download_append
-      @out_review = OutReview.find(iddecode(params[:id]))
-      @modified = @out_review.modified_url
-
-      if @modified
-        send_file File.join(Rails.root, "public", URI.decode(@modified)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
-    def download_append
-      @out_review = OutReview.find(iddecode(params[:id]))
-      @recheck = @out_review.recheck_url
-
-      if @recheck
-        send_file File.join(Rails.root, "public", URI.decode(@recheck)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
+  end
   
 
   
