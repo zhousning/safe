@@ -38,19 +38,27 @@ AdminUser.create!(:phone => Setting.admins.phone, :email => Setting.admins.email
 @yanz = Company.create!(:area => "兖州区", :name => "兖州水务")
 @zouc = Company.create!(:area => "邹城市", :name => "邹城水务")
 @lish = Company.create!(:area => "梁山县", :name => "梁山水务")
+@bhws = Company.create!(:area => "太白湖新区", :name => "北湖污水")
+@rcws = Company.create!(:area => "任城区", :name => "任城污水")
+@dsmt = Company.create!(:area => "金乡县", :name => "达斯玛特")
 
 @jxws  = Factory.create!(:area => "嘉祥县",     :name => "嘉祥水务",     :company => @jiax, :lnt => 116.344578, :lat => 35.397421, :design => 80000)
 @wsqy  = Factory.create!(:area => "汶上县",     :name => "汶上水务", :company => @wens, :lnt => 116.480951, :lat => 35.712144, :design => 40000)
 @yzws  = Factory.create!(:area => "兖州区",     :name => "兖州水务",     :company => @yanz, :lnt => 116.781921, :lat => 35.510729, :design => 60000)
 @zcdy  = Factory.create!(:area => "邹城市",     :name => "邹城水务", :company => @zouc, :lnt => 116.944881, :lat => 35.384207, :design => 80000)
 @lsws  = Factory.create!(:area => "梁山县",     :name => "梁山水务", :company => @lish, :lnt => 116.918884, :lat => 35.457138, :design => 60000)
-
+@bhwssw  = Factory.create!(:area => "太白湖新区",     :name => "北湖污水", :company => @bhws, :lnt => 116.918884, :lat => 35.457138, :design => 60000)
+@rcwssw  = Factory.create!(:area => "任城区",     :name => "任城污水", :company => @rcws, :lnt => 116.918884, :lat => 35.457138, :design => 60000)
+@dsmtsw  = Factory.create!(:area => "金乡县",     :name => "达斯玛特", :company => @dsmt, :lnt => 116.918884, :lat => 35.457138, :design => 60000)
 
 User.create!(:phone => "12305378989", :password => "jxws8989", :password_confirmation => "jxws8989", :name => "嘉祥水务运营管理部", :roles => @fct_mgn, :factories => [@jxws])
 User.create!(:phone => "053795661234", :password => "wsqy9566", :password_confirmation => "wsqy9566", :name => "汶上水务运营管理部", :roles => @fct_mgn, :factories => [@wsqy])
 User.create!(:phone => "053766661818", :password => "yzdy1818", :password_confirmation => "yzdy1818", :name => "兖州水务运营管理部", :roles => @fct_mgn, :factories => [@yzws])
 User.create!(:phone => "053700009999", :password => "zcds9999", :password_confirmation => "zcds9999", :name => "邹城水务运营管理部", :roles => @fct_mgn, :factories => [@zcdy])
 User.create!(:phone => "053798989188", :password => "bhws9188", :password_confirmation => "bhws9188", :name => "梁山水务运营管理部", :roles => @fct_mgn, :factories => [@lsws])
+User.create!(:phone => "158898983708", :password => "bhws3708", :password_confirmation => "bhws3708", :name => "北湖污水运营管理部", :roles => @fct_mgn, :factories => [@bhwssw])
+User.create!(:phone => "158898981111", :password => "rcws1111", :password_confirmation => "rcws1111", :name => "任城污水运营管理部", :roles => @fct_mgn, :factories => [@rcwssw])
+User.create!(:phone => "158898989188", :password => "dsmt9188", :password_confirmation => "dsmt9188", :name => "达斯玛特运营管理部", :roles => @fct_mgn, :factories => [@dsmtsw])
 
 
 all_factories = Factory.all
